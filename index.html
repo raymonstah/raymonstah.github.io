@@ -1,128 +1,20 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" type="text/css" href="bootstrap.css">
-		<style type="text/css">
-			.caption { height: 140px; }
-		</style>
-		<title>Raymond Ho</title>
-	</head>
-	<body>
-		<nav class="navbar navbar-default">
-			<div class="container">
-				<div class="navbar-header">
-					<a class="navbar-brand" href="#">Raymond Ho</a>
-				</div>
-				<div>
-					<ul class="nav navbar-nav">
-						<li><a href="Resume.pdf">Resume</a></li>
-						<li><a href="mailto:rayho@ucdavis.edu">Email me: rayho@ucdavis.edu</a></li>
+---
+layout: default
+---
 
+<div class="home">
 
-					</ul>
-				</div>
-			</div>
-		</nav>
-		<div class="container">
-			
-			<div class="row">
-				<div class="col-xs-12">
-					<h2>About Me:</h2>
-					<p>Hello, my name is Raymond. I'm a UC Davis graduate currently working ZapLabs. I enjoy programming, learning new languages (currently Haskell), tinkering with web frameworks, and writing scripts to make my life easier. When I'm not programming, I like watching movies and playing basketball.</p>
-				</div>
-			</div>
+  <h1 class="page-heading">Posts</h1>
 
-			<div class="row">
-				<div class="col-xs-12">
-					<h2>raymondtaught.me</h2>
-					<p>raymondtaught.me is no longer up. :( But I'll still keep the posts available <a href="_raymondtaughtme">here</a>, for those of you who are interested. </p>
-				</div>
-			</div>
+  <ul class="post-list">
+    {% for post in site.posts %}
+      <li>
+        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
 
-			<div class="row">
-				<div class="col-xs-12">
-					<h2>Profiles:</h2>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-6 col-sm-3">
-					<div class="thumbnail">
-						<a href="https://www.github.com/raymonstah"><img src="pictures/github.png"></a>
-						<div class="caption">
-							<h3>Github</h3>
-							<p>For my main and medium sized projects.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-xs-6 col-sm-3">
-					<div class="thumbnail">
-						<a href="https://gist.github.com/raymonstah/"><img src="pictures/github1.png"></a>
-						<div class="caption">
-							<h3>Gists</h3>
-							<p>For my small scripts.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-xs-6 col-sm-3">
-					<div class="thumbnail">
-						<a href="https://www.hackerrank.com/Raymond_"><img src="pictures/hackerrank.png"></a>
-						<div class="caption">
-							<h3>HackerRank</h3>
-							<p>Where I completed some programming challenges</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-xs-6 col-sm-3">
-					<div class="thumbnail">
-						<a href="https://www.linkedin.com/in/raymonstah"><img src="pictures/linkedin.png"></a>
-						<div class="caption">
-							<h3>LinkedIn</h3>
-							<p>Add me if you'd like to connect.</p>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-md-12">
-					<h2>Games:</h2>
-				</div>
-				<div class="col-sm-6 col-md-6">
-					<h3>Hibearnate (2013)</h3>
-					<p>A game created with GameMaker. Try to collect all of the berries!</p>
-					<p><a href="hibearnate.html">Click here to play.</a> (Some features may be depricated by your browser)</p>
-					<p><a href="projects/Hibearnate.exe">Click here to download! (Windows only)</a>
-				</div>
-				<div class="col-sm-6 col-md-6">
-					<h3>Pong (2012)</h3>
-					<p>The original Pong game, created with Processing.</p>
-					<p><a href="projects/Pong.pde">View source.</a></p>
-					<p><a href="projects/Pong.jar">Click here to download.</a></p>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-md-12">
-					<h2>Others:</h2>
-				</div>
-				<div class ="col-sm-6 col-md-6">
-					<h3>First Website</h3>
-					<p>This was one of my first websites; I thought it was funny.</p>
-					<p><a href="first.html">First website.</a></p>
-				</div>
-				<div class ="col-sm-6 col-md-6">
-					<h3>Splashes</h3>
-					<p>A simple app created using Android Studio that keeps track of shots made and missed.</p>
-					<p><a href="projects/Splashes.png">See screenshot.</a></p>
-					<p><a href="projects/Splashes.apk">Download APK.</a></p>
-				</div>
-				<div class="col-sm-6 col-md-6">
-					<h3>Speaker building</h3>
-					<p>Building Paul Carmody's custom speakers from scratch.</p>
-					<p><a href="speakerproj.html">Click here to view.</a></p>
-				</div>
-			</div>
-		</div>
-	</body>
-</html>
+        <h2>
+          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title | escape }}</a>
+        </h2>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

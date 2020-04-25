@@ -1,0 +1,59 @@
+baseURL = "http://raymonstah.github.io"
+languageCode = "en-us"
+title = "Raymond Ho"
+theme = "soho"
+googleAnalytics = "UA-164579651-1"
+
+# soho specific stuff
+enableInlineShortcodes= true
+
+
+summarylength = 10
+enableEmoji = true
+
+[params]
+author = "Raymond Ho"
+description = "Random ramblings and stuff"
+
+## Set one of:
+#gravatar = "Raymond Ho"
+profilePicture = "adorableavatar.png"
+
+copyright = "Raymond Ho"
+license = "CC BY-SA 4.0"
+licenseURL = "https://creativecommons.org/licenses/by-sa/4.0"
+
+## Set custom theme color.
+# themeColor = "#fc2803"
+
+  ## Set as many as you want.
+  [[params.socialIcons]]
+  icon = "fa-linkedin"
+  title = "Linkedin"
+  url = "https://www.linkedin.com/in/raymond-ho/"
+
+  [[params.socialIcons]]
+  icon = "fa-github"
+  title = "GitHub"
+  url = "https://github.com/raymonstah"
+
+[menu]
+
+  [[menu.main]]
+  name = "Posts"
+  weight = 100
+  identifier = "posts"
+  url = "/posts/"
+
+[markup]
+
+  [markup.highlight]
+  codeFences = true
+  guessSyntax = false
+  hl_Lines = ""
+  lineNoStart = 1
+  lineNos = false
+  lineNumbersInTable = true
+  noClasses = true # if false, you need to provide you own custom CSS
+  style = "monokai"
+  tabWidth = 4

@@ -1,4 +1,4 @@
-baseURL = "http://raymonstah.github.io"
+baseURL = "https://raymonstah.github.io/"
 languageCode = "en-us"
 title = "Raymond Ho"
 theme = "soho"

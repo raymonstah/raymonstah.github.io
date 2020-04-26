@@ -13,7 +13,7 @@ If you haven't checked out the first 10 tips, be sure to do so [here](http://ray
 
 Note: Let's assume we're all using Python 3.
 
-#####1. Ranges
+##### 1. Ranges
 Sometimes, it's easier to list out all of the elements you want in a list. Sometimes it's not. Let's say I want a list of the first 100 integers.
 
 Instead of doing this:
@@ -35,7 +35,7 @@ alphabet = [chr(index) for index in alpha_index]
 
 More examples with the alphabet soon.
 
-#####2. Zip
+##### 2. Zip
 Suppose you had two lists, `names` and `ages`:
 A person's age can be found with the corresponding index in `ages`.
 So `names[0]` corresponds with `ages[0]`.
@@ -62,7 +62,7 @@ A bit cleaner, wouldn't you agree?
 
 With `zip()`, we can also transpose/rotate a matrix, or group elements in a list.
 
-#####3. Lambda
+##### 3. Lambda
 Ah, lambdas..
 In my opinion, these should **only** be used when combined with Python's functional programming functions (`map`, `filter`, or `reduce`) or when used as a parameter to another function. (More on this in a bit)
 
@@ -80,7 +80,7 @@ print(lessThanFive(10)) # No
 ```
 
 Lambda functions can be more helpful when using inline functions, as we'll demonstrate in the examples below.
-#####4. Sorting
+##### 4. Sorting
 In Python, there are two built in sorting functions, `list.sort()` and `sorted()`. The main difference is that `sort()` sorts in place and only works on list, while `sorted()` returns a new iterable.
 
 You can use them like this:
@@ -105,7 +105,7 @@ Pretty cool huh? We specified the argument `reverse=True`, so it will sort the l
 We specify the `key` to be in position `1` of the incoming argument, which we *named* `person`, a member of the iterable, `people`. 
 Note the use of `lambda` here!
 
-#####5. Map
+##### 5. Map
 In the last tutorial, we went over list comprehensions and why they're so useful.
 
 Here's an example of converting a list of strings into a list of integers using list comprehension:
@@ -146,7 +146,7 @@ print(results) # [5, 11, 21, 35, 53]
 ```
 Also, sometimes users will experience scoping issues since they will be creating an extra variable when using list comprehensions. This can cause one to overwrite the contents of a previous variable when the variable names are the same. Notice that we didn't have to create a temporary variable  when using `map()`.
 
-#####6. Filter
+##### 6. Filter
 Again, `filter` can be solved by doing list comprehensions. But for people coming from a functional programming background, keywords like `map` and `filter` are intuitive for them.
 
 Here's an example using `filter` to take all multiples of 3 up to 100:
@@ -162,7 +162,7 @@ Here's the same example using list comprehensions:
 ```
 
 I believe Python programmers have been debating on `map` and `filter` functions versus list comprehensions for some time now. The one you decide to use is ultimately up to you.
-#####7. With
+##### 7. With
 If you're coming from a Java or C background, you're probably used to opening **and** closing files. Sometimes you open files and forget to close them, and thus left with open file pointers, which can lead to accidental read/writes.
 
 Introduce `with`, which allows Python users to safely open and read/write to a file without worrying about closing it later. This *also* closes the file if any exceptions are thrown.
@@ -173,7 +173,7 @@ with open("file.txt") as f:
     data = f.read()
 ```
 Pretty straightforward.
-#####8. Split/Join
+##### 8. Split/Join
 You can use `split()` and `join()` when converting strings to lists or vice versa.
 
 With `split()`, you can pass a string to it letting it know what to split the string on. By default, it will split on empty spaces. `split()` returns a list of the string, separating each part by the delimiter.
@@ -205,7 +205,7 @@ You can join lists using any characters, or none at all.
 Note: using `.join()` may be faster than string concatenations  when you have **a lot** of strings to join together. Otherwise, for the sake of readability, stick with string concatenations.
 
 
-#####9. Reserved keywords
+##### 9. Reserved keywords
 Beginners often make the mistakes of naming their variables after a reserved keyword! This doesn't just apply to Python, and can be a struggle in any programming language when trying to debug a variable that has the same name as a keyword.
 
 As an example of why we shouldn't use reserved keywords:
@@ -227,7 +227,7 @@ For a list of words *not* to use in Python, you can run these commands.
 ```
 Avoid them!
 
-#####10. Binary in Python
+##### 10. Binary in Python
 If you're a Computer Science student, you'll be using binary a lot.
 Here are two functions `bin()` and `int()`
 You can tell Python that a number is binary using the following syntax: `0b` followed by the binary string.

@@ -20,7 +20,7 @@ There are at least three different ways you can do this, but in this tutorial we
 
 
 
-######Using a `dict`:
+###### Using a `dict`:
 
 1. First we want to create a dictionary like this: `mappings = {}`
 2. Then we want to loop over the string and checking if the character is in `mappings`
@@ -41,7 +41,7 @@ def unique(string):
 ```
 This algorithm takes just `O(n)` time and space, where `n` is the number of characters in the string. This is because we loop over the string just once.
 
-######Sorting the string first
+###### Sorting the string first
 Here's a cool way to solve this problem, although not as efficient as our first solution.
 
 1. We can sort the string first, calling by calling `sorted(string)` and storing it in a variable `sorted_string`

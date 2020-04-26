@@ -50,7 +50,7 @@ Now we can make this penny fair by flipping it *twice*, then viewing its outcome
 * If the outcome was `HH` or `TT`, then we'll discard these results.
 * If the outcome was `HT` or `TH`, then we'll take the result of our first flip.
 
-####Using Python to show this:
+#### Using Python to show this:
 ```python
 from collections import namedtuple
 import random

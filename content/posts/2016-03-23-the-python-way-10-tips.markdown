@@ -11,7 +11,7 @@ Below are 10 useful tips and tricks in Python. Some of them highlight mistakes t
 
 Note: Let's assume we're all using Python 3.
 
-#####1. List Comprehensions
+##### 1. List Comprehensions
 Suppose you have a list:
 `bag = [1, 2, 3, 4, 5]`
 
@@ -32,7 +32,7 @@ Cleaner, right? This is called list comprehensions in Python.
 
 For even more on list comprehensions, check out [Trey Hunner's tutorial](http://treyhunner.com/2015/12/python-list-comprehensions-now-in-color/).
 
-#####2. Iterating through a list
+##### 2. Iterating through a list
 Again, suppose you have a list.
 Try to **avoid** doing this if you can:
 ```python
@@ -55,7 +55,7 @@ for index, element in enumerate(bag):
     print(index, element)
 ```
 Pretty straightforward.
-#####3. Swapping Elements
+##### 3. Swapping Elements
 This is the way that you're probably used to if you're coming from a traditional programming language like Java or C.
 ```python
 a = 5
@@ -75,7 +75,7 @@ a, b = b, a
 ```
 Nifty, huh?
 
-#####4. Initializing a List
+##### 4. Initializing a List
 Suppose you needed a list of `10` integers set to `0`. You may be tempted to do something like this:
 ```python
 bag = []
@@ -110,7 +110,7 @@ Also note that:
 
 Ask yourself, do you *really* need to initialize a list?
 
-#####5. String building
+##### 5. String building
 Often, you're going to need to print strings.
 Avoid doing this if you have lots of variables to print:
 ```python
@@ -133,7 +133,7 @@ print(string)
 ```
 Much better!
 
-#####6. Returning `tuples`
+##### 6. Returning `tuples`
 Python allows you to return multiple elements in a function. This makes life a lot easier. However, this is common **mistake** when unpacking the tuple:
 
 ```python
@@ -158,7 +158,7 @@ Use an underscore, `_` if you don't need all of the elements returned, like so:
 zero, _ = binary()
 ```
 Efficient!
-#####7. Accessing `Dicts`
+##### 7. Accessing `Dicts`
 Often, you'll be updating and adding a `key, pair` into `dicts`.
 
 You may be tempted to do something like this to avoid the `KeyError` when trying to access a key that doesn't exist in `dict`:
@@ -206,7 +206,7 @@ countr = {num: bag.count(num) for num in bag}
 Both of these ways are more costly because they have to iterate the list every time `count` is called.
 
 
-#####8. Using libraries
+##### 8. Using libraries
 Chances are, there's already a library that you can import which does exactly what you want.
 
 For example, in the previous example, we created a function to count the occurrences of numbers in a list. Well, there's already a library out there that can do this.
@@ -225,7 +225,7 @@ Some reasons for using libraries:
 * Abstraction: its intentions are clear and well documented, which allows you to focus on what hasn't been done yet.
 * Lastly, it's there so you don't have to reinvent the wheel. 
 
-#####9. Slicing/Stepping through a list
+##### 9. Slicing/Stepping through a list
 
 You can specify the `start` postition and the `stop` position like this: `list[start:stop:step]`
 So, let's say you want the first 5 elements of a list:
@@ -266,7 +266,7 @@ print(bag)
 This is known as *stepping* through a list. `list[::2]` means that you are going through this list and taking one element for every two steps.
 Some other cool things you can do with steps are `list[::-1]` which will reverse a list.
 
-#####10. Tabs vs Spaces
+##### 10. Tabs vs Spaces
 
 Long version: Mixing spaces and tabs in Python will lead to a disaster. You will see a `IndentationError: unexpected indent`. Regardless of your choice of tabs or space, you should be consistent with it throughout your files and projects.
 

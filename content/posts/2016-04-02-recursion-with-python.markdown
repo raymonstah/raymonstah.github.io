@@ -10,7 +10,7 @@ tags:
 ---
 
 
-###What is Recursion?
+### What is Recursion?
 >If you don't know recursion, read this sentence again.
 
 1. How to Learn Recursion
@@ -33,7 +33,7 @@ Also, note that anything that can be done recursively can also be done iterative
 
 You should always try to write your code iteratively in Python since recursion isn't optimized and is often slower than iteration. The examples that I'm going to show you are strictly for educational purposes.
 
-###Fibonacci
+### Fibonacci
 A lot of times, the fibonacci sequence is shown to beginners as an example to recursion.
 
 ```python
@@ -51,7 +51,7 @@ I believe this is a bad example for a couple of reasons:
 
 Here are some better examples used to demonstrate recursion.
 
-###Length of a List
+### Length of a List
 Let's say you want to find the length of a list, `some_list`. In recursion, there is often a base case, and a recursive case.
 
 * Our base case here is that if `some_list` is empty, then the count of that list is `0`.

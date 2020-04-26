@@ -7,31 +7,31 @@ tags:
 - data-structures
 ---
 
-#Hash Tables
+# Hash Tables
 Also known as maps or dicts, depending on the programming language you're working with.
 
 Hash Tables are a very common data structure used to quickly access data. On average, searching, insertion, and deletion all take `O(1)` constant time. This is very fast!
 
-#Analogies
+# Analogies
 A hash table works like a book index. Instead of flipping page by page to find the topic you're looking for, you can instead check the index which tells you the exact page the topic exists on.
 
 Another analogy to hash tables is when your professor hands back paperwork to the class. A lazy professor would hand them back in a large stack unsorted. A more efficient professor would divide the stacks, and sort them by last names. By doing it this way, students can quickly find their papers by avoiding the stacks whose last name aren't theirs.
 
-#How it actually works
+# How it actually works
 The underlying data structure of a hash table is simply an array. On top of the array is the hash function, which is what makes everything very fast. The hash function will tell you where to *place* the elements you're storing. Since arrays are a fixed size, we also need a resize function when we decide that our array is getting too full. This will help spread out elements more evenly.
 
-#Dealing With Collisions
-A collision is when two elements get hashed into the same spot. There are many different ways to deal with collisions, but the most common way is to chain them, which means that we allow multiple elements into a single slot of the array. We would now just have to search a single slot of an array rather than the whole thing. You can read more about collisions [here](https://en.wikipedia.org/wiki/Hash_table#Collision_resolution).
+# Dealing With Collisions
+A collision is when two elements get hashed into the same spot. There are many different ways to deal with collisions, but the most common way is to chain them, which means that we allow multiple elements into a single slot of the array. We would now just have to search a single slot of an array rather than the whole thing. You can read more about collisions [here](https://en.wikipedia.org/wiki/Hash_table# Collision_resolution).
 
-#Bad Hash Functions
+# Bad Hash Functions
 A very basic (and useless) hash function will tell you to place every element into the first slot. This will lead to collisions. This hash function is specifically bad because it essentially turns your hash table into a linked list. Every insertion will lead to a collision, and we will also waste the unused space of the array!
 
 Another useless hash function is random hashing. Yes, it'll spread your elements evenly throughout the array to minimize collisions, but you'll never be able to retrieve the elements again. If you hash the same element twice, you will likely get different results. This is bad.
 
-#A Good Hash Function
+# A Good Hash Function
 A good hash function will ideally spread the elements out evenly across the array, and avoid collisions while doing so. It will also be deterministic, so if you hash the same item twice, it will end up in the same bucket.
 
-#Hash Table Applications
+# Hash Table Applications
 In Python, hash tables are called `dicts`, dictionary for short. We can initialize an empty dict with `{}`
 
 Lots of problems involve hash tables, or can benefit from them. If the problem requires fast lookup, insertions, and deletions, using a hash table will most likely be optimal. Let's solve some problems with them!

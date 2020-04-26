@@ -18,7 +18,7 @@ Please note that this cipher should not be used in real applications as it can e
 Assume we're working with the lowercase English alphabet, and using `Python 3`.
 
 ###### The algorithm:
-This version of the substitution cipher is simple. It's even called the [*simple substitution cipher*](https://en.wikipedia.org/wiki/Substitution_cipher#Simple_substitution).
+This version of the substitution cipher is simple. It's even called the [*simple substitution cipher*](https://en.wikipedia.org/wiki/Substitution_cipher# Simple_substitution).
 
 1. Choose a `key` to be a random ordering of the alphabet. Note that there would be `26!` keys! That's a lot of keys if you're trying to brute force the cipher.
 2. Now map the alphabet to the key using a `dict`.
@@ -54,7 +54,7 @@ def decrypt(key, message):
 	key_mapping = dict(zip(key, alphabet))
 	return ''.join([key_mapping.get(letter.lower(), letter) for letter in message])
 ```
-######An example:
+###### An example:
 ```python
 key = 'oaxsgfhkwuecvdrltjzpqibnym'
 plaintext = "Hello this is a sample message."
@@ -67,7 +67,7 @@ original = decrypt(key, ciphertext)
 
 You should acknowledge the fact that the decryption of the encryption should always give you back the original message.
 
-######Hacking the Substitution Cipher:
+###### Hacking the Substitution Cipher:
 Now this is where it gets interesting. We'll be using an algorithm described by a Stanford professor, [Persi Diaconis](http://statweb.stanford.edu/~cgates/PERSI/papers/MCMCRev.pdf), to break the cipher.
 
 The algorithm works like this:

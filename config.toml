@@ -45,6 +45,12 @@ licenseURL = "https://creativecommons.org/licenses/by-sa/4.0"
   identifier = "posts"
   url = "/posts/"
 
+  [[menu.main]]
+  name = "Tags"
+  weight = 100
+  identifier = "tags"
+  url = "/tags/"
+
 [markup]
 
   [markup.highlight]

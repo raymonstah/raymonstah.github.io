@@ -1,7 +1,7 @@
 ---
 title: "Experience With AWS SAM"
 date: 2021-01-11T23:12:37-08:00
-draft: true
+draft: false
 tags:
   - aws
   - serverless
@@ -9,7 +9,7 @@ tags:
 
 ## Intro
 
-In the last couple of months, I've been trying out [AWS SAM](https://aws.amazon.com/serverless/sam/). AWS SAM is pretty much a thin wrapper around AWS CloudFormation. For those of you who don't know, AWS Cloudformation is a way to programmatically control your infrastruture. Infrastructure as Code (IaC) is considered an industry best practice today, because it lets you declaratively state the underlying resources you want your applications to run on. This is useful because you write these infrastructure templates once, and generate the same immutable stack in different environments.
+In the last couple of months, I've been trying out [AWS SAM](https://aws.amazon.com/serverless/sam/). It's pretty much a thin wrapper around AWS CloudFormation, with an included CLI tool. For those of you who don't know, AWS Cloudformation is a way to programmatically control your infrastruture. Infrastructure as Code (IaC) is considered an industry best practice today, because it lets you declaratively state the underlying resources you want your applications to run on. This is useful because you can write these infrastructure templates once and generate the same immutable stack in different environments.
 
 Back to AWS SAM. I had an idea of building an app that does the player to character assignment for the board game Avalon. Basically, players connect to a gameroom, and the host starts the game. Once the game is started, all of the players get assigned to a random character. If you're familar with real-time online system, you probably guessed that we'd need to use the WebSocket protocol to enable this two-way communication between players and the server.
 
@@ -21,16 +21,19 @@ Cloudformation and AWS SAM templating can be difficult to work with. Here's an [
 
 ## Testing Locally
 
-Writing idiomatic Go code following the SOLID principle makes it easy to test the domain layer. When it comes to testing everything end-to-end, it's a different story with AWS SAM. Unfortunately, AWS SAM does not have a way to locally test API
-Gateway websocket. See this [issue](https://github.com/aws/aws-sam-cli/issues/896) for more details. This creates an extremely tedious process of pushing code to AWS to test it for real. Websockets alone can already be difficult to test since it usually involves multiple clients, so I wrote a Go program that performs the WS connections so that I can test my app functionality.
+I would try not to test SAM locally, if you can avoid it. Take advantage of unit testing and test all of your domain logic first, and treat lambda and SAM as a wrapper around your code. When it comes to testing everything end-to-end, it's a different story with AWS SAM. For normal request/response type of testing, SAM has a build in tool. Unfortunately, it does not have a way to locally test API Gateway websocket. See this [issue](https://github.com/aws/aws-sam-cli/issues/896) for more details. This creates an extremely tedious process of pushing code to AWS to test it for real. Websockets alone can already be difficult to test since it usually involves multiple clients, so I wrote a Go program that performs the WS connections so that I can test my app functionality.
 
 ## Performance
 
-Lambda cold starts. It's probably been discussed thousands of times. I think it really boils down to what you're building. According to the [Doherty Threshold](https://lawsofux.com/doherty-threshold.html), 400 milliseconds is maxmium time you want your users to wait before they start to lose attention. I measured my cold starts using [AWS X-Ray](https://aws.amazon.com/xray/). They were a little bit over 100ms. It's not great but it's perfectly acceptable for a game room application. If I really wanted to squeeze every drop of performance that I could get out of lambda, I could bump up the memory resources and push responses to the clients connected to the websocket in parallel. Lambda's performance with the cold starts are good enough for me here.
+![X-Ray Screenshot](xray.png)
+
+Lambda cold starts. It's probably been discussed thousands of times. I think it really boils down to what you're building. According to the [Doherty Threshold](https://lawsofux.com/doherty-threshold.html), 400 milliseconds is maxmium time you want your users to wait before they start to lose attention. I measured my cold starts using [AWS X-Ray](https://aws.amazon.com/xray/), and they were around 150ms. It's not great but it's perfectly acceptable for a game room application. If I really wanted to squeeze every drop of performance that I could get out of lambda, I could bump up the memory resources and push responses to the clients connected to the websocket in parallel. Lambda's performance with the cold starts are good enough for me here.
+
+If I were to start this project over, I might consider using Fargate instead. Just a single app server without any connections to any database and storing the connections in memory would be sufficient for my use case.
 
 ## Costs
 
-I'm probably the only person that uses the app I built. I'd hate to get charged for running a server 24/7 when I'm not using it. My total costs for running this application in the past couple months have been.. $0.03. Yup, 3 total cents. And those 3 cents aren't even from running the application; it's from storing the compiled Go binaries in S3.
+I don't have a lot of scale, so I'd prefer to only get charged for the compute time that I actually use. I'd hate to get charged for running a server 24/7 when I'm not using it. My total costs for running this application in the past couple months have been.. $0.03. Yup, 3 total cents. And those 3 cents aren't even from running the application; it's from storing the compiled Go binaries in S3.
 
 ## Not managing infrastructure
 

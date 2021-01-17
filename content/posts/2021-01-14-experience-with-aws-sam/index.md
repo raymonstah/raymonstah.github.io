@@ -41,7 +41,7 @@ The great thing about using serverless technology is that I'm not the one respon
 
 ## CI
 
-There were Github Actions available, which made it pretty simple to set up SAM in the cloud and have it automatically build and deploy my lambdas when I push to the main repo.
+There's a Github Action available for AWS SAM, which made it pretty simple to set up SAM in the cloud and have it automatically build and deploy my lambdas when I push to the main repo.
 
 ## Summary
 

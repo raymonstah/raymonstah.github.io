@@ -1,34 +1,413 @@
-<!doctype html><html xmlns=http://www.w3.org/1999/xhtml xml:lang=en-us lang=en-us><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.80.0"><title>Recursion with Python &#183; Raymond Ho</title><meta name=description content><meta property="og:locale" content="en-us"><meta property="og:image" content="https://raymonstah.github.io/adorableavatar.png"><meta property="og:type" content="blog"><meta property="og:site_name" content="Raymond Ho"><meta property="og:title" content="Recursion with Python"><meta property="og:url" content="https://raymonstah.github.io/posts/2016-04-02-recursion-with-python/"><meta property="og:description" content="What is Recursion?  If you don&rsquo;t know recursion, read this sentence again."><script type=application/ld+json>{"@context":"http://schema.org","@type":"Blog","name":"Raymond Ho","url":"https://raymonstah.github.io/","image":"https://raymonstah.github.io/adorableavatar.png","description":"Random ramblings and rants"}</script><link type=text/css rel=stylesheet href=https://raymonstah.github.io/css/print.css media=print><link type=text/css rel=stylesheet href=https://raymonstah.github.io/css/poole.css><link type=text/css rel=stylesheet href=https://raymonstah.github.io/css/hyde.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap"><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin=anonymous><link rel=apple-touch-icon-precomposed sizes=144x144 href=/apple-touch-icon-144-precomposed.png><link rel="shortcut icon" href=/favicon.png></head><body><aside class=sidebar><div class=container><div class=sidebar-about><div class=author-image><img src=https://raymonstah.github.io/adorableavatar.png class="img-circle img-headshot center" alt="Profile Picture"></div><h1>Raymond Ho</h1><p class=lead>Random ramblings and rants</p></div><nav><ul class=sidebar-nav><li><a href=https://raymonstah.github.io/>Home</a></li><li><a href=/posts/>Posts</a></li><li><a href=/tags/>Tags</a></li></ul></nav><section class=social-icons><a href=https://www.linkedin.com/in/raymond-ho/ rel=me title=Linkedin><i class="fab fa-linkedin" aria-hidden=true></i></a><a href=https://github.com/raymonstah rel=me title=GitHub><i class="fab fa-github" aria-hidden=true></i></a></section></div></aside><main class="content container"><div class=post><h1>Recursion with Python</h1><div class=post-date><time datetime=2016-04-02T21:01:28Z>Apr 2, 2016</time> · 4 min read</div><h3 id=what-is-recursion>What is Recursion?</h3><blockquote><p>If you don&rsquo;t know recursion, read this sentence again.</p></blockquote><ol><li>How to Learn Recursion</li><li>See Step 1</li></ol><p>Some real world examples of recursion:</p><ol><li>An onion. Peel one layer of an onion, what do you have? An onion.</li><li><a href=https://en.wikipedia.org/wiki/Mandelbrot_set>Fractals</a>, and those found in nature.</li></ol><p>Recursive programming involves a function calling itself. Note that Python has a maximum recursion stack of <code>1,000</code>, but if you ever need to increase it for learning purposes, you can do so like this:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>import</span> sys
-sys<span style=color:#f92672>.</span>setrecursionlimit(<span style=color:#ae81ff>10000</span>)
-</code></pre></div><p>Also, note that anything that can be done recursively can also be done iteratively, and vice versa. Some algorithms should naturally be solved using recursion, like <a href=https://en.wikipedia.org/wiki/Tower_of_Hanoi>Towers of Hanoi</a>, while others are better suited for iteration.</p><p>You should always try to write your code iteratively in Python since recursion isn&rsquo;t optimized and is often slower than iteration. The examples that I&rsquo;m going to show you are strictly for educational purposes.</p><h3 id=fibonacci>Fibonacci</h3><p>A lot of times, the fibonacci sequence is shown to beginners as an example to recursion.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>fibonacci</span>(n):
-    <span style=color:#66d9ef>if</span> n <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span> <span style=color:#f92672>or</span> n <span style=color:#f92672>==</span> <span style=color:#ae81ff>1</span>:
-        <span style=color:#66d9ef>return</span> n
-    <span style=color:#66d9ef>return</span> fibonacci(n<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>) <span style=color:#f92672>+</span> fibonacci(n<span style=color:#f92672>-</span><span style=color:#ae81ff>2</span>)
-</code></pre></div><p>In mathematics, recursion is the natural way to solve the fibonacci problem. The fibonacci mapping of an index, <code>n</code> is always the sum of the two previous fibonacci numbers.</p><p>I believe this is a bad example for a couple of reasons:</p><ol><li>It&rsquo;s not practical. Try <code>fibonacci(20)</code>. It&rsquo;ll blow up because it has to recompute the same sequences multiple times, coming out to a slow <code>O(2^n)</code> exponential runtime.</li><li>There&rsquo;s already a constant time formula to solve the fibonacci problem. Why would we use recursion or even an iterative approach?</li></ol><p>Here are some better examples used to demonstrate recursion.</p><h3 id=length-of-a-list>Length of a List</h3><p>Let&rsquo;s say you want to find the length of a list, <code>some_list</code>. In recursion, there is often a base case, and a recursive case.</p><ul><li>Our base case here is that if <code>some_list</code> is empty, then the count of that list is <code>0</code>.</li><li>Otherwise, we add <code>1</code> and make a <em>recursive</em> call to the function, passing the parameter as all but the first element of <code>some_list</code>.</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>findLengthOfList</span>(some_list):
-    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span> <span style=color:#66d9ef>if</span> some_list <span style=color:#f92672>==</span> [] <span style=color:#66d9ef>else</span> <span style=color:#ae81ff>1</span> <span style=color:#f92672>+</span> findLengthOfList(some_list[<span style=color:#ae81ff>1</span>:])
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.80.0" />
 
-<span style=color:#66d9ef>print</span>(findLengthOfList([<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>4</span>, <span style=color:#ae81ff>5</span>])) <span style=color:#75715e># 5</span>
-</code></pre></div><p>I mean obviously, in a real program you should use <code>len(some_list)</code>, but remember, this is for educational purposes!</p><h3 id=max-of-a-list>Max of a List</h3><ul><li>Our base case here is to return <code>max_given</code> if the list is empty.</li><li>The recursive step is to pass the <em>body</em> (all but the first) of the list to our function again, along with the <code>max_so_far</code> which we computed.</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>findMaxOfList</span>(some_list, max_given):
-    <span style=color:#66d9ef>if</span> some_list <span style=color:#f92672>==</span> []:
-        <span style=color:#66d9ef>return</span> max_given
-    max_so_far <span style=color:#f92672>=</span> max_given <span style=color:#66d9ef>if</span> max_given <span style=color:#f92672>&gt;</span> some_list[<span style=color:#ae81ff>0</span>] <span style=color:#66d9ef>else</span> some_list[<span style=color:#ae81ff>0</span>]
-    <span style=color:#66d9ef>return</span> findMaxOfList(some_list[<span style=color:#ae81ff>1</span>:], max_so_far)
+  <title>Recursion with Python &middot; Raymond Ho</title>
 
-<span style=color:#66d9ef>print</span>(findMaxOfList([<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>6</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>10</span>], <span style=color:#f92672>-</span>float(<span style=color:#e6db74>&#34;Inf&#34;</span>))) <span style=color:#75715e># 6</span>
-</code></pre></div><p>Likewise, you can always use <code>max(some_list)</code> instead of rolling your own function.</p><h3 id=reversing-a-list>Reversing a List</h3><p>Once again, we can break the algorithm into a base case and a recursive case.</p><ul><li>If we receive an empty list, or a list of a single element, then it is already &ldquo;reversed&rdquo;. Simply return that list.</li><li>If we receive a list of 2 or more elements, we can return a new list, consisting of the last element of <code>some_list</code> followed by a recursive call with the parameter as all but the last element of <code>some_list</code>.</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>reverse</span>(some_list):
-    <span style=color:#66d9ef>if</span> len(some_list) <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>2</span>:
-        <span style=color:#66d9ef>return</span> some_list
-    <span style=color:#66d9ef>return</span> [some_list[<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>]] <span style=color:#f92672>+</span> reverse(some_list[:<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>])
+  <meta name="description" content="" />
 
-<span style=color:#66d9ef>print</span>(reverse(list(range(<span style=color:#ae81ff>10</span>)))) <span style=color:#75715e># [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]</span>
-</code></pre></div><p>Don&rsquo;t roll your own <code>reverse</code> function in production! Use the built in <code>reversed()</code> function instead.</p><h3 id=sorting-a-list-using-quick-sort>Sorting a List using Quick sort.</h3><p>This algorithm is super elegant when solved by recursion, even though it is slower than the iterative version of quick sort.</p><p>It works like this:</p><ul><li>Base case: if we receive an empty list, then it is already sorted.</li><li>Take the first element of a list, <code>first</code>.</li><li>Partition the rest of the list by those that are greater than <code>first</code>, and those that are less than <code>first</code>, which are computed recursively.</li><li>Finally, we return a newly created list which <code>less_than_first</code> comes first, followed by <code>first</code>, and lastly, we append <code>greater_than_first</code>.</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>quicksort</span>(some_list):
-    <span style=color:#66d9ef>if</span> some_list <span style=color:#f92672>==</span> []:
-        <span style=color:#66d9ef>return</span> []
-    first <span style=color:#f92672>=</span> some_list[<span style=color:#ae81ff>0</span>]
-    less_than_first <span style=color:#f92672>=</span> quicksort([elem <span style=color:#66d9ef>for</span> elem <span style=color:#f92672>in</span> some_list[<span style=color:#ae81ff>1</span>:] <span style=color:#66d9ef>if</span> elem <span style=color:#f92672>&lt;</span> first])
-    greater_than_first <span style=color:#f92672>=</span> quicksort([elem <span style=color:#66d9ef>for</span> elem <span style=color:#f92672>in</span> some_list[<span style=color:#ae81ff>1</span>:] <span style=color:#66d9ef>if</span> elem <span style=color:#f92672>&gt;=</span> first])
-    <span style=color:#66d9ef>return</span> less_than_first <span style=color:#f92672>+</span> [first] <span style=color:#f92672>+</span> greater_than_first
+  
 
-<span style=color:#66d9ef>print</span>(quicksort([<span style=color:#ae81ff>4</span>, <span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>5</span>])) <span style=color:#75715e># [1, 2, 3, 4, 5]</span>
-</code></pre></div><p>Don&rsquo;t forget about <code>sorted()</code> or <code>.sort()</code> if you want to apply this to real code!</p><hr><p>Thanks for reading! Please ask questions or share your thoughts!</p><p>For programming languages that optimize recursion, check out Functional Programming languages like Haskell, or a Lisp.</p><p>If you&rsquo;d like to learn more about recursion and functional programming, check out this book:
-<a href="http://www.amazon.com/gp/product/0262560992/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0262560992&linkCode=as2&tag=raymondtaught-20&linkId=AZJB4SGTR4DHRK57">The Little Schemer - 4th Edition</a></p></div></main><footer><div class=copyright>&copy; Raymond Ho 2021 · <a href=https://creativecommons.org/licenses/by-sa/4.0>CC BY-SA 4.0</a></div></footer><script src=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0=" crossorigin=anonymous></script><script type=application/javascript>var doNotTrack=false;if(!doNotTrack){window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;ga('create','UA-164579651-1','auto');ga('send','pageview');}</script><script async src=https://www.google-analytics.com/analytics.js></script></body></html>
+<meta itemprop="name" content="Recursion with Python">
+<meta itemprop="description" content="What is Recursion?  If you don&rsquo;t know recursion, read this sentence again.">
+<meta itemprop="datePublished" content="2016-04-02T21:01:28+00:00" />
+<meta itemprop="dateModified" content="2016-04-02T21:01:28+00:00" />
+<meta itemprop="wordCount" content="798">
+
+
+
+<meta itemprop="keywords" content="python,programming,functional-programming,recursion," />
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Recursion with Python"/>
+<meta name="twitter:description" content="What is Recursion?  If you don&rsquo;t know recursion, read this sentence again."/>
+
+
+<meta property="og:title" content="Recursion with Python" />
+<meta property="og:description" content="What is Recursion?  If you don&rsquo;t know recursion, read this sentence again." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://raymonstah.github.io/posts/2016-04-02-recursion-with-python/" />
+<meta property="article:published_time" content="2016-04-02T21:01:28+00:00" />
+<meta property="article:modified_time" content="2016-04-02T21:01:28+00:00" />
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://raymonstah.github.io/#author",
+      "name": "Raymond Ho",
+      "image": {
+        "@type":"ImageObject",
+        
+        "url": "https://raymonstah.github.io/adorableavatar.png"
+        
+      },
+      "description": "Random ramblings and rants"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://raymonstah.github.io/#website",
+      "url": "https://raymonstah.github.io/",
+      "name": "Raymond Ho",
+      "description": "Random ramblings and rants",
+      "publisher": {
+        "@id": "https://raymonstah.github.io/#author"
+      },
+      "inLanguage": "en-us"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://raymonstah.github.io/posts/2016-04-02-recursion-with-python/#webpage",
+      "url": "https://raymonstah.github.io/posts/2016-04-02-recursion-with-python/",
+      "name": "Recursion with Python",
+      "isPartOf": {
+        "@id": "https://raymonstah.github.io/#website"
+      },
+      "about": {
+         "@id": "https://raymonstah.github.io/#author"
+      },
+      "datePublished": "2016-04-02T21:01:28+00:00",
+      "dateModified": "2016-04-02T21:01:28+00:00",
+      "description": "What is Recursion?  If you don\u0026rsquo;t know recursion, read this sentence again.",
+      "inLanguage": "en-us",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://raymonstah.github.io/posts/2016-04-02-recursion-with-python/"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "isPartOf": {
+        "@id": "https://raymonstah.github.io/posts/2016-04-02-recursion-with-python/#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://raymonstah.github.io/posts/2016-04-02-recursion-with-python/#webpage"
+      },
+      "headline": "Recursion with Python",
+      "datePublished": "2016-04-02T21:01:28+00:00",
+      "dateModified": "2016-04-02T21:01:28+00:00",
+      "publisher": {
+        "@id": "https://raymonstah.github.io/#author"
+      },
+      "keywords": [
+        "python",
+        "programming",
+        "functional-programming",
+        "recursion"
+      ],
+      "articleSection": [
+      ],
+      "inLanguage": "en-us",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "potentialAction": [
+        {
+          "@type": "CommentAction",
+          "name": "Comment",
+          "target": [
+            "https://raymonstah.github.io/posts/2016-04-02-recursion-with-python/#comments"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+        
+        <div class="author-image">
+          <img src="/adorableavatar.png" class="img-circle img-headshot center" alt="Profile Picture">
+        </div>
+        
+      
+
+      <h1>Raymond Ho</h1>
+
+      
+      <p class="lead">Random ramblings and rants</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://raymonstah.github.io/">Home</a>
+        </li>
+        <li>
+          <a href="/posts/">Posts</a>
+        </li><li>
+          <a href="/tags/">Tags</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://github.com/raymonstah" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://www.linkedin.com/in/raymond-ho/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1 class="title">Recursion with Python</h1>
+  
+
+  <div class="post-date">
+    <time datetime="2016-04-02T21:01:28Z">Apr 2, 2016</time> &middot; 4 min read
+  </div>
+
+  <div>
+  <h3 id="what-is-recursion">What is Recursion?</h3>
+<blockquote>
+<p>If you don&rsquo;t know recursion, read this sentence again.</p>
+</blockquote>
+<ol>
+<li>How to Learn Recursion</li>
+<li>See Step 1</li>
+</ol>
+<p>Some real world examples of recursion:</p>
+<ol>
+<li>An onion. Peel one layer of an onion, what do you have? An onion.</li>
+<li><a href="https://en.wikipedia.org/wiki/Mandelbrot_set">Fractals</a>, and those found in nature.</li>
+</ol>
+<p>Recursive programming involves a function calling itself. Note that Python has a maximum recursion stack of <code>1,000</code>, but if you ever need to increase it for learning purposes, you can do so like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> sys
+sys<span style="color:#f92672">.</span>setrecursionlimit(<span style="color:#ae81ff">10000</span>)
+</code></pre></div><p>Also, note that anything that can be done recursively can also be done iteratively, and vice versa. Some algorithms should naturally be solved using recursion, like <a href="https://en.wikipedia.org/wiki/Tower_of_Hanoi">Towers of Hanoi</a>, while others are better suited for iteration.</p>
+<p>You should always try to write your code iteratively in Python since recursion isn&rsquo;t optimized and is often slower than iteration. The examples that I&rsquo;m going to show you are strictly for educational purposes.</p>
+<h3 id="fibonacci">Fibonacci</h3>
+<p>A lot of times, the fibonacci sequence is shown to beginners as an example to recursion.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fibonacci</span>(n):
+    <span style="color:#66d9ef">if</span> n <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">or</span> n <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>:
+        <span style="color:#66d9ef">return</span> n
+    <span style="color:#66d9ef">return</span> fibonacci(n<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span> fibonacci(n<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>)
+</code></pre></div><p>In mathematics, recursion is the natural way to solve the fibonacci problem. The fibonacci mapping of an index, <code>n</code> is always the sum of the two previous fibonacci numbers.</p>
+<p>I believe this is a bad example for a couple of reasons:</p>
+<ol>
+<li>It&rsquo;s not practical. Try <code>fibonacci(20)</code>. It&rsquo;ll blow up because it has to recompute the same sequences multiple times, coming out to a slow <code>O(2^n)</code> exponential runtime.</li>
+<li>There&rsquo;s already a constant time formula to solve the fibonacci problem. Why would we use recursion or even an iterative approach?</li>
+</ol>
+<p>Here are some better examples used to demonstrate recursion.</p>
+<h3 id="length-of-a-list">Length of a List</h3>
+<p>Let&rsquo;s say you want to find the length of a list, <code>some_list</code>. In recursion, there is often a base case, and a recursive case.</p>
+<ul>
+<li>Our base case here is that if <code>some_list</code> is empty, then the count of that list is <code>0</code>.</li>
+<li>Otherwise, we add <code>1</code>  and make a <em>recursive</em> call to the function, passing the parameter as all but the first element of <code>some_list</code>.</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">findLengthOfList</span>(some_list):
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">if</span> some_list <span style="color:#f92672">==</span> [] <span style="color:#66d9ef">else</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> findLengthOfList(some_list[<span style="color:#ae81ff">1</span>:])
+
+<span style="color:#66d9ef">print</span>(findLengthOfList([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>])) <span style="color:#75715e"># 5</span>
+</code></pre></div><p>I mean obviously, in a real program you should use <code>len(some_list)</code>, but remember, this is for educational purposes!</p>
+<h3 id="max-of-a-list">Max of a List</h3>
+<ul>
+<li>Our base case here is to return <code>max_given</code> if the list is empty.</li>
+<li>The recursive step is to pass the <em>body</em> (all but the first) of the list to our function again, along with the <code>max_so_far</code> which we computed.</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">findMaxOfList</span>(some_list, max_given):
+    <span style="color:#66d9ef">if</span> some_list <span style="color:#f92672">==</span> []:
+        <span style="color:#66d9ef">return</span> max_given
+    max_so_far <span style="color:#f92672">=</span> max_given <span style="color:#66d9ef">if</span> max_given <span style="color:#f92672">&gt;</span> some_list[<span style="color:#ae81ff">0</span>] <span style="color:#66d9ef">else</span> some_list[<span style="color:#ae81ff">0</span>]
+    <span style="color:#66d9ef">return</span> findMaxOfList(some_list[<span style="color:#ae81ff">1</span>:], max_so_far)
+
+<span style="color:#66d9ef">print</span>(findMaxOfList([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">10</span>], <span style="color:#f92672">-</span>float(<span style="color:#e6db74">&#34;Inf&#34;</span>))) <span style="color:#75715e"># 6</span>
+</code></pre></div><p>Likewise, you can always use <code>max(some_list)</code> instead of rolling your own function.</p>
+<h3 id="reversing-a-list">Reversing a List</h3>
+<p>Once again, we can break the algorithm into a base case and a recursive case.</p>
+<ul>
+<li>If we receive an empty list, or a list of a single element, then it is already &ldquo;reversed&rdquo;. Simply return that list.</li>
+<li>If we receive a list of 2 or more elements, we can return a new list, consisting of the last element of <code>some_list</code> followed by a recursive call with the parameter as all but the last element of <code>some_list</code>.</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">reverse</span>(some_list):
+    <span style="color:#66d9ef">if</span> len(some_list) <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">2</span>:
+        <span style="color:#66d9ef">return</span> some_list
+    <span style="color:#66d9ef">return</span> [some_list[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]] <span style="color:#f92672">+</span> reverse(some_list[:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>])
+
+<span style="color:#66d9ef">print</span>(reverse(list(range(<span style="color:#ae81ff">10</span>)))) <span style="color:#75715e"># [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]</span>
+</code></pre></div><p>Don&rsquo;t roll your own <code>reverse</code> function in production! Use the built in <code>reversed()</code> function instead.</p>
+<h3 id="sorting-a-list-using-quick-sort">Sorting a List using Quick sort.</h3>
+<p>This algorithm is super elegant when solved by recursion, even though it is slower than the iterative version of quick sort.</p>
+<p>It works like this:</p>
+<ul>
+<li>Base case: if we receive an empty list, then it is already sorted.</li>
+<li>Take the first element of a list, <code>first</code>.</li>
+<li>Partition the rest of the list by those that are greater than <code>first</code>, and those that are less than <code>first</code>, which are computed recursively.</li>
+<li>Finally, we return a newly created list which <code>less_than_first</code> comes first, followed by <code>first</code>, and lastly, we append <code>greater_than_first</code>.</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">quicksort</span>(some_list):
+    <span style="color:#66d9ef">if</span> some_list <span style="color:#f92672">==</span> []:
+        <span style="color:#66d9ef">return</span> []
+    first <span style="color:#f92672">=</span> some_list[<span style="color:#ae81ff">0</span>]
+    less_than_first <span style="color:#f92672">=</span> quicksort([elem <span style="color:#66d9ef">for</span> elem <span style="color:#f92672">in</span> some_list[<span style="color:#ae81ff">1</span>:] <span style="color:#66d9ef">if</span> elem <span style="color:#f92672">&lt;</span> first])
+    greater_than_first <span style="color:#f92672">=</span> quicksort([elem <span style="color:#66d9ef">for</span> elem <span style="color:#f92672">in</span> some_list[<span style="color:#ae81ff">1</span>:] <span style="color:#66d9ef">if</span> elem <span style="color:#f92672">&gt;=</span> first])
+    <span style="color:#66d9ef">return</span> less_than_first <span style="color:#f92672">+</span> [first] <span style="color:#f92672">+</span> greater_than_first
+
+<span style="color:#66d9ef">print</span>(quicksort([<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">5</span>])) <span style="color:#75715e"># [1, 2, 3, 4, 5]</span>
+</code></pre></div><p>Don&rsquo;t forget about <code>sorted()</code> or <code>.sort()</code> if you want to apply this to real code!</p>
+<hr>
+<p>Thanks for reading! Please ask questions or share your thoughts!</p>
+<p>For programming languages that optimize recursion, check out Functional Programming languages like Haskell, or a Lisp.</p>
+<p>If you&rsquo;d like to learn more about recursion and functional programming, check out this book:
+<a href="http://www.amazon.com/gp/product/0262560992/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0262560992&amp;linkCode=as2&amp;tag=raymondtaught-20&amp;linkId=AZJB4SGTR4DHRK57">The Little Schemer - 4th Edition</a></p>
+
+  </div>
+
+  <div>
+  <ul class="tags">
+  <li>
+    <a href="https://raymonstah.github.io/tags/python/" class="tag-link">python</a>
+  </li>
+  
+  <li>
+    <a href="https://raymonstah.github.io/tags/programming/" class="tag-link">programming</a>
+  </li>
+  
+  <li>
+    <a href="https://raymonstah.github.io/tags/functional-programming/" class="tag-link">functional-programming</a>
+  </li>
+  
+  <li>
+    <a href="https://raymonstah.github.io/tags/recursion/" class="tag-link">recursion</a>
+  </li>
+  </ul>
+</div>
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="#"
+     title="Share on Twitter"
+     data-url="https://raymonstah.github.io/posts/2016-04-02-recursion-with-python/"
+     data-text="Recursion with Python"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="#"
+     title="Share on LinkedIn"
+     data-url="https://raymonstah.github.io/posts/2016-04-02-recursion-with-python/"
+     data-text="Recursion with Python"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="#"
+     title="Share on Facebook"
+     data-url="https://raymonstah.github.io/posts/2016-04-02-recursion-with-python/"
+     data-text="Recursion with Python"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="#"
+     title="Share on Telegram"
+     data-url="https://raymonstah.github.io/posts/2016-04-02-recursion-with-python/"
+     data-text="Recursion with Python"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="#"
+     title="Share on Pinterest"
+     data-url="https://raymonstah.github.io/posts/2016-04-02-recursion-with-python/"
+     data-text="Recursion with Python"><i class="fab fa-pinterest"></i></a>
+</div>
+
+</div>
+
+
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy; Raymond Ho 2021
+
+      &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  
+
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-164579651-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</body>
+</html>

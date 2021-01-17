@@ -1,1 +1,164 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tags on Raymond Ho</title><link>https://raymonstah.github.io/tags/</link><description>Recent content in Tags on Raymond Ho</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 11 Jan 2021 23:12:37 -0800</lastBuildDate><atom:link href="https://raymonstah.github.io/tags/index.xml" rel="self" type="application/rss+xml"/><item><title>aws</title><link>https://raymonstah.github.io/tags/aws/</link><pubDate>Mon, 11 Jan 2021 23:12:37 -0800</pubDate><guid>https://raymonstah.github.io/tags/aws/</guid><description/></item><item><title>serverless</title><link>https://raymonstah.github.io/tags/serverless/</link><pubDate>Mon, 11 Jan 2021 23:12:37 -0800</pubDate><guid>https://raymonstah.github.io/tags/serverless/</guid><description/></item><item><title>college</title><link>https://raymonstah.github.io/tags/college/</link><pubDate>Thu, 23 Jun 2016 22:44:00 +0000</pubDate><guid>https://raymonstah.github.io/tags/college/</guid><description/></item><item><title>computer-science</title><link>https://raymonstah.github.io/tags/computer-science/</link><pubDate>Thu, 23 Jun 2016 22:44:00 +0000</pubDate><guid>https://raymonstah.github.io/tags/computer-science/</guid><description/></item><item><title>recommendations</title><link>https://raymonstah.github.io/tags/recommendations/</link><pubDate>Thu, 23 Jun 2016 22:44:00 +0000</pubDate><guid>https://raymonstah.github.io/tags/recommendations/</guid><description/></item><item><title>programming</title><link>https://raymonstah.github.io/tags/programming/</link><pubDate>Sun, 19 Jun 2016 22:03:01 +0000</pubDate><guid>https://raymonstah.github.io/tags/programming/</guid><description/></item><item><title>puzzles</title><link>https://raymonstah.github.io/tags/puzzles/</link><pubDate>Sun, 19 Jun 2016 22:03:01 +0000</pubDate><guid>https://raymonstah.github.io/tags/puzzles/</guid><description/></item><item><title>python</title><link>https://raymonstah.github.io/tags/python/</link><pubDate>Sun, 19 Jun 2016 22:03:01 +0000</pubDate><guid>https://raymonstah.github.io/tags/python/</guid><description/></item><item><title>data-structures</title><link>https://raymonstah.github.io/tags/data-structures/</link><pubDate>Fri, 10 Jun 2016 18:47:06 +0000</pubDate><guid>https://raymonstah.github.io/tags/data-structures/</guid><description/></item><item><title>cryptography</title><link>https://raymonstah.github.io/tags/cryptography/</link><pubDate>Thu, 12 May 2016 00:13:31 +0000</pubDate><guid>https://raymonstah.github.io/tags/cryptography/</guid><description/></item><item><title>binary</title><link>https://raymonstah.github.io/tags/binary/</link><pubDate>Fri, 22 Apr 2016 19:14:23 +0000</pubDate><guid>https://raymonstah.github.io/tags/binary/</guid><description/></item><item><title>math</title><link>https://raymonstah.github.io/tags/math/</link><pubDate>Wed, 13 Apr 2016 08:33:56 +0000</pubDate><guid>https://raymonstah.github.io/tags/math/</guid><description/></item><item><title>probability</title><link>https://raymonstah.github.io/tags/probability/</link><pubDate>Wed, 13 Apr 2016 08:33:56 +0000</pubDate><guid>https://raymonstah.github.io/tags/probability/</guid><description/></item><item><title>simulation</title><link>https://raymonstah.github.io/tags/simulation/</link><pubDate>Wed, 13 Apr 2016 08:33:56 +0000</pubDate><guid>https://raymonstah.github.io/tags/simulation/</guid><description/></item><item><title>functional-programming</title><link>https://raymonstah.github.io/tags/functional-programming/</link><pubDate>Sat, 02 Apr 2016 21:01:28 +0000</pubDate><guid>https://raymonstah.github.io/tags/functional-programming/</guid><description/></item><item><title>recursion</title><link>https://raymonstah.github.io/tags/recursion/</link><pubDate>Sat, 02 Apr 2016 21:01:28 +0000</pubDate><guid>https://raymonstah.github.io/tags/recursion/</guid><description/></item><item><title>ctci</title><link>https://raymonstah.github.io/tags/ctci/</link><pubDate>Tue, 22 Mar 2016 23:26:00 +0000</pubDate><guid>https://raymonstah.github.io/tags/ctci/</guid><description/></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Raymond Ho</title>
+    <link>https://raymonstah.github.io/tags/</link>
+    <description>Recent content in Tags on Raymond Ho</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 11 Jan 2021 23:12:37 -0800</lastBuildDate><atom:link href="https://raymonstah.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>aws</title>
+      <link>https://raymonstah.github.io/tags/aws/</link>
+      <pubDate>Mon, 11 Jan 2021 23:12:37 -0800</pubDate>
+      
+      <guid>https://raymonstah.github.io/tags/aws/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>serverless</title>
+      <link>https://raymonstah.github.io/tags/serverless/</link>
+      <pubDate>Mon, 11 Jan 2021 23:12:37 -0800</pubDate>
+      
+      <guid>https://raymonstah.github.io/tags/serverless/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>college</title>
+      <link>https://raymonstah.github.io/tags/college/</link>
+      <pubDate>Thu, 23 Jun 2016 22:44:00 +0000</pubDate>
+      
+      <guid>https://raymonstah.github.io/tags/college/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>computer-science</title>
+      <link>https://raymonstah.github.io/tags/computer-science/</link>
+      <pubDate>Thu, 23 Jun 2016 22:44:00 +0000</pubDate>
+      
+      <guid>https://raymonstah.github.io/tags/computer-science/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>recommendations</title>
+      <link>https://raymonstah.github.io/tags/recommendations/</link>
+      <pubDate>Thu, 23 Jun 2016 22:44:00 +0000</pubDate>
+      
+      <guid>https://raymonstah.github.io/tags/recommendations/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>programming</title>
+      <link>https://raymonstah.github.io/tags/programming/</link>
+      <pubDate>Sun, 19 Jun 2016 22:03:01 +0000</pubDate>
+      
+      <guid>https://raymonstah.github.io/tags/programming/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>puzzles</title>
+      <link>https://raymonstah.github.io/tags/puzzles/</link>
+      <pubDate>Sun, 19 Jun 2016 22:03:01 +0000</pubDate>
+      
+      <guid>https://raymonstah.github.io/tags/puzzles/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>https://raymonstah.github.io/tags/python/</link>
+      <pubDate>Sun, 19 Jun 2016 22:03:01 +0000</pubDate>
+      
+      <guid>https://raymonstah.github.io/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>data-structures</title>
+      <link>https://raymonstah.github.io/tags/data-structures/</link>
+      <pubDate>Fri, 10 Jun 2016 18:47:06 +0000</pubDate>
+      
+      <guid>https://raymonstah.github.io/tags/data-structures/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cryptography</title>
+      <link>https://raymonstah.github.io/tags/cryptography/</link>
+      <pubDate>Thu, 12 May 2016 00:13:31 +0000</pubDate>
+      
+      <guid>https://raymonstah.github.io/tags/cryptography/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>binary</title>
+      <link>https://raymonstah.github.io/tags/binary/</link>
+      <pubDate>Fri, 22 Apr 2016 19:14:23 +0000</pubDate>
+      
+      <guid>https://raymonstah.github.io/tags/binary/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>math</title>
+      <link>https://raymonstah.github.io/tags/math/</link>
+      <pubDate>Wed, 13 Apr 2016 08:33:56 +0000</pubDate>
+      
+      <guid>https://raymonstah.github.io/tags/math/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>probability</title>
+      <link>https://raymonstah.github.io/tags/probability/</link>
+      <pubDate>Wed, 13 Apr 2016 08:33:56 +0000</pubDate>
+      
+      <guid>https://raymonstah.github.io/tags/probability/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>simulation</title>
+      <link>https://raymonstah.github.io/tags/simulation/</link>
+      <pubDate>Wed, 13 Apr 2016 08:33:56 +0000</pubDate>
+      
+      <guid>https://raymonstah.github.io/tags/simulation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>functional-programming</title>
+      <link>https://raymonstah.github.io/tags/functional-programming/</link>
+      <pubDate>Sat, 02 Apr 2016 21:01:28 +0000</pubDate>
+      
+      <guid>https://raymonstah.github.io/tags/functional-programming/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>recursion</title>
+      <link>https://raymonstah.github.io/tags/recursion/</link>
+      <pubDate>Sat, 02 Apr 2016 21:01:28 +0000</pubDate>
+      
+      <guid>https://raymonstah.github.io/tags/recursion/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ctci</title>
+      <link>https://raymonstah.github.io/tags/ctci/</link>
+      <pubDate>Tue, 22 Mar 2016 23:26:00 +0000</pubDate>
+      
+      <guid>https://raymonstah.github.io/tags/ctci/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

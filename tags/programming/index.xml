@@ -1,1 +1,56 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>programming on Raymond Ho</title><link>https://raymonstah.github.io/tags/programming/</link><description>Recent content in programming on Raymond Ho</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 19 Jun 2016 22:03:01 +0000</lastBuildDate><atom:link href="https://raymonstah.github.io/tags/programming/index.xml" rel="self" type="application/rss+xml"/><item><title>Python: Hello World With Prime Numbers</title><link>https://raymonstah.github.io/posts/2016-06-19-python-hello-world-with-prime-numbers/</link><pubDate>Sun, 19 Jun 2016 22:03:01 +0000</pubDate><guid>https://raymonstah.github.io/posts/2016-06-19-python-hello-world-with-prime-numbers/</guid><description>Please note that this is simply for fun and learning purposes.</description></item><item><title>Recursion with Python</title><link>https://raymonstah.github.io/posts/2016-04-02-recursion-with-python/</link><pubDate>Sat, 02 Apr 2016 21:01:28 +0000</pubDate><guid>https://raymonstah.github.io/posts/2016-04-02-recursion-with-python/</guid><description>What is Recursion? If you don&amp;rsquo;t know recursion, read this sentence again.</description></item><item><title>The Python Way Part Two: 10 More Tips</title><link>https://raymonstah.github.io/posts/2016-03-30-the-python-way-part-two-10-more-tips/</link><pubDate>Wed, 30 Mar 2016 22:01:59 +0000</pubDate><guid>https://raymonstah.github.io/posts/2016-03-30-the-python-way-part-two-10-more-tips/</guid><description>Below are 10 more useful tips and tricks in Python. If you haven&amp;rsquo;t checked out the first 10 tips, be sure to do so here.</description></item><item><title>The Python Way: 10 Tips</title><link>https://raymonstah.github.io/posts/2016-03-23-the-python-way-10-tips/</link><pubDate>Wed, 23 Mar 2016 08:10:08 +0000</pubDate><guid>https://raymonstah.github.io/posts/2016-03-23-the-python-way-10-tips/</guid><description>Below are 10 useful tips and tricks in Python. Some of them highlight mistakes that are commonly made by beginners to the language.</description></item><item><title>Python: Determine if a string has all unique characters</title><link>https://raymonstah.github.io/posts/2016-03-22-python-determine-if-a-string-has-all-unique-characters/</link><pubDate>Tue, 22 Mar 2016 23:26:00 +0000</pubDate><guid>https://raymonstah.github.io/posts/2016-03-22-python-determine-if-a-string-has-all-unique-characters/</guid><description>Given a string, return True if it has all unique characters.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>programming on Raymond Ho</title>
+    <link>https://raymonstah.github.io/tags/programming/</link>
+    <description>Recent content in programming on Raymond Ho</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 19 Jun 2016 22:03:01 +0000</lastBuildDate><atom:link href="https://raymonstah.github.io/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Python: Hello World With Prime Numbers</title>
+      <link>https://raymonstah.github.io/posts/2016-06-19-python-hello-world-with-prime-numbers/</link>
+      <pubDate>Sun, 19 Jun 2016 22:03:01 +0000</pubDate>
+      
+      <guid>https://raymonstah.github.io/posts/2016-06-19-python-hello-world-with-prime-numbers/</guid>
+      <description>Please note that this is simply for fun and learning purposes.</description>
+    </item>
+    
+    <item>
+      <title>Recursion with Python</title>
+      <link>https://raymonstah.github.io/posts/2016-04-02-recursion-with-python/</link>
+      <pubDate>Sat, 02 Apr 2016 21:01:28 +0000</pubDate>
+      
+      <guid>https://raymonstah.github.io/posts/2016-04-02-recursion-with-python/</guid>
+      <description>What is Recursion?  If you don&amp;rsquo;t know recursion, read this sentence again.</description>
+    </item>
+    
+    <item>
+      <title>The Python Way Part Two: 10 More Tips</title>
+      <link>https://raymonstah.github.io/posts/2016-03-30-the-python-way-part-two-10-more-tips/</link>
+      <pubDate>Wed, 30 Mar 2016 22:01:59 +0000</pubDate>
+      
+      <guid>https://raymonstah.github.io/posts/2016-03-30-the-python-way-part-two-10-more-tips/</guid>
+      <description>Below are 10 more useful tips and tricks in Python. If you haven&amp;rsquo;t checked out the first 10 tips, be sure to do so here.</description>
+    </item>
+    
+    <item>
+      <title>The Python Way: 10 Tips</title>
+      <link>https://raymonstah.github.io/posts/2016-03-23-the-python-way-10-tips/</link>
+      <pubDate>Wed, 23 Mar 2016 08:10:08 +0000</pubDate>
+      
+      <guid>https://raymonstah.github.io/posts/2016-03-23-the-python-way-10-tips/</guid>
+      <description>Below are 10 useful tips and tricks in Python. Some of them highlight mistakes that are commonly made by beginners to the language.</description>
+    </item>
+    
+    <item>
+      <title>Python: Determine if a string has all unique characters</title>
+      <link>https://raymonstah.github.io/posts/2016-03-22-python-determine-if-a-string-has-all-unique-characters/</link>
+      <pubDate>Tue, 22 Mar 2016 23:26:00 +0000</pubDate>
+      
+      <guid>https://raymonstah.github.io/posts/2016-03-22-python-determine-if-a-string-has-all-unique-characters/</guid>
+      <description>Given a string, return True if it has all unique characters.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,2 +1,21 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>binary on Raymond Ho</title><link>https://raymonstah.github.io/tags/binary/</link><description>Recent content in binary on Raymond Ho</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 22 Apr 2016 19:14:23 +0000</lastBuildDate><atom:link href="https://raymonstah.github.io/tags/binary/index.xml" rel="self" type="application/rss+xml"/><item><title>Bitwise Operation Analogies</title><link>https://raymonstah.github.io/posts/2016-04-22-bitwise-operation-analogies/</link><pubDate>Fri, 22 Apr 2016 19:14:23 +0000</pubDate><guid>https://raymonstah.github.io/posts/2016-04-22-bitwise-operation-analogies/</guid><description>In binary, we have two options.
-Examples: Yes/No True/False 1/0 Good/Bad On/Off There are a bunch of operations that can be performed on binary.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>binary on Raymond Ho</title>
+    <link>https://raymonstah.github.io/tags/binary/</link>
+    <description>Recent content in binary on Raymond Ho</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 22 Apr 2016 19:14:23 +0000</lastBuildDate><atom:link href="https://raymonstah.github.io/tags/binary/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bitwise Operation Analogies</title>
+      <link>https://raymonstah.github.io/posts/2016-04-22-bitwise-operation-analogies/</link>
+      <pubDate>Fri, 22 Apr 2016 19:14:23 +0000</pubDate>
+      
+      <guid>https://raymonstah.github.io/posts/2016-04-22-bitwise-operation-analogies/</guid>
+      <description>In binary, we have two options.
+Examples:  Yes/No True/False 1/0 Good/Bad On/Off  There are a bunch of operations that can be performed on binary.</description>
+    </item>
+    
+  </channel>
+</rss>

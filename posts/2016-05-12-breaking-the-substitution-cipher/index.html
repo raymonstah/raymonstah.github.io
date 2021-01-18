@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.80.0" />
+
+  <title>Breaking the Substitution Cipher &middot; Raymond Ho</title>
+
+  <meta name="description" content="" />
+
+  
+
+<meta itemprop="name" content="Breaking the Substitution Cipher">
+<meta itemprop="description" content="The Substitution Cipher  &ldquo;Your cryptosystem should remain secure even if everything is known about it except the key&rdquo;">
+<meta itemprop="datePublished" content="2016-05-12T00:13:31+00:00" />
+<meta itemprop="dateModified" content="2016-05-12T00:13:31+00:00" />
+<meta itemprop="wordCount" content="1543">
+
+
+
+<meta itemprop="keywords" content="python,cryptography," />
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Breaking the Substitution Cipher"/>
+<meta name="twitter:description" content="The Substitution Cipher  &ldquo;Your cryptosystem should remain secure even if everything is known about it except the key&rdquo;"/>
+
+
+<meta property="og:title" content="Breaking the Substitution Cipher" />
+<meta property="og:description" content="The Substitution Cipher  &ldquo;Your cryptosystem should remain secure even if everything is known about it except the key&rdquo;" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://raymonstah.github.io/posts/2016-05-12-breaking-the-substitution-cipher/" />
+<meta property="article:published_time" content="2016-05-12T00:13:31+00:00" />
+<meta property="article:modified_time" content="2016-05-12T00:13:31+00:00" />
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://raymonstah.github.io/#author",
+      "name": "Raymond Ho",
+      "image": {
+        "@type":"ImageObject",
+        
+        "url": "https://raymonstah.github.io/adorableavatar.png"
+        
+      },
+      "description": "Random ramblings and rants"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://raymonstah.github.io/#website",
+      "url": "https://raymonstah.github.io/",
+      "name": "Raymond Ho",
+      "description": "Random ramblings and rants",
+      "publisher": {
+        "@id": "https://raymonstah.github.io/#author"
+      },
+      "inLanguage": "en-us"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://raymonstah.github.io/posts/2016-05-12-breaking-the-substitution-cipher/#webpage",
+      "url": "https://raymonstah.github.io/posts/2016-05-12-breaking-the-substitution-cipher/",
+      "name": "Breaking the Substitution Cipher",
+      "isPartOf": {
+        "@id": "https://raymonstah.github.io/#website"
+      },
+      "about": {
+         "@id": "https://raymonstah.github.io/#author"
+      },
+      "datePublished": "2016-05-12T00:13:31+00:00",
+      "dateModified": "2016-05-12T00:13:31+00:00",
+      "description": "The Substitution Cipher  \u0026ldquo;Your cryptosystem should remain secure even if everything is known about it except the key\u0026rdquo;",
+      "inLanguage": "en-us",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://raymonstah.github.io/posts/2016-05-12-breaking-the-substitution-cipher/"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "isPartOf": {
+        "@id": "https://raymonstah.github.io/posts/2016-05-12-breaking-the-substitution-cipher/#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://raymonstah.github.io/posts/2016-05-12-breaking-the-substitution-cipher/#webpage"
+      },
+      "headline": "Breaking the Substitution Cipher",
+      "datePublished": "2016-05-12T00:13:31+00:00",
+      "dateModified": "2016-05-12T00:13:31+00:00",
+      "publisher": {
+        "@id": "https://raymonstah.github.io/#author"
+      },
+      "keywords": [
+        "python",
+        "cryptography"
+      ],
+      "articleSection": [
+      ],
+      "inLanguage": "en-us",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "potentialAction": [
+        {
+          "@type": "CommentAction",
+          "name": "Comment",
+          "target": [
+            "https://raymonstah.github.io/posts/2016-05-12-breaking-the-substitution-cipher/#comments"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+        
+        <div class="author-image">
+          <img src="/adorableavatar.png" class="img-circle img-headshot center" alt="Profile Picture">
+        </div>
+        
+      
+
+      <h1>Raymond Ho</h1>
+
+      
+      <p class="lead">Random ramblings and rants</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://raymonstah.github.io/">Home</a>
+        </li>
+        <li>
+          <a href="/posts/">Posts</a>
+        </li><li>
+          <a href="/tags/">Tags</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://github.com/raymonstah" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://www.linkedin.com/in/raymond-ho/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1 class="title">Breaking the Substitution Cipher</h1>
+  
+
+  <div class="post-date">
+    <time datetime="2016-05-12T00:13:31Z">May 12, 2016</time> &middot; 8 min read
+  </div>
+
+  <div>
+  <h5 id="the-substitution-cipher">The Substitution Cipher</h5>
+<blockquote>
+<p>&ldquo;Your cryptosystem should remain secure even if everything is known about it except the key&rdquo;</p>
+</blockquote>
+<blockquote>
+<p>-<a href="https://en.wikipedia.org/wiki/Kerckhoffs's_principle">Kerckhoffs</a></p>
+</blockquote>
+<p>Please note that this cipher should not be used in real applications as it can easily be hacked, as you&rsquo;ll see shortly.</p>
+<p>Assume we&rsquo;re working with the lowercase English alphabet, and using <code>Python 3</code>.</p>
+<h6 id="the-algorithm">The algorithm</h6>
+<p>This version of the substitution cipher is simple. It&rsquo;s even called the [<em>simple substitution cipher</em>](<a href="https://en.wikipedia.org/wiki/Substitution_cipher">https://en.wikipedia.org/wiki/Substitution_cipher</a># Simple_substitution).</p>
+<ol>
+<li>Choose a <code>key</code> to be a random ordering of the alphabet. Note that there would be <code>26!</code> keys! That&rsquo;s a lot of keys if you&rsquo;re trying to brute force the cipher.</li>
+<li>Now map the alphabet to the key using a <code>dict</code>.</li>
+<li>Apply the mapping to each character of the <code>message</code>.</li>
+<li>Return the <code>ciphertext</code>.</li>
+<li>To decrypt: apply the reverse mapping to each character of the <code>ciphertext</code> to receive the original <code>message</code>.</li>
+</ol>
+<h6 id="to-encrypt">To encrypt</h6>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> string
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">encrypt</span>(key, message):
+ alphabet <span style="color:#f92672">=</span> list(string<span style="color:#f92672">.</span>ascii_lowercase)
+ key_mapping <span style="color:#f92672">=</span> dict(zip(alphabet, key))
+ <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;&#39;</span><span style="color:#f92672">.</span>join([key_mapping<span style="color:#f92672">.</span>get(letter<span style="color:#f92672">.</span>lower(), letter) <span style="color:#66d9ef">for</span> letter <span style="color:#f92672">in</span> message])
+</code></pre></div><h6 id="to-decrypt">To decrypt</h6>
+<p>The decryption method is literally the same as the encrypt method, but the <code>key_mapping</code> is reversed. So we map the key to the alphabet rather than the alphabet to the keys.</p>
+<p>Putting it all together, we get this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> string
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">encrypt</span>(key, message):
+ alphabet <span style="color:#f92672">=</span> list(string<span style="color:#f92672">.</span>ascii_lowercase)
+ key_mapping <span style="color:#f92672">=</span> dict(zip(alphabet, key))
+ <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;&#39;</span><span style="color:#f92672">.</span>join([key_mapping<span style="color:#f92672">.</span>get(letter<span style="color:#f92672">.</span>lower(), letter) <span style="color:#66d9ef">for</span> letter <span style="color:#f92672">in</span> message])
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">decrypt</span>(key, message):
+ alphabet <span style="color:#f92672">=</span> list(string<span style="color:#f92672">.</span>ascii_lowercase)
+ key_mapping <span style="color:#f92672">=</span> dict(zip(key, alphabet))
+ <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;&#39;</span><span style="color:#f92672">.</span>join([key_mapping<span style="color:#f92672">.</span>get(letter<span style="color:#f92672">.</span>lower(), letter) <span style="color:#66d9ef">for</span> letter <span style="color:#f92672">in</span> message])
+</code></pre></div><h6 id="an-example">An example</h6>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">key <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;oaxsgfhkwuecvdrltjzpqibnym&#39;</span>
+plaintext <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello this is a sample message.&#34;</span>
+ciphertext <span style="color:#f92672">=</span> encrypt(key, plaintext)
+<span style="color:#75715e"># Ciphertext: kgccr pkwz wz o zovlcg vgzzohg.</span>
+
+original <span style="color:#f92672">=</span> decrypt(key, ciphertext)
+<span style="color:#75715e"># Original: hello this is a sample message.</span>
+</code></pre></div><p>You should acknowledge the fact that the decryption of the encryption should always give you back the original message.</p>
+<h6 id="hacking-the-substitution-cipher">Hacking the Substitution Cipher</h6>
+<p>Now this is where it gets interesting. We&rsquo;ll be using an algorithm described by a Stanford professor, <a href="http://statweb.stanford.edu/~cgates/PERSI/papers/MCMCRev.pdf">Persi Diaconis</a>, to break the cipher.</p>
+<p>The algorithm works like this:</p>
+<ol>
+<li>Read a book.</li>
+<li>Count the two-letter frequencies and make a table out of it. For example, how many words have an <code>'a'</code> followed by an <code>'a'</code>.</li>
+<li>In the end, we will have a table of each bigram along with its occurrence in the book, which we&rsquo;ll assume is a good representation of the type of words our message will use.</li>
+<li>This will give us a scoring function that we can pass messages to, to see how well they do. The higher the score, the more likely that it&rsquo;s the message that we&rsquo;re trying to decrypt.</li>
+<li>Start with a random key, and get the score for that key. Swap two elements of that key, and get the score for the new key. If it results in a higher score, then that new key will be kept. If it&rsquo;s a lower score, we still might keep the new key on a biased probability. This is to make sure we don&rsquo;t get stuck in a local maximum. This is also known as the <a href="https://en.wikipedia.org/wiki/Hill_climbing">hill-climbing technique</a>.</li>
+<li>Repeat step 5 until we are happy with our results.</li>
+</ol>
+<p>For the book that we&rsquo;ll be &ldquo;reading&rdquo;, we&rsquo;ll use <em>War and Peace</em>, which you can find available online for free.</p>
+<p>Let&rsquo;s decipher this Chance verse:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">qkne tknz crjn arx zrb, l qloo yklnow zrbx eijn
+l qloo alnow tknlx pbnytlrey, l qloo anno zrbx uile
+er ren cie sbwmn
+tknz wre<span style="color:#e6db74">&#39;t, tknz wre&#39;</span>t derq
+tknz wre<span style="color:#e6db74">&#39;t derq</span>
+arrt re tkn wnvlo<span style="color:#e6db74">&#39;y encd &#39;</span>tlo lt wxlatnw uiemini
+l<span style="color:#e6db74">&#39;j jrvlem ioo jz aijloz axrj ckitkij tr gijhli</span>
+txnit tkn wnjrey sbyt oldn uij
+l jnie l abcd qltk zrbx axlnewy, hbt wije, mlei
+l hnne tkly qiz ylecn ixtkbx qiy ietnitnx
+erq tknz qieei klt jn qltk tkn qrr qiu, tkn hij
+txzei yeiu ukrtry ra aijloli
+jz wibmktnx orrd sbyt oldn yli, zrb cie<span style="color:#e6db74">&#39;t ynn knx</span>
+zrb cie anno tkn ozxlcy, tkn yulxlt crjlem le hxiloon
+tbhjie ra tkn bewnxmxrbew, crjn iew aroorq tkn txilo
+l jiwn ybewiz ciewz, l<span style="color:#e6db74">&#39;j envnx mrlem tr knoo</span>
+l jnt diezn qnyt, l<span style="color:#e6db74">&#39;j envnx mrlem tr ailo</span>
+kn yilw ont<span style="color:#e6db74">&#39;y wr i mrrw iyy srh qltk ckiecn tkxnn</span>
+l knix zrb mrtti ynoo lt tr yeitck tkn mxijjz
+ont<span style="color:#e6db74">&#39;y jidn lt yr axnn iew tkn hixy yr kixw</span>
+tkit tknxn ile<span style="color:#e6db74">&#39;t ren mryk wixe uixt zrb cie&#39;</span>t tqnnt
+tkly ly jz uixt, erhrwz noyn yunid
+tkly ly jz uixt, erhrwz noyn yunid
+tkly oltton olmkt ra jlen
+morxz hn tr mrw, znik
+l<span style="color:#e6db74">&#39;jji jidn ybxn tkit tknz mr qknxn tknz cie&#39;</span>t mr
+la tknz wre<span style="color:#e6db74">&#39;t qieei xlwn l&#39;</span>jji ytloo mlvn tknj xilecrity
+derq qkit mrw yilw qkne kn jiwn tkn alxyt xilehrq
+sbyt tkxrq tkly it tkn new la l<span style="color:#e6db74">&#39;j trr oitn arx tkn letxr</span>
+bmk, l<span style="color:#e6db74">&#39;j sbyt kivlem abe qltk lt</span>
+zrb derq tkit i elmmi qiy oryt
+l oibmk le jz kniw
+cibyn l hnt tkit jz nf orrdlem hicd oldn i ulooix ra yiot
+bmk, cibyn tknz<span style="color:#e6db74">&#39;oo aolu tkn ycxlut re zrbx iyy oldn qnyonz iew yuldn</span>
+zrb cieert jnyy qltk tkn olmkt
+orrd it olo ckier axrj <span style="color:#ae81ff">79</span>tk
+
+</code></pre></div><p>Here&rsquo;s the full implementation in Python:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> math <span style="color:#f92672">import</span> log, exp
+<span style="color:#f92672">from</span> random <span style="color:#f92672">import</span> shuffle, random, randint
+<span style="color:#f92672">from</span> string <span style="color:#f92672">import</span> ascii_lowercase <span style="color:#66d9ef">as</span> LETTERS
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_score_function</span>(corpus):
+
+    <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">    Compute the bigrams of the given corpus text, and returns a scoring function
+</span><span style="color:#e6db74">    Pass a string into the scoring function to get back a &#34;score&#34;
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+    
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">bigrams</span>(text):
+        <span style="color:#75715e"># Gets a list of consecutive two letter pairs</span>
+        <span style="color:#66d9ef">for</span> first, second <span style="color:#f92672">in</span> zip(text, text[<span style="color:#ae81ff">1</span>:]):
+            <span style="color:#66d9ef">yield</span> first<span style="color:#f92672">+</span>second
+
+    total_bigrams <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+
+    counts <span style="color:#f92672">=</span> {}
+    <span style="color:#75715e"># Count of occurrences of each bigram in the corpus.</span>
+    <span style="color:#66d9ef">for</span> pair <span style="color:#f92672">in</span> bigrams(corpus):
+        counts[pair] <span style="color:#f92672">=</span> counts<span style="color:#f92672">.</span>get(pair, <span style="color:#ae81ff">0</span>) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+        total_bigrams <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+
+    <span style="color:#75715e"># Scale it for easy math.</span>
+    <span style="color:#66d9ef">for</span> bigram, count <span style="color:#f92672">in</span> counts<span style="color:#f92672">.</span>items():
+        counts[bigram] <span style="color:#f92672">=</span> log(count <span style="color:#f92672">/</span> total_bigrams)
+
+
+    <span style="color:#75715e"># For the bigrams that don&#39;t appear in the plaintext</span>
+    <span style="color:#75715e"># This gives a negative weight to the total score.</span>
+    bigram_penalty <span style="color:#f92672">=</span> log(<span style="color:#ae81ff">1</span> <span style="color:#f92672">/</span> total_bigrams)
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">score_function</span>(plaintext):
+        <span style="color:#66d9ef">return</span> sum(counts<span style="color:#f92672">.</span>get(ngram, bigram_penalty) 
+            <span style="color:#66d9ef">for</span> ngram <span style="color:#f92672">in</span> bigrams(cleanup(<span style="color:#e6db74">&#39; &#39;</span><span style="color:#f92672">.</span>join(plaintext<span style="color:#f92672">.</span>split()))))
+    <span style="color:#66d9ef">return</span> score_function
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">encrypt</span>(key, message):
+    key_mapping <span style="color:#f92672">=</span> dict(zip(LETTERS, key))
+    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;&#39;</span><span style="color:#f92672">.</span>join([key_mapping<span style="color:#f92672">.</span>get(letter<span style="color:#f92672">.</span>lower(), letter) <span style="color:#66d9ef">for</span> letter <span style="color:#f92672">in</span> message])
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">decrypt</span>(message, key):
+    key_mapping <span style="color:#f92672">=</span> dict(zip(key, LETTERS))
+    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;&#39;</span><span style="color:#f92672">.</span>join([key_mapping<span style="color:#f92672">.</span>get(letter<span style="color:#f92672">.</span>lower(), letter) <span style="color:#66d9ef">for</span> letter <span style="color:#f92672">in</span> message])
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">find_key</span>(ciphertext, score_function):
+
+    <span style="color:#e6db74">&#34;&#34;&#34; 
+</span><span style="color:#e6db74">    Attempts to find a key based on Diaconnis method.
+</span><span style="color:#e6db74">    Return a 4 tuple of:
+</span><span style="color:#e6db74">        - The best score that we got (most likely to be the original message)
+</span><span style="color:#e6db74">        - The key that gives us the original message
+</span><span style="color:#e6db74">        - The original message itself (or what we think it is)
+</span><span style="color:#e6db74">        - The number of iterations it took
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+
+    <span style="color:#75715e"># A random ordering of the letters as a starting point.</span>
+    initial <span style="color:#f92672">=</span> list(LETTERS)
+    shuffle(initial)
+
+    best_key, best_score <span style="color:#f92672">=</span> initial, score_function(decrypt(ciphertext, initial))
+
+    <span style="color:#75715e"># Generates a random swap of our key</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_new_key</span>(k):
+        key <span style="color:#f92672">=</span> list(k)
+        x, y <span style="color:#f92672">=</span> randint(<span style="color:#ae81ff">0</span>, len(k) <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>), randint(<span style="color:#ae81ff">0</span>, len(k) <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+        key[x], key[y] <span style="color:#f92672">=</span> key[y], key[x]
+        <span style="color:#66d9ef">return</span> key
+
+
+    <span style="color:#66d9ef">for</span> iterations <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">10000</span>):
+  
+        key <span style="color:#f92672">=</span> get_new_key(best_key)
+
+        score <span style="color:#f92672">=</span> score_function(decrypt(ciphertext, key))
+        <span style="color:#75715e"># Found a better candidate, OR biased coin flip comes out as &#34;head&#34;</span>
+        <span style="color:#66d9ef">if</span> score <span style="color:#f92672">&gt;</span> best_score <span style="color:#f92672">or</span> random() <span style="color:#f92672">&lt;=</span> exp(score <span style="color:#f92672">-</span> best_score):
+            best_score, best_key <span style="color:#f92672">=</span> score, key
+    
+    <span style="color:#75715e"># Convert back into a string</span>
+    best_key <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span><span style="color:#f92672">.</span>join(best_key)
+
+    <span style="color:#66d9ef">return</span> best_score, best_key, decrypt(ciphertext, best_key), iterations
+
+
+<span style="color:#75715e"># Remove non letters and non spaces (i.e punctuation from a string).</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">cleanup</span>(str):
+    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;&#39;</span><span style="color:#f92672">.</span>join([char <span style="color:#66d9ef">if</span> char<span style="color:#f92672">.</span>isalpha() <span style="color:#f92672">or</span> char <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39; &#39;</span> <span style="color:#66d9ef">else</span> <span style="color:#e6db74">&#39;&#39;</span> <span style="color:#66d9ef">for</span> char <span style="color:#f92672">in</span> str])
+
+corpus <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+<span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#39;war-and-peace.txt&#39;</span>) <span style="color:#66d9ef">as</span> f:
+    corpus <span style="color:#f92672">=</span> cleanup(<span style="color:#e6db74">&#39; &#39;</span><span style="color:#f92672">.</span>join(f<span style="color:#f92672">.</span>read()<span style="color:#f92672">.</span>split()))
+
+score <span style="color:#f92672">=</span> get_score_function(corpus)
+
+ciphertext <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">qkne tknz crjn arx zrb, l qloo yklnow zrbx eijn</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">l qloo alnow tknlx pbnytlrey, l qloo anno zrbx uile</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">er ren cie sbwmn</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">tknz wre&#39;t, tknz wre&#39;t derq</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">tknz wre&#39;t derq</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">arrt re tkn wnvlo&#39;y encd &#39;tlo lt wxlatnw uiemini</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">l&#39;j jrvlem ioo jz aijloz axrj ckitkij tr gijhli</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">txnit tkn wnjrey sbyt oldn uij</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">l jnie l abcd qltk zrbx axlnewy, hbt wije, mlei</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">l hnne tkly qiz ylecn ixtkbx qiy ietnitnx</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">erq tknz qieei klt jn qltk tkn qrr qiu, tkn hij</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">txzei yeiu ukrtry ra aijloli</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">jz wibmktnx orrd sbyt oldn yli, zrb cie&#39;t ynn knx</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">zrb cie anno tkn ozxlcy, tkn yulxlt crjlem le hxiloon</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">tbhjie ra tkn bewnxmxrbew, crjn iew aroorq tkn txilo</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">l jiwn ybewiz ciewz, l&#39;j envnx mrlem tr knoo</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">l jnt diezn qnyt, l&#39;j envnx mrlem tr ailo</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">kn yilw ont&#39;y wr i mrrw iyy srh qltk ckiecn tkxnn</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">l knix zrb mrtti ynoo lt tr yeitck tkn mxijjz</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">ont&#39;y jidn lt yr axnn iew tkn hixy yr kixw</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">tkit tknxn ile&#39;t ren mryk wixe uixt zrb cie&#39;t tqnnt</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">tkly ly jz uixt, erhrwz noyn yunid</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">tkly ly jz uixt, erhrwz noyn yunid</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">tkly oltton olmkt ra jlen</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">morxz hn tr mrw, znik</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">l&#39;jji jidn ybxn tkit tknz mr qknxn tknz cie&#39;t mr</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">la tknz wre&#39;t qieei xlwn l&#39;jji ytloo mlvn tknj xilecrity</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">derq qkit mrw yilw qkne kn jiwn tkn alxyt xilehrq</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">sbyt tkxrq tkly it tkn new la l&#39;j trr oitn arx tkn letxr</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">bmk, l&#39;j sbyt kivlem abe qltk lt</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">zrb derq tkit i elmmi qiy oryt</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">l oibmk le jz kniw</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">cibyn l hnt tkit jz nf orrdlem hicd oldn i ulooix ra yiot</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">bmk, cibyn tknz&#39;oo aolu tkn ycxlut re zrbx iyy oldn qnyonz iew yuldn</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">zrb cieert jnyy qltk tkn olmkt</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">orrd it olo ckier axrj 79tk</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>
+
+
+<span style="color:#75715e"># Print out our results.</span>
+<span style="color:#66d9ef">print</span>(find_key(ciphertext, score))
+
+</code></pre></div><p>Notes:</p>
+<ul>
+<li>The longer the cipher-text, the easier it is to break.</li>
+<li>Our cipher only encrypts alphabet characters. Everything else is left alone.</li>
+</ul>
+<hr>
+<p>If you&rsquo;re interested in learning more about ciphers and how to break them, check out this book:
+<a href="http://www.amazon.com/gp/product/1482614375/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=1482614375&amp;linkCode=as2&amp;tag=raymondtaught-20&amp;linkId=E5OAOVGJGVFGKTP4">Hacking Secret Ciphers With Python</a></p>
+
+  </div>
+
+  <div>
+  <ul class="tags">
+  <li>
+    <a href="https://raymonstah.github.io/tags/python/" class="tag-link">python</a>
+  </li>
+  
+  <li>
+    <a href="https://raymonstah.github.io/tags/cryptography/" class="tag-link">cryptography</a>
+  </li>
+  </ul>
+</div>
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="#"
+     title="Share on Twitter"
+     data-url="https://raymonstah.github.io/posts/2016-05-12-breaking-the-substitution-cipher/"
+     data-text="Breaking the Substitution Cipher"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="#"
+     title="Share on LinkedIn"
+     data-url="https://raymonstah.github.io/posts/2016-05-12-breaking-the-substitution-cipher/"
+     data-text="Breaking the Substitution Cipher"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="#"
+     title="Share on Facebook"
+     data-url="https://raymonstah.github.io/posts/2016-05-12-breaking-the-substitution-cipher/"
+     data-text="Breaking the Substitution Cipher"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="#"
+     title="Share on Telegram"
+     data-url="https://raymonstah.github.io/posts/2016-05-12-breaking-the-substitution-cipher/"
+     data-text="Breaking the Substitution Cipher"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="#"
+     title="Share on Pinterest"
+     data-url="https://raymonstah.github.io/posts/2016-05-12-breaking-the-substitution-cipher/"
+     data-text="Breaking the Substitution Cipher"><i class="fab fa-pinterest"></i></a>
+</div>
+
+</div>
+
+
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy; Raymond Ho 2021
+
+      &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  
+
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-164579651-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</body>
+</html>

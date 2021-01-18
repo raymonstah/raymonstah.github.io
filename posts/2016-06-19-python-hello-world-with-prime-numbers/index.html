@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.80.0" />
+
+  <title>Python: Hello World With Prime Numbers &middot; Raymond Ho</title>
+
+  <meta name="description" content="" />
+
+  
+
+<meta itemprop="name" content="Python: Hello World With Prime Numbers">
+<meta itemprop="description" content="Please note that this is simply for fun and learning purposes.">
+<meta itemprop="datePublished" content="2016-06-19T22:03:01+00:00" />
+<meta itemprop="dateModified" content="2016-06-19T22:03:01+00:00" />
+<meta itemprop="wordCount" content="318">
+
+
+
+<meta itemprop="keywords" content="python,programming,puzzles," />
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Python: Hello World With Prime Numbers"/>
+<meta name="twitter:description" content="Please note that this is simply for fun and learning purposes."/>
+
+
+<meta property="og:title" content="Python: Hello World With Prime Numbers" />
+<meta property="og:description" content="Please note that this is simply for fun and learning purposes." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://raymonstah.github.io/posts/2016-06-19-python-hello-world-with-prime-numbers/" />
+<meta property="article:published_time" content="2016-06-19T22:03:01+00:00" />
+<meta property="article:modified_time" content="2016-06-19T22:03:01+00:00" />
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://raymonstah.github.io/#author",
+      "name": "Raymond Ho",
+      "image": {
+        "@type":"ImageObject",
+        
+        "url": "https://raymonstah.github.io/adorableavatar.png"
+        
+      },
+      "description": "Random ramblings and rants"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://raymonstah.github.io/#website",
+      "url": "https://raymonstah.github.io/",
+      "name": "Raymond Ho",
+      "description": "Random ramblings and rants",
+      "publisher": {
+        "@id": "https://raymonstah.github.io/#author"
+      },
+      "inLanguage": "en-us"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://raymonstah.github.io/posts/2016-06-19-python-hello-world-with-prime-numbers/#webpage",
+      "url": "https://raymonstah.github.io/posts/2016-06-19-python-hello-world-with-prime-numbers/",
+      "name": "Python: Hello World With Prime Numbers",
+      "isPartOf": {
+        "@id": "https://raymonstah.github.io/#website"
+      },
+      "about": {
+         "@id": "https://raymonstah.github.io/#author"
+      },
+      "datePublished": "2016-06-19T22:03:01+00:00",
+      "dateModified": "2016-06-19T22:03:01+00:00",
+      "description": "Please note that this is simply for fun and learning purposes.",
+      "inLanguage": "en-us",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://raymonstah.github.io/posts/2016-06-19-python-hello-world-with-prime-numbers/"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "isPartOf": {
+        "@id": "https://raymonstah.github.io/posts/2016-06-19-python-hello-world-with-prime-numbers/#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://raymonstah.github.io/posts/2016-06-19-python-hello-world-with-prime-numbers/#webpage"
+      },
+      "headline": "Python: Hello World With Prime Numbers",
+      "datePublished": "2016-06-19T22:03:01+00:00",
+      "dateModified": "2016-06-19T22:03:01+00:00",
+      "publisher": {
+        "@id": "https://raymonstah.github.io/#author"
+      },
+      "keywords": [
+        "python",
+        "programming",
+        "puzzles"
+      ],
+      "articleSection": [
+      ],
+      "inLanguage": "en-us",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "potentialAction": [
+        {
+          "@type": "CommentAction",
+          "name": "Comment",
+          "target": [
+            "https://raymonstah.github.io/posts/2016-06-19-python-hello-world-with-prime-numbers/#comments"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+        
+        <div class="author-image">
+          <img src="/adorableavatar.png" class="img-circle img-headshot center" alt="Profile Picture">
+        </div>
+        
+      
+
+      <h1>Raymond Ho</h1>
+
+      
+      <p class="lead">Random ramblings and rants</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://raymonstah.github.io/">Home</a>
+        </li>
+        <li>
+          <a href="/posts/">Posts</a>
+        </li><li>
+          <a href="/tags/">Tags</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://github.com/raymonstah" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://www.linkedin.com/in/raymond-ho/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1 class="title">Python: Hello World With Prime Numbers</h1>
+  
+
+  <div class="post-date">
+    <time datetime="2016-06-19T22:03:01Z">Jun 19, 2016</time> &middot; 2 min read
+  </div>
+
+  <div>
+  <p>Please note that this is simply for fun and learning purposes.</p>
+<p>You can achieve the same results like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;hello, world&#34;</span>)
+</code></pre></div><p>But this way is so much crazier.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#e6db74">&#39;&#39;</span><span style="color:#f92672">.</span>join([chr(x) <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> [int(x,<span style="color:#ae81ff">16</span>) <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> [hex(<span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">5</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">7</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">37</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">149</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">5417</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">148781</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">51939996061871</span>)[i:(i<span style="color:#f92672">+</span><span style="color:#ae81ff">2</span>)] <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">25</span>)][<span style="color:#ae81ff">2</span>::<span style="color:#ae81ff">2</span>]]])
+hello, world
+</code></pre></div><p>How in the world does this print <code>&quot;hello, world&quot;</code>?</p>
+<p>Let&rsquo;s break this down:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> hex(<span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">5</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">7</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">37</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">149</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">5417</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">148781</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">51939996061871</span>) 
+<span style="color:#e6db74">&#39;0x68656c6c6f2c20776f726c64&#39;</span>
+</code></pre></div><p>We can store this hex string into a variable, <code>h</code>.</p>
+<p>Notice that these two are the same expressions below are the same, and the second is easier to understand. We start at 2, and take every other element.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> range(<span style="color:#ae81ff">25</span>)[<span style="color:#ae81ff">2</span>::<span style="color:#ae81ff">2</span>]
+range(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">25</span>, <span style="color:#ae81ff">2</span>)
+<span style="color:#75715e"># 2, 4, 6, 8, 10, .. 24</span>
+</code></pre></div><p>Okay cool, now we&rsquo;re creating a list of chunks of <code>h</code>, with each chunk being a 2 character substring.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> [h[i:(i<span style="color:#f92672">+</span><span style="color:#ae81ff">2</span>)] <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">25</span>)[<span style="color:#ae81ff">2</span>::<span style="color:#ae81ff">2</span>]]
+[<span style="color:#e6db74">&#39;68&#39;</span>, <span style="color:#e6db74">&#39;65&#39;</span>, <span style="color:#e6db74">&#39;6c&#39;</span>, <span style="color:#e6db74">&#39;6c&#39;</span>, <span style="color:#e6db74">&#39;6f&#39;</span>, <span style="color:#e6db74">&#39;2c&#39;</span>, <span style="color:#e6db74">&#39;20&#39;</span>, <span style="color:#e6db74">&#39;77&#39;</span>, <span style="color:#e6db74">&#39;6f&#39;</span>, <span style="color:#e6db74">&#39;72&#39;</span>, <span style="color:#e6db74">&#39;6c&#39;</span>, <span style="color:#e6db74">&#39;64&#39;</span>]
+</code></pre></div><p>Let&rsquo;s store this <code>list</code> into a variable <code>str_lst</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> [int(x,<span style="color:#ae81ff">16</span>) <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> str_lst]
+[<span style="color:#ae81ff">104</span>, <span style="color:#ae81ff">101</span>, <span style="color:#ae81ff">108</span>, <span style="color:#ae81ff">108</span>, <span style="color:#ae81ff">111</span>, <span style="color:#ae81ff">44</span>, <span style="color:#ae81ff">32</span>, <span style="color:#ae81ff">119</span>, <span style="color:#ae81ff">111</span>, <span style="color:#ae81ff">114</span>, <span style="color:#ae81ff">108</span>, <span style="color:#ae81ff">100</span>]
+</code></pre></div><p>We converted our hex strings into integers using the <code>int()</code> function passing the second parameter <code>16</code> to let it know that we&rsquo;re working with <code>base16 (hex)</code>.</p>
+<p>Let&rsquo;s store this list of numbers into a variable <code>num_list</code>.</p>
+<p>Great, a bunch of numbers!
+Now, simply convert each number to it&rsquo;s <a href="http://www.asciitable.com/">ASCII</a> representation, resulting in the new list:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> [chr(x) <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> num_list]
+[<span style="color:#e6db74">&#39;h&#39;</span>, <span style="color:#e6db74">&#39;e&#39;</span>, <span style="color:#e6db74">&#39;l&#39;</span>, <span style="color:#e6db74">&#39;l&#39;</span>, <span style="color:#e6db74">&#39;o&#39;</span>, <span style="color:#e6db74">&#39;,&#39;</span>, <span style="color:#e6db74">&#39; &#39;</span>, <span style="color:#e6db74">&#39;w&#39;</span>, <span style="color:#e6db74">&#39;o&#39;</span>, <span style="color:#e6db74">&#39;r&#39;</span>, <span style="color:#e6db74">&#39;l&#39;</span>, <span style="color:#e6db74">&#39;d&#39;</span>]
+</code></pre></div><p>Just about done!
+Simply join the list into a string.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#e6db74">&#39;&#39;</span><span style="color:#f92672">.</span>join([chr(x) <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> num_list])
+<span style="color:#e6db74">&#39;hello, world&#39;</span>
+</code></pre></div><hr>
+<p>Thanks for following along. If you found this article helpful, be sure to check out my other tutorials on Python.</p>
+
+  </div>
+
+  <div>
+  <ul class="tags">
+  <li>
+    <a href="https://raymonstah.github.io/tags/python/" class="tag-link">python</a>
+  </li>
+  
+  <li>
+    <a href="https://raymonstah.github.io/tags/programming/" class="tag-link">programming</a>
+  </li>
+  
+  <li>
+    <a href="https://raymonstah.github.io/tags/puzzles/" class="tag-link">puzzles</a>
+  </li>
+  </ul>
+</div>
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="#"
+     title="Share on Twitter"
+     data-url="https://raymonstah.github.io/posts/2016-06-19-python-hello-world-with-prime-numbers/"
+     data-text="Python: Hello World With Prime Numbers"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="#"
+     title="Share on LinkedIn"
+     data-url="https://raymonstah.github.io/posts/2016-06-19-python-hello-world-with-prime-numbers/"
+     data-text="Python: Hello World With Prime Numbers"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="#"
+     title="Share on Facebook"
+     data-url="https://raymonstah.github.io/posts/2016-06-19-python-hello-world-with-prime-numbers/"
+     data-text="Python: Hello World With Prime Numbers"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="#"
+     title="Share on Telegram"
+     data-url="https://raymonstah.github.io/posts/2016-06-19-python-hello-world-with-prime-numbers/"
+     data-text="Python: Hello World With Prime Numbers"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="#"
+     title="Share on Pinterest"
+     data-url="https://raymonstah.github.io/posts/2016-06-19-python-hello-world-with-prime-numbers/"
+     data-text="Python: Hello World With Prime Numbers"><i class="fab fa-pinterest"></i></a>
+</div>
+
+</div>
+
+
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy; Raymond Ho 2021
+
+      &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  
+
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-164579651-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</body>
+</html>

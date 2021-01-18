@@ -23,4 +23,3 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # prevent theme folder from being linted
           FILTER_REGEX_EXCLUDE: .*themes/.*
-          MARKDOWN_CONFIG_FILE: .markdownlint.json

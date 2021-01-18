@@ -10,8 +10,7 @@ tags:
 ##### The Substitution Cipher
 
 > "Your cryptosystem should remain secure even if everything is known about it except the key"
-
->-[Kerckhoffs](https://en.wikipedia.org/wiki/Kerckhoffs's_principle)
+> -[Kerckhoffs](https://en.wikipedia.org/wiki/Kerckhoffs's_principle)
 
 Please note that this cipher should not be used in real applications as it can easily be hacked, as you'll see shortly.
 

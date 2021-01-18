@@ -76,6 +76,5 @@ This is known as the [**pigeonhole principle**](https://en.wikipedia.org/wiki/Pi
 
 ---
 For more on probability, cool puzzles, and discrete math, check out this book:
-<a  href="http://www.amazon.com/gp/product/0201558025/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0201558025&linkCode=as2&tag=raymondtaught-20&linkId=VYPGS3UB5GNPPMKI">Concrete Mathematics: A Foundation for Computer Science (2nd Edition)</a><img src="http://ir-na.amazon-adsystem.com/e/ir?t=raymondtaught-20&l=as2&o=1&a=0201558025" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
 
 It's written by the famous Computer Scientist, [Donald Knuth](https://en.wikipedia.org/wiki/Donald_Knuth) !

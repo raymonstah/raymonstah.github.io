@@ -17,15 +17,6 @@
     </item>
     
     <item>
-      <title>Top 5 Purchases For New College Students</title>
-      <link>https://raymonstah.github.io/posts/2016-06-23-top-5-purchases-for-new-college-students/</link>
-      <pubDate>Thu, 23 Jun 2016 22:44:00 +0000</pubDate>
-      
-      <guid>https://raymonstah.github.io/posts/2016-06-23-top-5-purchases-for-new-college-students/</guid>
-      <description>1. A Reliable Laptop I understand not everybody can dish out $1000+ for a new laptop, so I have some recommendations for those of you guys on a budget.</description>
-    </item>
-    
-    <item>
       <title>Python: Hello World With Prime Numbers</title>
       <link>https://raymonstah.github.io/posts/2016-06-19-python-hello-world-with-prime-numbers/</link>
       <pubDate>Sun, 19 Jun 2016 22:03:01 +0000</pubDate>
@@ -49,7 +40,7 @@
       <pubDate>Thu, 12 May 2016 00:13:31 +0000</pubDate>
       
       <guid>https://raymonstah.github.io/posts/2016-05-12-breaking-the-substitution-cipher/</guid>
-      <description>The Substitution Cipher  &amp;ldquo;Your cryptosystem should remain secure even if everything is known about it except the key&amp;rdquo;</description>
+      <description>The Substitution Cipher  &amp;ldquo;Your cryptosystem should remain secure even if everything is known about it except the key&amp;rdquo; -Kerckhoffs</description>
     </item>
     
     <item>
@@ -59,7 +50,7 @@
       
       <guid>https://raymonstah.github.io/posts/2016-04-22-bitwise-operation-analogies/</guid>
       <description>In binary, we have two options.
-Examples  Yes/No True/False 1/0 Good/Bad On/Off  There are a bunch of operations that can be performed on binary.</description>
+ Yes/No True/False 1/0 Good/Bad On/Off  There are a bunch of operations that can be performed on binary.</description>
     </item>
     
     <item>

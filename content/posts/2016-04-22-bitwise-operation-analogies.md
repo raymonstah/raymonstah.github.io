@@ -1,18 +1,18 @@
 ---
 layout: post
 title: Bitwise Operation Analogies
-date: '2016-04-22 19:14:23'
+date: "2016-04-22 19:14:23"
 tags:
-- binary
+  - binary
 ---
 
 In binary, we have two options.
 
-* Yes/No
-* True/False
-* 1/0
-* Good/Bad
-* On/Off
+- Yes/No
+- True/False
+- 1/0
+- Good/Bad
+- On/Off
 
 There are a bunch of operations that can be performed on binary. Here are some of them, and some analogies that can help you understand them better.
 
@@ -24,9 +24,9 @@ This one is pretty simple.
 
 ### Examples
 
-* `NOT 0 = 1`
-* `NOT True = False`
-* `NOT 1001 = 0110`
+- `NOT 0 = 1`
+- `NOT True = False`
+- `NOT 1001 = 0110`
 
 ### Analogy
 
@@ -41,14 +41,14 @@ Just remember that for `OR`, you can be greedy and have **both** options.
 
 ### Examples
 
-* `True OR False = True`
-* `True OR True = True`
-* `False OR False = False`
-* `False OR True = True`
+- `True OR False = True`
+- `True OR True = True`
+- `False OR False = False`
+- `False OR True = True`
 
 ### Analogy
 
-Your mother wants the dishes to be done. She will yell at you and your sibling if they are not done by the end of the day. The work can be split! It doesn't matter who does it, but as long as someone *does* it, then there will be no yelling. Both you *and* your sibling can work together, and that's okay. The only way your mother will yell is if neither of you guys do them.
+Your mother wants the dishes to be done. She will yell at you and your sibling if they are not done by the end of the day. The work can be split! It doesn't matter who does it, but as long as someone _does_ it, then there will be no yelling. Both you _and_ your sibling can work together, and that's okay. The only way your mother will yell is if neither of you guys do them.
 
 ---
 
@@ -58,10 +58,10 @@ When performing the AND operator on two objects, A, and B, both A and B must hav
 
 ### Examples
 
-* `1 AND 0 = 0`
-* `1 AND 1 = 1`
-* `0 AND 0 = 0`
-* `0 AND 1 = 0`
+- `1 AND 0 = 0`
+- `1 AND 1 = 1`
+- `0 AND 0 = 0`
+- `0 AND 1 = 0`
 
 Note that the truth value here is 1.
 
@@ -79,10 +79,10 @@ When performing the XOR operator on two objects, A, and B, only A or B must have
 
 ### Examples
 
-* `1 XOR 0 = 1`
-* `1 XOR 1 = 0`
-* `0 XOR 0 = 0`
-* `0 XOR 1 = 1`
+- `1 XOR 0 = 1`
+- `1 XOR 1 = 0`
+- `0 XOR 0 = 0`
+- `0 XOR 1 = 1`
 
 ### Analogy
 

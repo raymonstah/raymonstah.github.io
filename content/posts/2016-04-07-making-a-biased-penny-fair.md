@@ -1,18 +1,18 @@
 ---
 layout: post
 title: Making a Biased Penny Fair
-date: '2016-04-07 01:18:00'
+date: "2016-04-07 01:18:00"
 tags:
-- python
-- math
-- puzzles
-- probability
-- simulation
+  - python
+  - math
+  - puzzles
+  - probability
+  - simulation
 ---
 
 #### Definitions
 
-Fair penny: This type of penny has a 50/50 chance of landing on heads or tails. It's *fair*.
+Fair penny: This type of penny has a 50/50 chance of landing on heads or tails. It's _fair_.
 
 Biased penny: A penny that's not fair.
 
@@ -21,7 +21,7 @@ Assumptions:
 1. Each flip is independent of each other.
 2. The bias level of getting heads cannot be 1 or 0. (i.e. Always getting heads or never getting heads)
 
-----
+---
 
 Now how can we make a biased penny fair? The solution is actually very elegant and simple:
 
@@ -47,10 +47,10 @@ Notice that `Pr[HT] == Pr[TH]`, in other words the probability of a double coin 
 
 We'll use this fact to make the penny fair.
 
-Now we can make this penny fair by flipping it *twice*, then viewing its outcome.
+Now we can make this penny fair by flipping it _twice_, then viewing its outcome.
 
-* If the outcome was `HH` or `TT`, then we'll discard these results.
-* If the outcome was `HT` or `TH`, then we'll take the result of our first flip.
+- If the outcome was `HH` or `TT`, then we'll discard these results.
+- If the outcome was `HT` or `TH`, then we'll take the result of our first flip.
 
 #### Using Python to show this
 

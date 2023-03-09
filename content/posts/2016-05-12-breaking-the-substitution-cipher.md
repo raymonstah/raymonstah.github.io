@@ -1,16 +1,15 @@
 ---
 layout: post
 title: Breaking the Substitution Cipher
-date: '2016-05-12 00:13:31'
+date: "2016-05-12 00:13:31"
 tags:
-- python
-- cryptography
+  - python
+  - cryptography
 ---
 
 ##### The Substitution Cipher
 
-> "Your cryptosystem should remain secure even if everything is known about it except the key"
-> -[Kerckhoffs](https://en.wikipedia.org/wiki/Kerckhoffs's_principle)
+> "Your cryptosystem should remain secure even if everything is known about it except the key" -[Kerckhoffs](https://en.wikipedia.org/wiki/Kerckhoffs's_principle)
 
 Please note that this cipher should not be used in real applications as it can easily be hacked, as you'll see shortly.
 
@@ -84,7 +83,7 @@ The algorithm works like this:
 5. Start with a random key, and get the score for that key. Swap two elements of that key, and get the score for the new key. If it results in a higher score, then that new key will be kept. If it's a lower score, we still might keep the new key on a biased probability. This is to make sure we don't get stuck in a local maximum. This is also known as the [hill-climbing technique](https://en.wikipedia.org/wiki/Hill_climbing).
 6. Repeat step 5 until we are happy with our results.
 
-For the book that we'll be "reading", we'll use *War and Peace*, which you can find available online for free.
+For the book that we'll be "reading", we'll use _War and Peace_, which you can find available online for free.
 
 Let's decipher this Chance verse:
 
@@ -141,7 +140,7 @@ def get_score_function(corpus):
     Compute the bigrams of the given corpus text, and returns a scoring function
     Pass a string into the scoring function to get back a "score"
     """
-    
+
     def bigrams(text):
         # Gets a list of consecutive two letter pairs
         for first, second in zip(text, text[1:]):
@@ -165,7 +164,7 @@ def get_score_function(corpus):
     bigram_penalty = log(1 / total_bigrams)
 
     def score_function(plaintext):
-        return sum(counts.get(ngram, bigram_penalty) 
+        return sum(counts.get(ngram, bigram_penalty)
             for ngram in bigrams(cleanup(' '.join(plaintext.split()))))
     return score_function
 
@@ -180,7 +179,7 @@ def decrypt(message, key):
 
 def find_key(ciphertext, score_function):
 
-    """ 
+    """
     Attempts to find a key based on Diaconnis method.
     Return a 4 tuple of:
         - The best score that we got (most likely to be the original message)
@@ -204,14 +203,14 @@ def find_key(ciphertext, score_function):
 
 
     for iterations in range(10000):
-  
+
         key = get_new_key(best_key)
 
         score = score_function(decrypt(ciphertext, key))
         # Found a better candidate, OR biased coin flip comes out as "head"
         if score > best_score or random() <= exp(score - best_score):
             best_score, best_key = score, key
-    
+
     # Convert back into a string
     best_key = ''.join(best_key)
 
@@ -238,9 +237,10 @@ print(find_key(ciphertext, score))
 
 Notes:
 
-* The longer the cipher-text, the easier it is to break.
-* Our cipher only encrypts alphabet characters. Everything else is left alone.
+- The longer the cipher-text, the easier it is to break.
+- Our cipher only encrypts alphabet characters. Everything else is left alone.
 
 ---
+
 If you're interested in learning more about ciphers and how to break them, check out this book:
 [Hacking Secret Ciphers With Python](http://www.amazon.com/gp/product/1482614375/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1482614375&linkCode=as2&tag=raymondtaught-20&linkId=E5OAOVGJGVFGKTP4)

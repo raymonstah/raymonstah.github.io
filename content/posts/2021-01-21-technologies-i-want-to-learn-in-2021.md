@@ -3,7 +3,7 @@ title: "Technologies I Want to Learn in 2021"
 date: 2021-01-21T21:43:42-08:00
 draft: false
 ---
- 
+
 ## 2020 Wrapped Up
 
 2020 was a solid year in terms of development and career goals. Throughout the past year, I've gotten a chance to explore and learn various technologies that I've been wanting to learn for some time.
@@ -48,7 +48,7 @@ Another web technology.. I had a chance to use Websockets last year to build my 
 
 ### Haskell
 
-Haskell.. I spent some time *trying* to learn this purely functional lazy programming language a few years ago. I dropped it after finding it very difficult to do practical things with. I'm going to try to go deeper into the language this year. I know Elm/Purescript isn't exactly the same as Haskell, but they definitely have more of a niche use case.
+Haskell.. I spent some time _trying_ to learn this purely functional lazy programming language a few years ago. I dropped it after finding it very difficult to do practical things with. I'm going to try to go deeper into the language this year. I know Elm/Purescript isn't exactly the same as Haskell, but they definitely have more of a niche use case.
 
 ---
 

@@ -1,10 +1,10 @@
 ---
 layout: post
-title: 'Data Structures: Hash Tables'
-date: '2016-06-10 18:47:06'
+title: "Data Structures: Hash Tables"
+date: "2016-06-10 18:47:06"
 tags:
-- python
-- data-structures
+  - python
+  - data-structures
 ---
 
 ## Hash Tables
@@ -21,7 +21,7 @@ Another analogy to hash tables is when your professor hands back paperwork to th
 
 ## How it actually works
 
-The underlying data structure of a hash table is simply an array. On top of the array is the hash function, which is what makes everything very fast. The hash function will tell you where to *place* the elements you're storing. Since arrays are a fixed size, we also need a resize function when we decide that our array is getting too full. This will help spread out elements more evenly.
+The underlying data structure of a hash table is simply an array. On top of the array is the hash function, which is what makes everything very fast. The hash function will tell you where to _place_ the elements you're storing. Since arrays are a fixed size, we also need a resize function when we decide that our array is getting too full. This will help spread out elements more evenly.
 
 ## Dealing With Collisions
 
@@ -70,7 +70,7 @@ False
 
 ---
 
-### 2. Write a method to decide if one string is the permutation of another. (also case sensitive)**
+### 2. Write a method to decide if one string is the permutation of another. (also case sensitive)\*\*
 
 ```python
 def permutation(a, b):

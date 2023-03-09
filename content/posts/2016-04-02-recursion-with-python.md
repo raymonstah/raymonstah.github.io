@@ -1,18 +1,17 @@
 ---
 layout: post
 title: Recursion with Python
-date: '2016-04-02 21:01:28'
+date: "2016-04-02 21:01:28"
 tags:
-- python
-- programming
-- functional-programming
-- recursion
+  - python
+  - programming
+  - functional-programming
+  - recursion
 ---
-
 
 ### What is Recursion?
 
->If you don't know recursion, read this sentence again.
+> If you don't know recursion, read this sentence again.
 
 1. How to Learn Recursion
 2. See Step 1
@@ -57,8 +56,8 @@ Here are some better examples used to demonstrate recursion.
 
 Let's say you want to find the length of a list, `some_list`. In recursion, there is often a base case, and a recursive case.
 
-* Our base case here is that if `some_list` is empty, then the count of that list is `0`.
-* Otherwise, we add `1`  and make a *recursive* call to the function, passing the parameter as all but the first element of `some_list`.
+- Our base case here is that if `some_list` is empty, then the count of that list is `0`.
+- Otherwise, we add `1` and make a _recursive_ call to the function, passing the parameter as all but the first element of `some_list`.
 
 ```python
 def findLengthOfList(some_list):
@@ -71,8 +70,8 @@ I mean obviously, in a real program you should use `len(some_list)`, but remembe
 
 ### Max of a List
 
-* Our base case here is to return `max_given` if the list is empty.
-* The recursive step is to pass the *body* (all but the first) of the list to our function again, along with the `max_so_far` which we computed.
+- Our base case here is to return `max_given` if the list is empty.
+- The recursive step is to pass the _body_ (all but the first) of the list to our function again, along with the `max_so_far` which we computed.
 
 ```python
 def findMaxOfList(some_list, max_given):
@@ -90,8 +89,8 @@ Likewise, you can always use `max(some_list)` instead of rolling your own functi
 
 Once again, we can break the algorithm into a base case and a recursive case.
 
-* If we receive an empty list, or a list of a single element, then it is already "reversed". Simply return that list.
-* If we receive a list of 2 or more elements, we can return a new list, consisting of the last element of `some_list` followed by a recursive call with the parameter as all but the last element of `some_list`.
+- If we receive an empty list, or a list of a single element, then it is already "reversed". Simply return that list.
+- If we receive a list of 2 or more elements, we can return a new list, consisting of the last element of `some_list` followed by a recursive call with the parameter as all but the last element of `some_list`.
 
 ```python
 def reverse(some_list):
@@ -110,10 +109,10 @@ This algorithm is super elegant when solved by recursion, even though it is slow
 
 It works like this:
 
-* Base case: if we receive an empty list, then it is already sorted.
-* Take the first element of a list, `first`.
-* Partition the rest of the list by those that are greater than `first`, and those that are less than `first`, which are computed recursively.
-* Finally, we return a newly created list which `less_than_first` comes first, followed by `first`, and lastly, we append `greater_than_first`.
+- Base case: if we receive an empty list, then it is already sorted.
+- Take the first element of a list, `first`.
+- Partition the rest of the list by those that are greater than `first`, and those that are less than `first`, which are computed recursively.
+- Finally, we return a newly created list which `less_than_first` comes first, followed by `first`, and lastly, we append `greater_than_first`.
 
 ```python
 def quicksort(some_list):

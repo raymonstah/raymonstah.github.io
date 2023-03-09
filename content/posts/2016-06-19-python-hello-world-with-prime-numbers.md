@@ -1,11 +1,11 @@
 ---
 layout: post
-title: 'Python: Hello World With Prime Numbers'
-date: '2016-06-19 22:03:01'
+title: "Python: Hello World With Prime Numbers"
+date: "2016-06-19 22:03:01"
 tags:
-- python
-- programming
-- puzzles
+  - python
+  - programming
+  - puzzles
 ---
 
 Please note that this is simply for fun and learning purposes.
@@ -28,7 +28,7 @@ How in the world does this print `"hello, world"`?
 Let's break this down:
 
 ```python
->>> hex(2 * 2 * 5 * 7 * 37 * 149 * 5417 * 148781 * 51939996061871) 
+>>> hex(2 * 2 * 5 * 7 * 37 * 149 * 5417 * 148781 * 51939996061871)
 '0x68656c6c6f2c20776f726c64'
 ```
 

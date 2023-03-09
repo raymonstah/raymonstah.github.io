@@ -1,13 +1,13 @@
 ---
 layout: post
 title: The Birthday Paradox
-date: '2016-04-13 08:33:56'
+date: "2016-04-13 08:33:56"
 tags:
-- python
-- math
-- puzzles
-- probability
-- simulation
+  - python
+  - math
+  - puzzles
+  - probability
+  - simulation
 ---
 
 Suppose there's a party of N people. How many people do you think it takes to find a pair of people who have the same birthdays?
@@ -18,7 +18,7 @@ You might guess that it would take quite a lot of people since there are so many
 
 However, this isn't true!
 
-In fact, it only takes *23* people in a room for a 50% chance of two people having the same birthday!
+In fact, it only takes _23_ people in a room for a 50% chance of two people having the same birthday!
 
 Not good enough? Well if you have just **70** people, there's a 99.9% chance of a matching birthday!
 
@@ -75,6 +75,7 @@ Notice that if we run the simulation with over 365 birthdays, we will always get
 This is known as the [**pigeonhole principle**](https://en.wikipedia.org/wiki/Pigeonhole_principle).
 
 ---
+
 For more on probability, cool puzzles, and discrete math, check out this book:
 
 It's written by the famous Computer Scientist, [Donald Knuth](https://en.wikipedia.org/wiki/Donald_Knuth) !

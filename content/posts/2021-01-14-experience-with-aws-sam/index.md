@@ -108,22 +108,22 @@ when I push to the main repo.
 Here's an arbitrary rating of the AWS serverless technologies that I used:
 
 1. DynamoDB: 9/10. I really like DynamoDB. It's extremely fast and a breeze to
-  develop in locally. My unit tests create new tables in DynamoDB on every run,
-  and deletes the tables when the tests finish. Everything is fast, and I don't
-  have to manage infrastructure for it in production.
+   develop in locally. My unit tests create new tables in DynamoDB on every run,
+   and deletes the tables when the tests finish. Everything is fast, and I don't
+   have to manage infrastructure for it in production.
 
 2. Lambda: 9/10. Minus the cold starts, the lambdas have been reliable and
-  pleasant to work with. It's easy to test these locally since you can just feed
-  it an event json file.
+   pleasant to work with. It's easy to test these locally since you can just feed
+   it an event json file.
 
 3. API Gateway Websockets: 3/10. Testing locally is near impossible.
-  Out of the box, you can a secure websocket that you can use immediately.
-  It seems pretty configurable if you wanted to set appropriate rate limiting
-  to prevent abuse. The main advantage here is the ability to scale easily.
-  Overall, this technology was definitely the weakest link and
-  I wouldn't use it for a _real_ application.
+   Out of the box, you can a secure websocket that you can use immediately.
+   It seems pretty configurable if you wanted to set appropriate rate limiting
+   to prevent abuse. The main advantage here is the ability to scale easily.
+   Overall, this technology was definitely the weakest link and
+   I wouldn't use it for a _real_ application.
 
 4. SAM CLI: 8/10. Getting this to the point where I could do builds and deploys
-  in CI was really convenient and made testing the API Gateway Websockets much faster.
-  Overall, I felt like the CLI tool was straightforward to use and the documentation
-  for it was sufficient.
+   in CI was really convenient and made testing the API Gateway Websockets much faster.
+   Overall, I felt like the CLI tool was straightforward to use and the documentation
+   for it was sufficient.

@@ -1,11 +1,11 @@
 ---
 layout: post
-title: 'The Python Way Part Two: 10 More Tips'
-date: '2016-03-30 22:01:59'
+title: "The Python Way Part Two: 10 More Tips"
+date: "2016-03-30 22:01:59"
 tags:
-- python
-- programming
-- functional-programming
+  - python
+  - programming
+  - functional-programming
 ---
 
 Below are 10 more useful tips and tricks in Python.
@@ -118,7 +118,7 @@ print(people) # [('Dan', 34), ('Bob', 23), ('Alice', 21), ('Chris', 10)]
 ```
 
 Pretty cool huh? We specified the argument `reverse=True`, so it will sort the list of tuples by oldest first.
-We specify the `key` to be in position `1` of the incoming argument, which we *named* `person`, a member of the iterable, `people`.
+We specify the `key` to be in position `1` of the incoming argument, which we _named_ `person`, a member of the iterable, `people`.
 Note the use of `lambda` here!
 
 ##### 5. Map
@@ -166,7 +166,7 @@ results = list(map(crazyComplexFunction, numbers))
 print(results) # [5, 11, 21, 35, 53]
 ```
 
-Also, sometimes users will experience scoping issues since they will be creating an extra variable when using list comprehensions. This can cause one to overwrite the contents of a previous variable when the variable names are the same. Notice that we didn't have to create a temporary variable  when using `map()`.
+Also, sometimes users will experience scoping issues since they will be creating an extra variable when using list comprehensions. This can cause one to overwrite the contents of a previous variable when the variable names are the same. Notice that we didn't have to create a temporary variable when using `map()`.
 
 ##### 6. Filter
 
@@ -192,7 +192,7 @@ I believe Python programmers have been debating on `map` and `filter` functions 
 
 If you're coming from a Java or C background, you're probably used to opening **and** closing files. Sometimes you open files and forget to close them, and thus left with open file pointers, which can lead to accidental read/writes.
 
-Introduce `with`, which allows Python users to safely open and read/write to a file without worrying about closing it later. This *also* closes the file if any exceptions are thrown.
+Introduce `with`, which allows Python users to safely open and read/write to a file without worrying about closing it later. This _also_ closes the file if any exceptions are thrown.
 
 Use it like so:
 
@@ -237,7 +237,7 @@ Here we are specifying to join each element of the list with a space.
 
 You can join lists using any characters, or none at all.
 
-Note: using `.join()` may be faster than string concatenations  when you have **a lot** of strings to join together. Otherwise, for the sake of readability, stick with string concatenations.
+Note: using `.join()` may be faster than string concatenations when you have **a lot** of strings to join together. Otherwise, for the sake of readability, stick with string concatenations.
 
 ##### 9. Reserved keywords
 
@@ -255,9 +255,9 @@ TypeError: 'list' object is not callable
 
 Since we used `list` as a variable, when we try to convert the range iterable to a `list`, we get an error!
 
-Obviously, in a small example like this, it is easy to debug, but in a large application, finding the source of the problem can take time, since it doesn't tell us *where* to look, especially if we used the reserved word in a different context or module.
+Obviously, in a small example like this, it is easy to debug, but in a large application, finding the source of the problem can take time, since it doesn't tell us _where_ to look, especially if we used the reserved word in a different context or module.
 
-For a list of words *not* to use in Python, you can run these commands.
+For a list of words _not_ to use in Python, you can run these commands.
 
 ```python
 >>> import builtins

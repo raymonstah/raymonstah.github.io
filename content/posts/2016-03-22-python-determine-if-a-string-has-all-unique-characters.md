@@ -1,11 +1,11 @@
 ---
 layout: post
-title: 'Python: Determine if a string has all unique characters'
-date: '2016-03-22 23:26:00'
+title: "Python: Determine if a string has all unique characters"
+date: "2016-03-22 23:26:00"
 tags:
-- python
-- ctci
-- programming
+  - python
+  - ctci
+  - programming
 ---
 
 ###### Given a string, return True if it has all unique characters. Return False otherwise
@@ -64,6 +64,7 @@ We do `sorted_string[:-1]` because we want to iterate all but the last character
 This algorithm however, is bounded by the time it takes to sort the string, which is usually `O(n*log(n))`.
 
 ---
+
 If you found this helpful, please share! Thank you very much.
 
 For similar problems and even more practice, I highly recommend this book: [Cracking The Coding Interview](http://www.amazon.com/gp/product/0984782850/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0984782850&linkCode=as2&tag=raymondtaught-20&linkId=B5YLU3P62LR6PO25)

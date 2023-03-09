@@ -1,10 +1,10 @@
 ---
 layout: post
-title: 'The Python Way: 10 Tips'
-date: '2016-03-23 08:10:08'
+title: "The Python Way: 10 Tips"
+date: "2016-03-23 08:10:08"
 tags:
-- python
-- programming
+  - python
+  - programming
 ---
 
 Below are 10 useful tips and tricks in Python. Some of them highlight mistakes that are commonly made by beginners to the language.
@@ -131,9 +131,10 @@ bag_of_bags[0][0] = 1
 ```
 
 Also note that:
->"Premature optimization is the root of all evil"
 
-Ask yourself, do you *really* need to initialize a list?
+> "Premature optimization is the root of all evil"
+
+Ask yourself, do you _really_ need to initialize a list?
 
 ##### 5. String building
 
@@ -150,7 +151,7 @@ print(string)
 
 Ugh, see how messy that was?
 Instead, you can use `.format()` to format your strings in a nice, cleaner way.
-**Do** *this* instead.
+**Do** _this_ instead.
 
 ```python
 name = "Raymond"
@@ -231,7 +232,7 @@ You may also be interested in `setdefault()`.
 Note: Here's an even simpler although slightly more costly way of doing it:
 
 ```python
-bag = [2, 3, 1, 2, 5, 6, 7, 9, 2, 7] 
+bag = [2, 3, 1, 2, 5, 6, 7, 9, 2, 7]
 countr = dict([(num, bag.count(num)) for num in bag])
 
 for i in range(10):
@@ -254,7 +255,7 @@ For example, in the previous example, we created a function to count the occurre
 
 ```python
 from collections import Counter
-bag = [2, 3, 1, 2, 5, 6, 7, 9, 2, 7] 
+bag = [2, 3, 1, 2, 5, 6, 7, 9, 2, 7]
 countr = Counter(bag)
 
 for i in range(10):
@@ -263,10 +264,10 @@ for i in range(10):
 
 Some reasons for using libraries:
 
-* Code is correct and tested
-* Their algorithm is more than likely to be optimized and thus, runs faster.
-* Abstraction: its intentions are clear and well documented, which allows you to focus on what hasn't been done yet.
-* Lastly, it's there so you don't have to reinvent the wheel.
+- Code is correct and tested
+- Their algorithm is more than likely to be optimized and thus, runs faster.
+- Abstraction: its intentions are clear and well documented, which allows you to focus on what hasn't been done yet.
+- Lastly, it's there so you don't have to reinvent the wheel.
 
 ##### 9. Slicing/Stepping through a list
 
@@ -279,7 +280,7 @@ for elem in bag[:5]:
     print(elem)
 ```
 
-This is known as *slicing*. Since we specified the `stop` position of 5, we will take 5 elements from the list before stopping.
+This is known as _slicing_. Since we specified the `stop` position of 5, we will take 5 elements from the list before stopping.
 
 How about last 5 elements in the list?
 
@@ -291,7 +292,7 @@ for elem in bag[-5:]:
 
 Didn't see that one coming huh? The `-5` means start from the end of the list and take 5 elements.
 
-Suppose you wanted to do something to *every other* element in a list
+Suppose you wanted to do something to _every other_ element in a list
 Here's what you **might** do:
 
 ```python
@@ -313,7 +314,7 @@ bag = list(range(0,10,2))
 print(bag)
 ```
 
-This is known as *stepping* through a list. `list[::2]` means that you are going through this list and taking one element for every two steps.
+This is known as _stepping_ through a list. `list[::2]` means that you are going through this list and taking one element for every two steps.
 Some other cool things you can do with steps are `list[::-1]` which will reverse a list.
 
 ##### 10. Tabs vs Spaces
@@ -339,6 +340,6 @@ For helping me make some of these tips ever better!
 
 Thanks for reading! If this was helpful for you, please share it with someone. Best of luck learning Python!
 
-Edit: For *more* tips, click [here](http://raymondtaught.me/the-python-way-part-two-10-more-tips/)!
+Edit: For _more_ tips, click [here](http://raymondtaught.me/the-python-way-part-two-10-more-tips/)!
 
 I'll also recommend this book: [Effective Python](http://www.amazon.com/gp/product/0134034287/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0134034287&linkCode=as2&tag=raymondtaught-20&linkId=OW7R33IRZCF7MFQS)

@@ -1,3 +1,6 @@
 [submodule "themes/soho"]
 	path = themes/soho
 	url = https://github.com/alexandrevicenzi/soho.git
+[submodule "themes/themes/soho"]
+	path = themes/themes/soho
+	url = https://github.com/alexandrevicenzi/soho

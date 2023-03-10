@@ -1,9 +1,13 @@
 # Hello, my name is Raymond
 
-I'm currently a Software Engineer at LaunchDarkly, where we're building a
-feature management platform for software teams. I've been in the industry
-for about five years now, and I spend most of my days writing Go code.
-I like learning about new technologies and programming languages.
+I'm currently a Software Engineer at Hashicorp, working on Vault, a security product.
+I've been in the industry for about seven years now. Most of my time has been spent on the backend, building distributed, fault tolerant systems, writing new web APIs, with databases, and delivering useful software to customers.
+
+I've previously worked at:
+
+1. ZapLabs (now Anywhere Real Estate): building a CRM for real estate agents.
+2. LaunchDarkly: building enterprise feature flag software for development teams.
+3. SundaeSwap: a Web3 company building a decentralized exchange for Cardano.
 
 More recently, I've been very interested in building serverless cloud-native software.
 I care a lot about performance, user experience, and simplicity.

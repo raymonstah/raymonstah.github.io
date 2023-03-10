@@ -3,24 +3,17 @@
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="generator" content="Hugo 0.80.0" />
+  <meta name="generator" content="Hugo 0.111.2">
 
   <title>Data Structures: Hash Tables &middot; Raymond Ho</title>
 
   <meta name="description" content="" />
 
-  
-
-<meta itemprop="name" content="Data Structures: Hash Tables">
-<meta itemprop="description" content="Hash Tables Also known as maps or dicts, depending on the programming language you&rsquo;re working with.">
-<meta itemprop="datePublished" content="2016-06-10T18:47:06+00:00" />
+  <meta itemprop="name" content="Data Structures: Hash Tables">
+<meta itemprop="description" content="Hash Tables Also known as maps or dicts, depending on the programming language you&rsquo;re working with."><meta itemprop="datePublished" content="2016-06-10T18:47:06+00:00" />
 <meta itemprop="dateModified" content="2016-06-10T18:47:06+00:00" />
 <meta itemprop="wordCount" content="733">
-
-
-
 <meta itemprop="keywords" content="python,data-structures," />
-
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Data Structures: Hash Tables"/>
@@ -30,7 +23,7 @@
 <meta property="og:title" content="Data Structures: Hash Tables" />
 <meta property="og:description" content="Hash Tables Also known as maps or dicts, depending on the programming language you&rsquo;re working with." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://raymonstah.github.io/posts/2016-06-10-data-structures-hash-tables/" />
+<meta property="og:url" content="https://raymonstah.github.io/posts/2016-06-10-data-structures-hash-tables/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2016-06-10T18:47:06+00:00" />
 <meta property="article:modified_time" content="2016-06-10T18:47:06+00:00" />
 
@@ -169,7 +162,9 @@
       
         
         <div class="author-image">
-          <img src="/adorableavatar.png" class="img-circle img-headshot center" alt="Profile Picture">
+          <a href="https://raymonstah.github.io/">
+            <img src="/adorableavatar.png" class="img-circle img-headshot center" alt="Profile Picture">
+          </a>
         </div>
         
       
@@ -215,7 +210,7 @@
   
 
   <div class="post-date">
-    <time datetime="2016-06-10T18:47:06Z">Jun 10, 2016</time> &middot; 4 min read
+    <time datetime="2016-06-10T18:47:06Z">Jun 10, 2016</time> <span class="readtime">&middot; 4 min read</span>
   </div>
 
   <div>
@@ -238,50 +233,50 @@
 <p>In Python, hash tables are called <code>dicts</code>, dictionary for short. We can initialize an empty dict with <code>{}</code></p>
 <p>Lots of problems involve hash tables, or can benefit from them. If the problem requires fast lookup, insertions, and deletions, using a hash table will most likely be optimal. Let&rsquo;s solve some problems with them!</p>
 <h3 id="1-determine-if-a-string-has-unique-characters-case-sensitive">1. Determine if a string has unique characters. (case sensitive)</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">unique</span>(string):
-    letter_mapping <span style="color:#f92672">=</span> {}
-    <span style="color:#66d9ef">for</span> char <span style="color:#f92672">in</span> string:
-        <span style="color:#66d9ef">if</span> char <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> letter_mapping:
-            letter_mapping[char] <span style="color:#f92672">=</span> True
-        <span style="color:#66d9ef">else</span>:
-            <span style="color:#66d9ef">return</span> False
-    <span style="color:#66d9ef">return</span> True
-</code></pre></div><p>Test Cases:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> unique(<span style="color:#e6db74">&#34;Raymond&#34;</span>)
-True
-<span style="color:#f92672">&gt;&gt;&gt;</span> unique(<span style="color:#e6db74">&#34;rRaAyYmMoOnNdD&#34;</span>)
-True
-<span style="color:#f92672">&gt;&gt;&gt;</span> unique(<span style="color:#e6db74">&#34;aabc&#34;</span>)
-False
-
-</code></pre></div><hr>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">unique</span>(string):
+</span></span><span style="display:flex;"><span>    letter_mapping <span style="color:#f92672">=</span> {}
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> char <span style="color:#f92672">in</span> string:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> char <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> letter_mapping:
+</span></span><span style="display:flex;"><span>            letter_mapping[char] <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">True</span>
+</span></span></code></pre></div><p>Test Cases:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> unique(<span style="color:#e6db74">&#34;Raymond&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> unique(<span style="color:#e6db74">&#34;rRaAyYmMoOnNdD&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> unique(<span style="color:#e6db74">&#34;aabc&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">False</span>
+</span></span></code></pre></div><hr>
 <h3 id="2-write-a-method-to-decide-if-one-string-is-the-permutation-of-another-also-case-sensitive">2. Write a method to decide if one string is the permutation of another. (also case sensitive)**</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">permutation</span>(a, b):
-    mapping_a, mapping_b <span style="color:#f92672">=</span> {}, {}
-    <span style="color:#66d9ef">for</span> char <span style="color:#f92672">in</span> a:
-        mapping_a[char] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">if</span> char <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> mapping_a <span style="color:#66d9ef">else</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
-    <span style="color:#66d9ef">for</span> char <span style="color:#f92672">in</span> b:
-        mapping_b[char] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">if</span> char <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> mapping_b <span style="color:#66d9ef">else</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
-    <span style="color:#66d9ef">return</span> mapping_a <span style="color:#f92672">==</span> mapping_b
-</code></pre></div><p>Test Cases:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> permutation(<span style="color:#e6db74">&#34;Tom Marvolo Riddle&#34;</span>, <span style="color:#e6db74">&#34;I Am Lord Voldemort&#34;</span>)
-False
-<span style="color:#f92672">&gt;&gt;&gt;</span> permutation(<span style="color:#e6db74">&#34;silent&#34;</span>, <span style="color:#e6db74">&#34;listen&#34;</span>)
-True
-<span style="color:#f92672">&gt;&gt;&gt;</span> permutation(<span style="color:#e6db74">&#34;eleven plus two&#34;</span>, <span style="color:#e6db74">&#34;twelve plus one&#34;</span>)
-True
-<span style="color:#f92672">&gt;&gt;&gt;</span> permutation(<span style="color:#e6db74">&#34;debit card&#34;</span>, <span style="color:#e6db74">&#34;bad credit&#34;</span>)
-True
-<span style="color:#f92672">&gt;&gt;&gt;</span> permutation(<span style="color:#e6db74">&#34;nujabes&#34;</span>, <span style="color:#e6db74">&#34;Seba Jun&#34;</span>)
-False
-</code></pre></div><p>Notice that in some of the cases, like nujabes, our algorithm said that it wasn&rsquo;t a permutation of the late artist&rsquo;s name, Seba Jun. That&rsquo;s because it treats lowercase and uppercase letters differently, and also counted spaces.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">permutation</span>(a, b):
+</span></span><span style="display:flex;"><span>    mapping_a, mapping_b <span style="color:#f92672">=</span> {}, {}
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> char <span style="color:#f92672">in</span> a:
+</span></span><span style="display:flex;"><span>        mapping_a[char] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">if</span> char <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> mapping_a <span style="color:#66d9ef">else</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> char <span style="color:#f92672">in</span> b:
+</span></span><span style="display:flex;"><span>        mapping_b[char] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">if</span> char <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> mapping_b <span style="color:#66d9ef">else</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> mapping_a <span style="color:#f92672">==</span> mapping_b
+</span></span></code></pre></div><p>Test Cases:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> permutation(<span style="color:#e6db74">&#34;Tom Marvolo Riddle&#34;</span>, <span style="color:#e6db74">&#34;I Am Lord Voldemort&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> permutation(<span style="color:#e6db74">&#34;silent&#34;</span>, <span style="color:#e6db74">&#34;listen&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> permutation(<span style="color:#e6db74">&#34;eleven plus two&#34;</span>, <span style="color:#e6db74">&#34;twelve plus one&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> permutation(<span style="color:#e6db74">&#34;debit card&#34;</span>, <span style="color:#e6db74">&#34;bad credit&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> permutation(<span style="color:#e6db74">&#34;nujabes&#34;</span>, <span style="color:#e6db74">&#34;Seba Jun&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">False</span>
+</span></span></code></pre></div><p>Notice that in some of the cases, like nujabes, our algorithm said that it wasn&rsquo;t a permutation of the late artist&rsquo;s name, Seba Jun. That&rsquo;s because it treats lowercase and uppercase letters differently, and also counted spaces.</p>
 <p><strong>Exercise:</strong> Fix the algorithms so that it ignores spaces and is case-insensitive.</p>
 <hr>
 <p>Thanks y&rsquo;all. If you haven&rsquo;t already, this book, <a href="https://www.amazon.com/gp/product/0262033844/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0262033844&amp;linkCode=as2&amp;tag=raymondtaught-20&amp;linkId=652d94806b687ba3079503b820cbc461">Introduction to Algorithms, 3rd Edition</a> is THE algorithms and data structure book to get. You will most likely use it in your algorithms / data structure class or reference back to it when you forgot what the heck a Fibonacci Heap is.</p>
 
   </div>
 
-  <div>
+  
+<div>
   <ul class="tags">
   <li>
     <a href="https://raymonstah.github.io/tags/python/" class="tag-link">python</a>
@@ -292,6 +287,7 @@ False
   </li>
   </ul>
 </div>
+
 
 
   <div class="share-buttons">
@@ -326,15 +322,15 @@ False
      data-text="Data Structures: Hash Tables"><i class="fab fa-pinterest"></i></a>
 </div>
 
+
+  
 </div>
-
-
   </main>
 
   <footer>
   <div>
     <p>
-      &copy; Raymond Ho 2021
+      &copy; Raymond Ho 2023
 
       &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
 
@@ -354,17 +350,20 @@ False
 
   
 
-  
+    
+      
 <script type="application/javascript">
 var doNotTrack = false;
 if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 	ga('create', 'UA-164579651-1', 'auto');
 	
 	ga('send', 'pageview');
 }
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
+    
 </body>
 </html>

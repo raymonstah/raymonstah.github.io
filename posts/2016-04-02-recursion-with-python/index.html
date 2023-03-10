@@ -3,34 +3,27 @@
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="generator" content="Hugo 0.80.0" />
+  <meta name="generator" content="Hugo 0.111.2">
 
   <title>Recursion with Python &middot; Raymond Ho</title>
 
   <meta name="description" content="" />
 
-  
-
-<meta itemprop="name" content="Recursion with Python">
-<meta itemprop="description" content="What is Recursion?  If you don&rsquo;t know recursion, read this sentence again.">
-<meta itemprop="datePublished" content="2016-04-02T21:01:28+00:00" />
+  <meta itemprop="name" content="Recursion with Python">
+<meta itemprop="description" content="What is Recursion? If you don&rsquo;t know recursion, read this sentence again."><meta itemprop="datePublished" content="2016-04-02T21:01:28+00:00" />
 <meta itemprop="dateModified" content="2016-04-02T21:01:28+00:00" />
 <meta itemprop="wordCount" content="798">
-
-
-
 <meta itemprop="keywords" content="python,programming,functional-programming,recursion," />
-
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Recursion with Python"/>
-<meta name="twitter:description" content="What is Recursion?  If you don&rsquo;t know recursion, read this sentence again."/>
+<meta name="twitter:description" content="What is Recursion? If you don&rsquo;t know recursion, read this sentence again."/>
 
 
 <meta property="og:title" content="Recursion with Python" />
-<meta property="og:description" content="What is Recursion?  If you don&rsquo;t know recursion, read this sentence again." />
+<meta property="og:description" content="What is Recursion? If you don&rsquo;t know recursion, read this sentence again." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://raymonstah.github.io/posts/2016-04-02-recursion-with-python/" />
+<meta property="og:url" content="https://raymonstah.github.io/posts/2016-04-02-recursion-with-python/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2016-04-02T21:01:28+00:00" />
 <meta property="article:modified_time" content="2016-04-02T21:01:28+00:00" />
 
@@ -76,7 +69,7 @@
       },
       "datePublished": "2016-04-02T21:01:28+00:00",
       "dateModified": "2016-04-02T21:01:28+00:00",
-      "description": "What is Recursion?  If you don\u0026rsquo;t know recursion, read this sentence again.",
+      "description": "What is Recursion? If you don\u0026rsquo;t know recursion, read this sentence again.",
       "inLanguage": "en-us",
       "potentialAction": [
         {
@@ -171,7 +164,9 @@
       
         
         <div class="author-image">
-          <img src="/adorableavatar.png" class="img-circle img-headshot center" alt="Profile Picture">
+          <a href="https://raymonstah.github.io/">
+            <img src="/adorableavatar.png" class="img-circle img-headshot center" alt="Profile Picture">
+          </a>
         </div>
         
       
@@ -217,7 +212,7 @@
   
 
   <div class="post-date">
-    <time datetime="2016-04-02T21:01:28Z">Apr 2, 2016</time> &middot; 4 min read
+    <time datetime="2016-04-02T21:01:28Z">Apr 2, 2016</time> <span class="readtime">&middot; 4 min read</span>
   </div>
 
   <div>
@@ -235,17 +230,17 @@
 <li><a href="https://en.wikipedia.org/wiki/Mandelbrot_set">Fractals</a>, and those found in nature.</li>
 </ol>
 <p>Recursive programming involves a function calling itself. Note that Python has a maximum recursion stack of <code>1,000</code>, but if you ever need to increase it for learning purposes, you can do so like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> sys
-sys<span style="color:#f92672">.</span>setrecursionlimit(<span style="color:#ae81ff">10000</span>)
-</code></pre></div><p>Also, note that anything that can be done recursively can also be done iteratively, and vice versa. Some algorithms should naturally be solved using recursion, like <a href="https://en.wikipedia.org/wiki/Tower_of_Hanoi">Towers of Hanoi</a>, while others are better suited for iteration.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> sys
+</span></span><span style="display:flex;"><span>sys<span style="color:#f92672">.</span>setrecursionlimit(<span style="color:#ae81ff">10000</span>)
+</span></span></code></pre></div><p>Also, note that anything that can be done recursively can also be done iteratively, and vice versa. Some algorithms should naturally be solved using recursion, like <a href="https://en.wikipedia.org/wiki/Tower_of_Hanoi">Towers of Hanoi</a>, while others are better suited for iteration.</p>
 <p>You should always try to write your code iteratively in Python since recursion isn&rsquo;t optimized and is often slower than iteration. The examples that I&rsquo;m going to show you are strictly for educational purposes.</p>
 <h3 id="fibonacci">Fibonacci</h3>
 <p>A lot of times, the fibonacci sequence is shown to beginners as an example to recursion.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fibonacci</span>(n):
-    <span style="color:#66d9ef">if</span> n <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">or</span> n <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>:
-        <span style="color:#66d9ef">return</span> n
-    <span style="color:#66d9ef">return</span> fibonacci(n<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span> fibonacci(n<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>)
-</code></pre></div><p>In mathematics, recursion is the natural way to solve the fibonacci problem. The fibonacci mapping of an index, <code>n</code> is always the sum of the two previous fibonacci numbers.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fibonacci</span>(n):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> n <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">or</span> n <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> n
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> fibonacci(n<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span> fibonacci(n<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>)
+</span></span></code></pre></div><p>In mathematics, recursion is the natural way to solve the fibonacci problem. The fibonacci mapping of an index, <code>n</code> is always the sum of the two previous fibonacci numbers.</p>
 <p>I believe this is a bad example for a couple of reasons:</p>
 <ol>
 <li>It&rsquo;s not practical. Try <code>fibonacci(20)</code>. It&rsquo;ll blow up because it has to recompute the same sequences multiple times, coming out to a slow <code>O(2^n)</code> exponential runtime.</li>
@@ -256,39 +251,39 @@ sys<span style="color:#f92672">.</span>setrecursionlimit(<span style="color:#ae8
 <p>Let&rsquo;s say you want to find the length of a list, <code>some_list</code>. In recursion, there is often a base case, and a recursive case.</p>
 <ul>
 <li>Our base case here is that if <code>some_list</code> is empty, then the count of that list is <code>0</code>.</li>
-<li>Otherwise, we add <code>1</code>  and make a <em>recursive</em> call to the function, passing the parameter as all but the first element of <code>some_list</code>.</li>
+<li>Otherwise, we add <code>1</code> and make a <em>recursive</em> call to the function, passing the parameter as all but the first element of <code>some_list</code>.</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">findLengthOfList</span>(some_list):
-    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">if</span> some_list <span style="color:#f92672">==</span> [] <span style="color:#66d9ef">else</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> findLengthOfList(some_list[<span style="color:#ae81ff">1</span>:])
-
-<span style="color:#66d9ef">print</span>(findLengthOfList([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>])) <span style="color:#75715e"># 5</span>
-</code></pre></div><p>I mean obviously, in a real program you should use <code>len(some_list)</code>, but remember, this is for educational purposes!</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">findLengthOfList</span>(some_list):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">if</span> some_list <span style="color:#f92672">==</span> [] <span style="color:#66d9ef">else</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> findLengthOfList(some_list[<span style="color:#ae81ff">1</span>:])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(findLengthOfList([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>])) <span style="color:#75715e"># 5</span>
+</span></span></code></pre></div><p>I mean obviously, in a real program you should use <code>len(some_list)</code>, but remember, this is for educational purposes!</p>
 <h3 id="max-of-a-list">Max of a List</h3>
 <ul>
 <li>Our base case here is to return <code>max_given</code> if the list is empty.</li>
 <li>The recursive step is to pass the <em>body</em> (all but the first) of the list to our function again, along with the <code>max_so_far</code> which we computed.</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">findMaxOfList</span>(some_list, max_given):
-    <span style="color:#66d9ef">if</span> some_list <span style="color:#f92672">==</span> []:
-        <span style="color:#66d9ef">return</span> max_given
-    max_so_far <span style="color:#f92672">=</span> max_given <span style="color:#66d9ef">if</span> max_given <span style="color:#f92672">&gt;</span> some_list[<span style="color:#ae81ff">0</span>] <span style="color:#66d9ef">else</span> some_list[<span style="color:#ae81ff">0</span>]
-    <span style="color:#66d9ef">return</span> findMaxOfList(some_list[<span style="color:#ae81ff">1</span>:], max_so_far)
-
-<span style="color:#66d9ef">print</span>(findMaxOfList([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">10</span>], <span style="color:#f92672">-</span>float(<span style="color:#e6db74">&#34;Inf&#34;</span>))) <span style="color:#75715e"># 6</span>
-</code></pre></div><p>Likewise, you can always use <code>max(some_list)</code> instead of rolling your own function.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">findMaxOfList</span>(some_list, max_given):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> some_list <span style="color:#f92672">==</span> []:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> max_given
+</span></span><span style="display:flex;"><span>    max_so_far <span style="color:#f92672">=</span> max_given <span style="color:#66d9ef">if</span> max_given <span style="color:#f92672">&gt;</span> some_list[<span style="color:#ae81ff">0</span>] <span style="color:#66d9ef">else</span> some_list[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> findMaxOfList(some_list[<span style="color:#ae81ff">1</span>:], max_so_far)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(findMaxOfList([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">10</span>], <span style="color:#f92672">-</span>float(<span style="color:#e6db74">&#34;Inf&#34;</span>))) <span style="color:#75715e"># 6</span>
+</span></span></code></pre></div><p>Likewise, you can always use <code>max(some_list)</code> instead of rolling your own function.</p>
 <h3 id="reversing-a-list">Reversing a List</h3>
 <p>Once again, we can break the algorithm into a base case and a recursive case.</p>
 <ul>
 <li>If we receive an empty list, or a list of a single element, then it is already &ldquo;reversed&rdquo;. Simply return that list.</li>
 <li>If we receive a list of 2 or more elements, we can return a new list, consisting of the last element of <code>some_list</code> followed by a recursive call with the parameter as all but the last element of <code>some_list</code>.</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">reverse</span>(some_list):
-    <span style="color:#66d9ef">if</span> len(some_list) <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">2</span>:
-        <span style="color:#66d9ef">return</span> some_list
-    <span style="color:#66d9ef">return</span> [some_list[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]] <span style="color:#f92672">+</span> reverse(some_list[:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>])
-
-<span style="color:#66d9ef">print</span>(reverse(list(range(<span style="color:#ae81ff">10</span>)))) <span style="color:#75715e"># [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]</span>
-</code></pre></div><p>Don&rsquo;t roll your own <code>reverse</code> function in production! Use the built in <code>reversed()</code> function instead.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">reverse</span>(some_list):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> len(some_list) <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">2</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> some_list
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> [some_list[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]] <span style="color:#f92672">+</span> reverse(some_list[:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(reverse(list(range(<span style="color:#ae81ff">10</span>)))) <span style="color:#75715e"># [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]</span>
+</span></span></code></pre></div><p>Don&rsquo;t roll your own <code>reverse</code> function in production! Use the built in <code>reversed()</code> function instead.</p>
 <h3 id="sorting-a-list-using-quick-sort">Sorting a List using Quick sort</h3>
 <p>This algorithm is super elegant when solved by recursion, even though it is slower than the iterative version of quick sort.</p>
 <p>It works like this:</p>
@@ -298,16 +293,16 @@ sys<span style="color:#f92672">.</span>setrecursionlimit(<span style="color:#ae8
 <li>Partition the rest of the list by those that are greater than <code>first</code>, and those that are less than <code>first</code>, which are computed recursively.</li>
 <li>Finally, we return a newly created list which <code>less_than_first</code> comes first, followed by <code>first</code>, and lastly, we append <code>greater_than_first</code>.</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">quicksort</span>(some_list):
-    <span style="color:#66d9ef">if</span> some_list <span style="color:#f92672">==</span> []:
-        <span style="color:#66d9ef">return</span> []
-    first <span style="color:#f92672">=</span> some_list[<span style="color:#ae81ff">0</span>]
-    less_than_first <span style="color:#f92672">=</span> quicksort([elem <span style="color:#66d9ef">for</span> elem <span style="color:#f92672">in</span> some_list[<span style="color:#ae81ff">1</span>:] <span style="color:#66d9ef">if</span> elem <span style="color:#f92672">&lt;</span> first])
-    greater_than_first <span style="color:#f92672">=</span> quicksort([elem <span style="color:#66d9ef">for</span> elem <span style="color:#f92672">in</span> some_list[<span style="color:#ae81ff">1</span>:] <span style="color:#66d9ef">if</span> elem <span style="color:#f92672">&gt;=</span> first])
-    <span style="color:#66d9ef">return</span> less_than_first <span style="color:#f92672">+</span> [first] <span style="color:#f92672">+</span> greater_than_first
-
-<span style="color:#66d9ef">print</span>(quicksort([<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">5</span>])) <span style="color:#75715e"># [1, 2, 3, 4, 5]</span>
-</code></pre></div><p>Don&rsquo;t forget about <code>sorted()</code> or <code>.sort()</code> if you want to apply this to real code!</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">quicksort</span>(some_list):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> some_list <span style="color:#f92672">==</span> []:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> []
+</span></span><span style="display:flex;"><span>    first <span style="color:#f92672">=</span> some_list[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>    less_than_first <span style="color:#f92672">=</span> quicksort([elem <span style="color:#66d9ef">for</span> elem <span style="color:#f92672">in</span> some_list[<span style="color:#ae81ff">1</span>:] <span style="color:#66d9ef">if</span> elem <span style="color:#f92672">&lt;</span> first])
+</span></span><span style="display:flex;"><span>    greater_than_first <span style="color:#f92672">=</span> quicksort([elem <span style="color:#66d9ef">for</span> elem <span style="color:#f92672">in</span> some_list[<span style="color:#ae81ff">1</span>:] <span style="color:#66d9ef">if</span> elem <span style="color:#f92672">&gt;=</span> first])
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> less_than_first <span style="color:#f92672">+</span> [first] <span style="color:#f92672">+</span> greater_than_first
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(quicksort([<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">5</span>])) <span style="color:#75715e"># [1, 2, 3, 4, 5]</span>
+</span></span></code></pre></div><p>Don&rsquo;t forget about <code>sorted()</code> or <code>.sort()</code> if you want to apply this to real code!</p>
 <hr>
 <p>Thanks for reading! Please ask questions or share your thoughts!</p>
 <p>For programming languages that optimize recursion, check out Functional Programming languages like Haskell, or a Lisp.</p>
@@ -316,7 +311,8 @@ sys<span style="color:#f92672">.</span>setrecursionlimit(<span style="color:#ae8
 
   </div>
 
-  <div>
+  
+<div>
   <ul class="tags">
   <li>
     <a href="https://raymonstah.github.io/tags/python/" class="tag-link">python</a>
@@ -335,6 +331,7 @@ sys<span style="color:#f92672">.</span>setrecursionlimit(<span style="color:#ae8
   </li>
   </ul>
 </div>
+
 
 
   <div class="share-buttons">
@@ -369,15 +366,15 @@ sys<span style="color:#f92672">.</span>setrecursionlimit(<span style="color:#ae8
      data-text="Recursion with Python"><i class="fab fa-pinterest"></i></a>
 </div>
 
+
+  
 </div>
-
-
   </main>
 
   <footer>
   <div>
     <p>
-      &copy; Raymond Ho 2021
+      &copy; Raymond Ho 2023
 
       &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
 
@@ -397,17 +394,20 @@ sys<span style="color:#f92672">.</span>setrecursionlimit(<span style="color:#ae8
 
   
 
-  
+    
+      
 <script type="application/javascript">
 var doNotTrack = false;
 if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 	ga('create', 'UA-164579651-1', 'auto');
 	
 	ga('send', 'pageview');
 }
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
+    
 </body>
 </html>

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.111.2">
+
+  <title>How I Built AsianAmericans.wiki &middot; Raymond Ho</title>
+
+  <meta name="description" content="" />
+
+  <meta itemprop="name" content="How I Built AsianAmericans.wiki">
+<meta itemprop="description" content="In this post I&rsquo;ll talk about the technology behind AsianAmericans.wiki and how I plan on evolving it over time."><meta itemprop="datePublished" content="2023-03-07T21:15:09-08:00" />
+<meta itemprop="dateModified" content="2023-03-07T21:15:09-08:00" />
+<meta itemprop="wordCount" content="1105">
+<meta itemprop="keywords" content="" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="How I Built AsianAmericans.wiki"/>
+<meta name="twitter:description" content="In this post I&rsquo;ll talk about the technology behind AsianAmericans.wiki and how I plan on evolving it over time."/>
+
+
+<meta property="og:title" content="How I Built AsianAmericans.wiki" />
+<meta property="og:description" content="In this post I&rsquo;ll talk about the technology behind AsianAmericans.wiki and how I plan on evolving it over time." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://raymonstah.github.io/posts/2023-03-07-asianamericans.wiki/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-03-07T21:15:09-08:00" />
+<meta property="article:modified_time" content="2023-03-07T21:15:09-08:00" />
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://raymonstah.github.io/#author",
+      "name": "Raymond Ho",
+      "image": {
+        "@type":"ImageObject",
+        
+        "url": "https://raymonstah.github.io/adorableavatar.png"
+        
+      },
+      "description": "Random ramblings and rants"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://raymonstah.github.io/#website",
+      "url": "https://raymonstah.github.io/",
+      "name": "Raymond Ho",
+      "description": "Random ramblings and rants",
+      "publisher": {
+        "@id": "https://raymonstah.github.io/#author"
+      },
+      "inLanguage": "en-us"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://raymonstah.github.io/posts/2023-03-07-asianamericans.wiki/#webpage",
+      "url": "https://raymonstah.github.io/posts/2023-03-07-asianamericans.wiki/",
+      "name": "How I Built AsianAmericans.wiki",
+      "isPartOf": {
+        "@id": "https://raymonstah.github.io/#website"
+      },
+      "about": {
+         "@id": "https://raymonstah.github.io/#author"
+      },
+      "datePublished": "2023-03-07T21:15:09-08:00",
+      "dateModified": "2023-03-07T21:15:09-08:00",
+      "description": "In this post I\u0026rsquo;ll talk about the technology behind AsianAmericans.wiki and how I plan on evolving it over time.",
+      "inLanguage": "en-us",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://raymonstah.github.io/posts/2023-03-07-asianamericans.wiki/"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "isPartOf": {
+        "@id": "https://raymonstah.github.io/posts/2023-03-07-asianamericans.wiki/#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://raymonstah.github.io/posts/2023-03-07-asianamericans.wiki/#webpage"
+      },
+      "headline": "How I Built AsianAmericans.wiki",
+      "datePublished": "2023-03-07T21:15:09-08:00",
+      "dateModified": "2023-03-07T21:15:09-08:00",
+      "publisher": {
+        "@id": "https://raymonstah.github.io/#author"
+      },
+      "keywords": [
+      ],
+      "articleSection": [
+      ],
+      "inLanguage": "en-us",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "potentialAction": [
+        {
+          "@type": "CommentAction",
+          "name": "Comment",
+          "target": [
+            "https://raymonstah.github.io/posts/2023-03-07-asianamericans.wiki/#comments"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+        
+        <div class="author-image">
+          <a href="https://raymonstah.github.io/">
+            <img src="/adorableavatar.png" class="img-circle img-headshot center" alt="Profile Picture">
+          </a>
+        </div>
+        
+      
+
+      <h1>Raymond Ho</h1>
+
+      
+      <p class="lead">Random ramblings and rants</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://raymonstah.github.io/">Home</a>
+        </li>
+        <li>
+          <a href="/posts/">Posts</a>
+        </li><li>
+          <a href="/tags/">Tags</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://github.com/raymonstah" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://www.linkedin.com/in/raymond-ho/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1 class="title">How I Built AsianAmericans.wiki</h1>
+  
+
+  <div class="post-date">
+    <time datetime="2023-03-07T21:15:09-0800">Mar 7, 2023</time> <span class="readtime">&middot; 6 min read</span>
+  </div>
+
+  <div>
+  <p>In this post I&rsquo;ll talk about the technology behind AsianAmericans.wiki and how I plan on evolving it over time.</p>
+<p>Screenshot of AsianAmericans.wiki today:
+<img src="./home_page.png" alt="Home page of AsianAmericans.wiki"></p>
+<h1 id="background">Background</h1>
+<p>AsianAmericans.wiki is a website where you can go to learn more about famous Asian Americans (and non Americans too). When I first built the site, I wanted something that I could prototype quickly. Since the site allows contributions, I needed something that allows for auditing. It was going to be mostly static, so I didn&rsquo;t want to pay for running a server 24/7. I also wanted it to be very, very fast. Lastly, I wanted it to be discoverable, allowing more people to find it easily. So let&rsquo;s see, my four requirements were:</p>
+<ol>
+<li>Audit-able</li>
+<li>Low cost</li>
+<li>Performant</li>
+<li>SEO friendly</li>
+</ol>
+<p>And based on these requirements, I narrowed it down to two options:</p>
+<ol>
+<li>Build it myself.</li>
+<li>Use something off the shelf.</li>
+</ol>
+<p>I didn&rsquo;t want to build everything myself, because by the time I would have built it in the way that I wanted, with my skill set, it would&rsquo;ve taken months. It would&rsquo;ve required a ton of learning front-end skills and struggling with CSS before I could get something usable out the door.</p>
+<p>Enter Hugo. Hugo is a static site generator, and it hit all of the requirements that I was looking for.</p>
+<p><strong>Auditable</strong>: Because AsianAmericans.wiki was open source anyways, Git was the natural solution to track who made changes to which entries at what time. Auditing was built into the source control system itself. Anyone that was familiar with Git is able to contribute to the website.</p>
+<p><strong>Low cost</strong>: At the end of the day, Hugo generates a set of HTML, CSS, and JS files that you can deploy to a CDN of your choice. This literally made it free to run because I never exceeded the data transfer costs on Firebase hosting.</p>
+<p><strong>Performance</strong>: I also get the benefit of deploying to a CDN, which means that the data served is extremely close to wherever the users are. And since there&rsquo;s no servers involved, all of the data can be served from the CDN directly.</p>
+<p><strong>SEO</strong>: Because all pages are generated at build time, and nothing is dynamically fetched, SEO benefits from this. Lighthouse scores were 99/100/100/91 at the time of this writing.
+<img src="./lighthouse_score.png" alt="99/100/100/91 Lighthouse score"></p>
+<h1 id="making-everything-work">Making Everything Work</h1>
+<p>Unfortunately, Hugo couldn&rsquo;t do everything out the box for me, and there was a lot of unwanted tweaking necessary to make things work.</p>
+<h3 id="search">Search</h3>
+<p>The first was that I wanted a search feature. But how does one build a search feature into a static site? I ended up using a common Hugo solution for search, which is to build a search index at build time. This is essentially some JSON that we build using all of the available markdown files as source. Then, we can inject the json into the search page, where some client side Javascript will run to search against. It turns out, this was sufficient, and also highly performant. And it was completely free too. But it near impossible to customize, and to understand what users were searching for.</p>
+<h3 id="twitter-integration">Twitter Integration</h3>
+<p>I also had this idea of creating a <a href="https://twitter.com/aapiwiki">Twitter account</a>. It&rsquo;s powered by a bot that follows the people who are submitted to the website. Normally, this would be something that happens in the backend. The server would receive a request that a new person was contributed to the site, and fire off an event that would have the bot invoke the Twitter API to follow that person submitted.</p>
+<p>But because this is JAM stack, I had to get creative. I ended up writing a Go program that scans the entire set of Markdown files (the M in JAM) to extract the twitter handle from the markdown front matter. From there, I could perform a diff to find who needed to be followed or un-followed using Twitter&rsquo;s API. To automate it, I built it as a Github Action, so that whenever any markdown file was modified, the action would run and fire off the Twitter bot. This worked, was naturally event sourced, and was good enough to go to production with.</p>
+<h3 id="contribution-form">Contribution Form</h3>
+<p>Another aspect that I needed to build was some API that would accept contributions to the site. I know that not every one is a Git user and isn&rsquo;t familiar with writing Markdown, so I needed to build a user friendly way to perform this task. Again, I didn&rsquo;t want to build a whole server for something that would receive at most 100 requests per day, so I decided to go Serverless. I used Google Cloud Functions to deploy a Go handler that would accept this contribution, and submit a Github Pull request on behalf of the user. That&rsquo;s what powers the <a href="https://asianamericans.wiki/contribute/">contribution page</a> as of this writing.</p>
+<p><img src="contribution_page.png" alt="Screenshot of contribution page"></p>
+<p>It&rsquo;s important to note that all of these techniques may not necessarily scale if you&rsquo;re building the next Instagram, TikTok, or whatever. But I wasn&rsquo;t building that. What I prioritized was time to market, being able to get something out quickly and proving that it worked was more important that building the most scalable solution. It was important to consider that the upper bounds I was working with was in the hundreds or thousands, instead of millions and beyond.</p>
+<h1 id="future-work">Future work</h1>
+<p>I&rsquo;m currently in the process of migrating the the website into a more full fledged application. I&rsquo;ve always wanted to make AsianAmericans.wiki feel a bit more dynamic, allows users to log in, save, contribute, and gain ownership of how they use the app. And in order to support all of the features, I thought it would make sense to rewrite and restructure the architecture of AsianAmericans.wiki. While it may be possible to achieve the features I want using Hugo, I think restructuring it now would make it easier to evolve in the future. This includes bringing in a datastore to persist user-specific data, Cloud Functions to make things server-rendered to be SEO friendly and performant, and Algolia for fast index-based searches. It includes rewriting the entire UI in SvelteJS to make it truly customizable, and to have a development-friendly environment. Writing UI components is SvelteJS is much nicer than working HTML template files in Go.</p>
+<p>Overall, I&rsquo;m excited for this change and I hope that it&rsquo;ll bring more users to the site.</p>
+<h1 id="conclusion">Conclusion</h1>
+<p>Hugo was able to power my site for over two years in production with zero downtime. Everything worked the way it was supposed to, and without any major headaches. However, as my vision for the site continues to evolve, so should the technology powering it. I&rsquo;m excited for the growth of AsianAmericans.wiki in the years to come!</p>
+
+  </div>
+
+  
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="#"
+     title="Share on Twitter"
+     data-url="https://raymonstah.github.io/posts/2023-03-07-asianamericans.wiki/"
+     data-text="How I Built AsianAmericans.wiki"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="#"
+     title="Share on LinkedIn"
+     data-url="https://raymonstah.github.io/posts/2023-03-07-asianamericans.wiki/"
+     data-text="How I Built AsianAmericans.wiki"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="#"
+     title="Share on Facebook"
+     data-url="https://raymonstah.github.io/posts/2023-03-07-asianamericans.wiki/"
+     data-text="How I Built AsianAmericans.wiki"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="#"
+     title="Share on Telegram"
+     data-url="https://raymonstah.github.io/posts/2023-03-07-asianamericans.wiki/"
+     data-text="How I Built AsianAmericans.wiki"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="#"
+     title="Share on Pinterest"
+     data-url="https://raymonstah.github.io/posts/2023-03-07-asianamericans.wiki/"
+     data-text="How I Built AsianAmericans.wiki"><i class="fab fa-pinterest"></i></a>
+</div>
+
+
+  
+</div>
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy; Raymond Ho 2023
+
+      &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-164579651-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+    
+</body>
+</html>

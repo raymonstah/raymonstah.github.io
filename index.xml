@@ -6,7 +6,16 @@
     <description>Recent content on Raymond Ho</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 21 Jan 2021 21:43:42 -0800</lastBuildDate><atom:link href="https://raymonstah.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 07 Mar 2023 21:15:09 -0800</lastBuildDate><atom:link href="https://raymonstah.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How I Built AsianAmericans.wiki</title>
+      <link>https://raymonstah.github.io/posts/2023-03-07-asianamericans.wiki/</link>
+      <pubDate>Tue, 07 Mar 2023 21:15:09 -0800</pubDate>
+      
+      <guid>https://raymonstah.github.io/posts/2023-03-07-asianamericans.wiki/</guid>
+      <description>In this post I&amp;rsquo;ll talk about the technology behind AsianAmericans.wiki and how I plan on evolving it over time.</description>
+    </item>
+    
     <item>
       <title>Technologies I Want to Learn in 2021</title>
       <link>https://raymonstah.github.io/posts/2021-01-21-technologies-i-want-to-learn-in-2021/</link>
@@ -58,7 +67,7 @@
       <pubDate>Thu, 12 May 2016 00:13:31 +0000</pubDate>
       
       <guid>https://raymonstah.github.io/posts/2016-05-12-breaking-the-substitution-cipher/</guid>
-      <description>The Substitution Cipher  &amp;ldquo;Your cryptosystem should remain secure even if everything is known about it except the key&amp;rdquo; -Kerckhoffs</description>
+      <description>The Substitution Cipher &amp;ldquo;Your cryptosystem should remain secure even if everything is known about it except the key&amp;rdquo; -Kerckhoffs</description>
     </item>
     
     <item>
@@ -68,7 +77,7 @@
       
       <guid>https://raymonstah.github.io/posts/2016-04-22-bitwise-operation-analogies/</guid>
       <description>In binary, we have two options.
- Yes/No True/False 1/0 Good/Bad On/Off  There are a bunch of operations that can be performed on binary.</description>
+Yes/No True/False 1/0 Good/Bad On/Off There are a bunch of operations that can be performed on binary.</description>
     </item>
     
     <item>
@@ -95,7 +104,7 @@
       <pubDate>Sat, 02 Apr 2016 21:01:28 +0000</pubDate>
       
       <guid>https://raymonstah.github.io/posts/2016-04-02-recursion-with-python/</guid>
-      <description>What is Recursion?  If you don&amp;rsquo;t know recursion, read this sentence again.</description>
+      <description>What is Recursion? If you don&amp;rsquo;t know recursion, read this sentence again.</description>
     </item>
     
     <item>

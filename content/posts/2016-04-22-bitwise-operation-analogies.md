@@ -14,7 +14,8 @@ In binary, we have two options.
 - Good/Bad
 - On/Off
 
-There are a bunch of operations that can be performed on binary. Here are some of them, and some analogies that can help you understand them better.
+There are a bunch of operations that can be performed on binary. Here are some
+of them, and some analogies that can help you understand them better.
 
 ---
 
@@ -36,8 +37,9 @@ You can think of `NOT` as simply taking the opposite!
 
 ## OR
 
-When performing the OR operator on two objects, A, and B, either A or B must have the truth value.
-Just remember that for `OR`, you can be greedy and have **both** options.
+When performing the OR operator on two objects, A, and B, either A or B must
+have the truth value. Just remember that for `OR`, you can be greedy and have
+**both** options.
 
 ### Examples
 
@@ -48,13 +50,18 @@ Just remember that for `OR`, you can be greedy and have **both** options.
 
 ### Analogy
 
-Your mother wants the dishes to be done. She will yell at you and your sibling if they are not done by the end of the day. The work can be split! It doesn't matter who does it, but as long as someone _does_ it, then there will be no yelling. Both you _and_ your sibling can work together, and that's okay. The only way your mother will yell is if neither of you guys do them.
+Your mother wants the dishes to be done. She will yell at you and your sibling
+if they are not done by the end of the day. The work can be split! It doesn't
+matter who does it, but as long as someone _does_ it, then there will be no
+yelling. Both you _and_ your sibling can work together, and that's okay. The
+only way your mother will yell is if neither of you guys do them.
 
 ---
 
 ## AND
 
-When performing the AND operator on two objects, A, and B, both A and B must have the truth value.
+When performing the AND operator on two objects, A, and B, both A and B must
+have the truth value.
 
 ### Examples
 
@@ -67,15 +74,19 @@ Note that the truth value here is 1.
 
 ### Analogy
 
-You and your significant other are planning a date. And it's not a date unless both parties show up. If you show up, and the other doesn't, then it's not a date. The only way it's considered a date if both people show up.
+You and your significant other are planning a date. And it's not a date unless
+both parties show up. If you show up, and the other doesn't, then it's not a
+date. The only way it's considered a date if both people show up.
 
-A flashlight works when two batteries are both entered the correct way. If one or more of them are entered the wrong way, the flashlight won't turn on.
+A flashlight works when two batteries are both entered the correct way. If one
+or more of them are entered the wrong way, the flashlight won't turn on.
 
 ---
 
 ## XOR (eXclusive OR)
 
-When performing the XOR operator on two objects, A, and B, only A or B must have the truth value, but not both.
+When performing the XOR operator on two objects, A, and B, only A or B must have
+the truth value, but not both.
 
 ### Examples
 
@@ -86,10 +97,13 @@ When performing the XOR operator on two objects, A, and B, only A or B must have
 
 ### Analogy
 
-If your waiter asks you if you want Hash Browns or French Fries as your side, you can't say both! You must choose one or the other!
+If your waiter asks you if you want Hash Browns or French Fries as your side,
+you can't say both! You must choose one or the other!
 
-Two girls (or guys) like you. Too bad, you gotta choose one. **Exclusive** OR, buddy.
+Two girls (or guys) like you. Too bad, you gotta choose one. **Exclusive** OR,
+buddy.
 
 ---
 
-It's written by the famous Computer Scientist, [Donald Knuth](https://en.wikipedia.org/wiki/Donald_Knuth) !
+It's written by the famous Computer Scientist,
+[Donald Knuth](https://en.wikipedia.org/wiki/Donald_Knuth) !

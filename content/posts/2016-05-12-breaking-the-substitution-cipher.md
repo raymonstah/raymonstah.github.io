@@ -9,21 +9,29 @@ tags:
 
 ##### The Substitution Cipher
 
-> "Your cryptosystem should remain secure even if everything is known about it except the key" -[Kerckhoffs](https://en.wikipedia.org/wiki/Kerckhoffs's_principle)
+> "Your cryptosystem should remain secure even if everything is known about it
+> except the
+> key" -[Kerckhoffs](https://en.wikipedia.org/wiki/Kerckhoffs's_principle)
 
-Please note that this cipher should not be used in real applications as it can easily be hacked, as you'll see shortly.
+Please note that this cipher should not be used in real applications as it can
+easily be hacked, as you'll see shortly.
 
 Assume we're working with the lowercase English alphabet, and using `Python 3`.
 
 ###### The algorithm
 
-This version of the substitution cipher is simple. It's even called the [*simple substitution cipher*](<https://en.wikipedia.org/wiki/Substitution_cipher># Simple_substitution).
+This version of the substitution cipher is simple. It's even called the [*simple
+substitution cipher*](<https://en.wikipedia.org/wiki/Substitution_cipher>#
+Simple_substitution).
 
-1. Choose a `key` to be a random ordering of the alphabet. Note that there would be `26!` keys! That's a lot of keys if you're trying to brute force the cipher.
+1. Choose a `key` to be a random ordering of the alphabet. Note that there would
+   be `26!` keys! That's a lot of keys if you're trying to brute force the
+   cipher.
 2. Now map the alphabet to the key using a `dict`.
 3. Apply the mapping to each character of the `message`.
 4. Return the `ciphertext`.
-5. To decrypt: apply the reverse mapping to each character of the `ciphertext` to receive the original `message`.
+5. To decrypt: apply the reverse mapping to each character of the `ciphertext`
+   to receive the original `message`.
 
 ###### To encrypt
 
@@ -38,7 +46,9 @@ def encrypt(key, message):
 
 ###### To decrypt
 
-The decryption method is literally the same as the encrypt method, but the `key_mapping` is reversed. So we map the key to the alphabet rather than the alphabet to the keys.
+The decryption method is literally the same as the encrypt method, but the
+`key_mapping` is reversed. So we map the key to the alphabet rather than the
+alphabet to the keys.
 
 Putting it all together, we get this:
 
@@ -68,22 +78,37 @@ original = decrypt(key, ciphertext)
 # Original: hello this is a sample message.
 ```
 
-You should acknowledge the fact that the decryption of the encryption should always give you back the original message.
+You should acknowledge the fact that the decryption of the encryption should
+always give you back the original message.
 
 ###### Hacking the Substitution Cipher
 
-Now this is where it gets interesting. We'll be using an algorithm described by a Stanford professor, [Persi Diaconis](http://statweb.stanford.edu/~cgates/PERSI/papers/MCMCRev.pdf), to break the cipher.
+Now this is where it gets interesting. We'll be using an algorithm described by
+a Stanford professor,
+[Persi Diaconis](http://statweb.stanford.edu/~cgates/PERSI/papers/MCMCRev.pdf),
+to break the cipher.
 
 The algorithm works like this:
 
 1. Read a book.
-2. Count the two-letter frequencies and make a table out of it. For example, how many words have an `'a'` followed by an `'a'`.
-3. In the end, we will have a table of each bigram along with its occurrence in the book, which we'll assume is a good representation of the type of words our message will use.
-4. This will give us a scoring function that we can pass messages to, to see how well they do. The higher the score, the more likely that it's the message that we're trying to decrypt.
-5. Start with a random key, and get the score for that key. Swap two elements of that key, and get the score for the new key. If it results in a higher score, then that new key will be kept. If it's a lower score, we still might keep the new key on a biased probability. This is to make sure we don't get stuck in a local maximum. This is also known as the [hill-climbing technique](https://en.wikipedia.org/wiki/Hill_climbing).
+2. Count the two-letter frequencies and make a table out of it. For example, how
+   many words have an `'a'` followed by an `'a'`.
+3. In the end, we will have a table of each bigram along with its occurrence in
+   the book, which we'll assume is a good representation of the type of words
+   our message will use.
+4. This will give us a scoring function that we can pass messages to, to see how
+   well they do. The higher the score, the more likely that it's the message
+   that we're trying to decrypt.
+5. Start with a random key, and get the score for that key. Swap two elements of
+   that key, and get the score for the new key. If it results in a higher score,
+   then that new key will be kept. If it's a lower score, we still might keep
+   the new key on a biased probability. This is to make sure we don't get stuck
+   in a local maximum. This is also known as the
+   [hill-climbing technique](https://en.wikipedia.org/wiki/Hill_climbing).
 6. Repeat step 5 until we are happy with our results.
 
-For the book that we'll be "reading", we'll use _War and Peace_, which you can find available online for free.
+For the book that we'll be "reading", we'll use _War and Peace_, which you can
+find available online for free.
 
 Let's decipher this Chance verse:
 
@@ -242,5 +267,6 @@ Notes:
 
 ---
 
-If you're interested in learning more about ciphers and how to break them, check out this book:
+If you're interested in learning more about ciphers and how to break them, check
+out this book:
 [Hacking Secret Ciphers With Python](http://www.amazon.com/gp/product/1482614375/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1482614375&linkCode=as2&tag=raymondtaught-20&linkId=E5OAOVGJGVFGKTP4)

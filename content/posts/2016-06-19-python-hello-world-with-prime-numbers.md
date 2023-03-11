@@ -34,7 +34,8 @@ Let's break this down:
 
 We can store this hex string into a variable, `h`.
 
-Notice that these two are the same expressions below are the same, and the second is easier to understand. We start at 2, and take every other element.
+Notice that these two are the same expressions below are the same, and the
+second is easier to understand. We start at 2, and take every other element.
 
 ```python
 >>> range(25)[2::2]
@@ -42,7 +43,8 @@ range(2, 25, 2)
 # 2, 4, 6, 8, 10, .. 24
 ```
 
-Okay cool, now we're creating a list of chunks of `h`, with each chunk being a 2 character substring.
+Okay cool, now we're creating a list of chunks of `h`, with each chunk being a 2
+character substring.
 
 ```python
 >>> [h[i:(i+2)] for i in range(25)[2::2]]
@@ -56,20 +58,20 @@ Let's store this `list` into a variable `str_lst`.
 [104, 101, 108, 108, 111, 44, 32, 119, 111, 114, 108, 100]
 ```
 
-We converted our hex strings into integers using the `int()` function passing the second parameter `16` to let it know that we're working with `base16 (hex)`.
+We converted our hex strings into integers using the `int()` function passing
+the second parameter `16` to let it know that we're working with `base16 (hex)`.
 
 Let's store this list of numbers into a variable `num_list`.
 
-Great, a bunch of numbers!
-Now, simply convert each number to it's [ASCII](http://www.asciitable.com/) representation, resulting in the new list:
+Great, a bunch of numbers! Now, simply convert each number to it's
+[ASCII](http://www.asciitable.com/) representation, resulting in the new list:
 
 ```python
 >>> [chr(x) for x in num_list]
 ['h', 'e', 'l', 'l', 'o', ',', ' ', 'w', 'o', 'r', 'l', 'd']
 ```
 
-Just about done!
-Simply join the list into a string.
+Just about done! Simply join the list into a string.
 
 ```python
 >>> ''.join([chr(x) for x in num_list])
@@ -78,4 +80,5 @@ Simply join the list into a string.
 
 ---
 
-Thanks for following along. If you found this article helpful, be sure to check out my other tutorials on Python.
+Thanks for following along. If you found this article helpful, be sure to check
+out my other tutorials on Python.

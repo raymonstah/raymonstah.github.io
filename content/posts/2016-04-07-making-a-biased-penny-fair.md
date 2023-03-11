@@ -12,18 +12,21 @@ tags:
 
 #### Definitions
 
-Fair penny: This type of penny has a 50/50 chance of landing on heads or tails. It's _fair_.
+Fair penny: This type of penny has a 50/50 chance of landing on heads or tails.
+It's _fair_.
 
 Biased penny: A penny that's not fair.
 
 Assumptions:
 
 1. Each flip is independent of each other.
-2. The bias level of getting heads cannot be 1 or 0. (i.e. Always getting heads or never getting heads)
+2. The bias level of getting heads cannot be 1 or 0. (i.e. Always getting heads
+   or never getting heads)
 
 ---
 
-Now how can we make a biased penny fair? The solution is actually very elegant and simple:
+Now how can we make a biased penny fair? The solution is actually very elegant
+and simple:
 
 #### Flip it twice
 
@@ -34,7 +37,8 @@ If you flip a penny twice, here are your outcomes:
 3. Tails, Heads
 4. Tails, Tails
 
-Suppose your coin was biased, say it had a 60% chance of landing on Heads, and 40% of landing on Tails. (We'll assume it's impossible to land on its side)
+Suppose your coin was biased, say it had a 60% chance of landing on Heads, and
+40% of landing on Tails. (We'll assume it's impossible to land on its side)
 
 Then the probability of each event:
 
@@ -43,11 +47,14 @@ Then the probability of each event:
 3. `Pr[TH] = 0.4 * 0.6 = 0.24`
 4. `Pr[TT] = 0.4 * 0.4 = 0.16`
 
-Notice that `Pr[HT] == Pr[TH]`, in other words the probability of a double coin flip landing on Heads followed by Tails is the **same** as the probability of a flip landing on Tails followed by a flip landing on Heads.
+Notice that `Pr[HT] == Pr[TH]`, in other words the probability of a double coin
+flip landing on Heads followed by Tails is the **same** as the probability of a
+flip landing on Tails followed by a flip landing on Heads.
 
 We'll use this fact to make the penny fair.
 
-Now we can make this penny fair by flipping it _twice_, then viewing its outcome.
+Now we can make this penny fair by flipping it _twice_, then viewing its
+outcome.
 
 - If the outcome was `HH` or `TT`, then we'll discard these results.
 - If the outcome was `HT` or `TH`, then we'll take the result of our first flip.

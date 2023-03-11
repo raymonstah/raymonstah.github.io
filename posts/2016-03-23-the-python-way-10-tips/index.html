@@ -214,11 +214,11 @@
   </div>
 
   <div>
-  <p>Below are 10 useful tips and tricks in Python. Some of them highlight mistakes that are commonly made by beginners to the language.</p>
+  <p>Below are 10 useful tips and tricks in Python. Some of them highlight mistakes
+that are commonly made by beginners to the language.</p>
 <p>Note: Let&rsquo;s assume we&rsquo;re all using Python 3.</p>
 <h5 id="1-list-comprehensions">1. List Comprehensions</h5>
-<p>Suppose you have a list:
-<code>bag = [1, 2, 3, 4, 5]</code></p>
+<p>Suppose you have a list: <code>bag = [1, 2, 3, 4, 5]</code></p>
 <p>Now you want to double each element in the list, so that it looks like this:
 <code>[2, 4, 6, 8, 10]</code></p>
 <p>Most beginners, coming from traditional languages will do something like this:</p>
@@ -228,10 +228,10 @@
 </span></span></code></pre></div><p>But there&rsquo;s a better way:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>bag <span style="color:#f92672">=</span> [elem <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span> <span style="color:#66d9ef">for</span> elem <span style="color:#f92672">in</span> bag]
 </span></span></code></pre></div><p>Cleaner, right? This is called list comprehensions in Python.</p>
-<p>For even more on list comprehensions, check out <a href="http://treyhunner.com/2015/12/python-list-comprehensions-now-in-color/">Trey Hunner&rsquo;s tutorial</a>.</p>
+<p>For even more on list comprehensions, check out
+<a href="http://treyhunner.com/2015/12/python-list-comprehensions-now-in-color/">Trey Hunner&rsquo;s tutorial</a>.</p>
 <h5 id="2-iterating-through-a-list">2. Iterating through a list</h5>
-<p>Again, suppose you have a list.
-Try to <strong>avoid</strong> doing this if you can:</p>
+<p>Again, suppose you have a list. Try to <strong>avoid</strong> doing this if you can:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>bag <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>]
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(bag)):
 </span></span><span style="display:flex;"><span>    print(bag[i])
@@ -239,13 +239,16 @@ Try to <strong>avoid</strong> doing this if you can:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>bag <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>]
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> bag:
 </span></span><span style="display:flex;"><span>    print(i)
-</span></span></code></pre></div><p>Since <code>x</code> is a list, you can iterate over the elements of it. Most of the time, you won&rsquo;t need the index of the elements anyways, but in case you do, there&rsquo;s the <code>enumerate</code> function available. It works like this:</p>
+</span></span></code></pre></div><p>Since <code>x</code> is a list, you can iterate over the elements of it. Most of the time,
+you won&rsquo;t need the index of the elements anyways, but in case you do, there&rsquo;s
+the <code>enumerate</code> function available. It works like this:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>bag <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>]
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> index, element <span style="color:#f92672">in</span> enumerate(bag):
 </span></span><span style="display:flex;"><span>    print(index, element)
 </span></span></code></pre></div><p>Pretty straightforward.</p>
 <h5 id="3-swapping-elements">3. Swapping Elements</h5>
-<p>This is the way that you&rsquo;re probably used to if you&rsquo;re coming from a traditional programming language like Java or C.</p>
+<p>This is the way that you&rsquo;re probably used to if you&rsquo;re coming from a traditional
+programming language like Java or C.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>a <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>
 </span></span><span style="display:flex;"><span>b <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
 </span></span><span style="display:flex;"><span>
@@ -260,18 +263,21 @@ Try to <strong>avoid</strong> doing this if you can:</p>
 </span></span><span style="display:flex;"><span>a, b <span style="color:#f92672">=</span> b, a
 </span></span></code></pre></div><p>Nifty, huh?</p>
 <h5 id="4-initializing-a-list">4. Initializing a List</h5>
-<p>Suppose you needed a list of <code>10</code> integers set to <code>0</code>. You may be tempted to do something like this:</p>
+<p>Suppose you needed a list of <code>10</code> integers set to <code>0</code>. You may be tempted to do
+something like this:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>bag <span style="color:#f92672">=</span> []
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">10</span>):
 </span></span><span style="display:flex;"><span>    bag<span style="color:#f92672">.</span>append(<span style="color:#ae81ff">0</span>)
 </span></span></code></pre></div><p>Do this instead:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>bag <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">10</span>
 </span></span></code></pre></div><p>Ah, how elegant.</p>
-<p><strong>Warning</strong>: This will create a shallow copy if you&rsquo;re working with a list within a list.</p>
+<p><strong>Warning</strong>: This will create a shallow copy if you&rsquo;re working with a list
+within a list.</p>
 <p>Example:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>bag_of_bags <span style="color:#f92672">=</span> [[<span style="color:#ae81ff">0</span>]] <span style="color:#f92672">*</span> <span style="color:#ae81ff">5</span> <span style="color:#75715e"># [[0], [0], [0], [0], [0]]</span>
 </span></span><span style="display:flex;"><span>bag_of_bags[<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#75715e"># [[1], [1], [1], [1], [1]]</span>
-</span></span></code></pre></div><p>Oops! It changed all of the lists within <code>x</code>. We most likely intended to change the first list.</p>
+</span></span></code></pre></div><p>Oops! It changed all of the lists within <code>x</code>. We most likely intended to change
+the first list.</p>
 <p>Do this instead:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>bag_of_bags <span style="color:#f92672">=</span> [[<span style="color:#ae81ff">0</span>] <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">5</span>)]
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># [[0], [0], [0], [0], [0]]</span>
@@ -284,16 +290,15 @@ Try to <strong>avoid</strong> doing this if you can:</p>
 </blockquote>
 <p>Ask yourself, do you <em>really</em> need to initialize a list?</p>
 <h5 id="5-string-building">5. String building</h5>
-<p>Often, you&rsquo;re going to need to print strings.
-Avoid doing this if you have lots of variables to print:</p>
+<p>Often, you&rsquo;re going to need to print strings. Avoid doing this if you have lots
+of variables to print:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Raymond&#34;</span>
 </span></span><span style="display:flex;"><span>age <span style="color:#f92672">=</span> <span style="color:#ae81ff">22</span>
 </span></span><span style="display:flex;"><span>born_in <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Oakland, CA&#34;</span>
 </span></span><span style="display:flex;"><span>string <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello my name is &#34;</span> <span style="color:#f92672">+</span> name <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;and I&#39;m &#34;</span> <span style="color:#f92672">+</span> str(age) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; years old. I was born in &#34;</span> <span style="color:#f92672">+</span> born_in <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;.&#34;</span>
 </span></span><span style="display:flex;"><span>print(string)
-</span></span></code></pre></div><p>Ugh, see how messy that was?
-Instead, you can use <code>.format()</code> to format your strings in a nice, cleaner way.
-<strong>Do</strong> <em>this</em> instead.</p>
+</span></span></code></pre></div><p>Ugh, see how messy that was? Instead, you can use <code>.format()</code> to format your
+strings in a nice, cleaner way. <strong>Do</strong> <em>this</em> instead.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Raymond&#34;</span>
 </span></span><span style="display:flex;"><span>age <span style="color:#f92672">=</span> <span style="color:#ae81ff">22</span>
 </span></span><span style="display:flex;"><span>born_in <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Oakland, CA&#34;</span>
@@ -301,7 +306,8 @@ Instead, you can use <code>.format()</code> to format your strings in a nice, cl
 </span></span><span style="display:flex;"><span>print(string)
 </span></span></code></pre></div><p>Much better!</p>
 <h5 id="6-returning-tuples">6. Returning <code>tuples</code></h5>
-<p>Python allows you to return multiple elements in a function. This makes life a lot easier. However, this is common <strong>mistake</strong> when unpacking the tuple:</p>
+<p>Python allows you to return multiple elements in a function. This makes life a
+lot easier. However, this is common <strong>mistake</strong> when unpacking the tuple:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">binary</span>():
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>
 </span></span><span style="display:flex;"><span>
@@ -318,7 +324,8 @@ Instead, you can use <code>.format()</code> to format your strings in a nice, cl
 </span></span></code></pre></div><p>Efficient!</p>
 <h5 id="7-accessing-dicts">7. Accessing <code>Dicts</code></h5>
 <p>Often, you&rsquo;ll be updating and adding a <code>key, pair</code> into <code>dicts</code>.</p>
-<p>You may be tempted to do something like this to avoid the <code>KeyError</code> when trying to access a key that doesn&rsquo;t exist in <code>dict</code>:</p>
+<p>You may be tempted to do something like this to avoid the <code>KeyError</code> when trying
+to access a key that doesn&rsquo;t exist in <code>dict</code>:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>countr <span style="color:#f92672">=</span> {}
 </span></span><span style="display:flex;"><span>bag <span style="color:#f92672">=</span> [<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">7</span>]
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> bag:
@@ -349,10 +356,14 @@ Instead, you can use <code>.format()</code> to format your strings in a nice, cl
 </span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;Count of </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(i, countr<span style="color:#f92672">.</span>get(i, <span style="color:#ae81ff">0</span>)))
 </span></span></code></pre></div><p>You can also do this using <code>dict</code> comprehensions.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>countr <span style="color:#f92672">=</span> {num: bag<span style="color:#f92672">.</span>count(num) <span style="color:#66d9ef">for</span> num <span style="color:#f92672">in</span> bag}
-</span></span></code></pre></div><p>Both of these ways are more costly because they have to iterate the list every time <code>count</code> is called.</p>
+</span></span></code></pre></div><p>Both of these ways are more costly because they have to iterate the list every
+time <code>count</code> is called.</p>
 <h5 id="8-using-libraries">8. Using libraries</h5>
-<p>Chances are, there&rsquo;s already a library that you can import which does exactly what you want.</p>
-<p>For example, in the previous example, we created a function to count the occurrences of numbers in a list. Well, there&rsquo;s already a library out there that can do this.</p>
+<p>Chances are, there&rsquo;s already a library that you can import which does exactly
+what you want.</p>
+<p>For example, in the previous example, we created a function to count the
+occurrences of numbers in a list. Well, there&rsquo;s already a library out there that
+can do this.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> collections <span style="color:#f92672">import</span> Counter
 </span></span><span style="display:flex;"><span>bag <span style="color:#f92672">=</span> [<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">7</span>]
 </span></span><span style="display:flex;"><span>countr <span style="color:#f92672">=</span> Counter(bag)
@@ -363,23 +374,26 @@ Instead, you can use <code>.format()</code> to format your strings in a nice, cl
 <ul>
 <li>Code is correct and tested</li>
 <li>Their algorithm is more than likely to be optimized and thus, runs faster.</li>
-<li>Abstraction: its intentions are clear and well documented, which allows you to focus on what hasn&rsquo;t been done yet.</li>
+<li>Abstraction: its intentions are clear and well documented, which allows you to
+focus on what hasn&rsquo;t been done yet.</li>
 <li>Lastly, it&rsquo;s there so you don&rsquo;t have to reinvent the wheel.</li>
 </ul>
 <h5 id="9-slicingstepping-through-a-list">9. Slicing/Stepping through a list</h5>
-<p>You can specify the <code>start</code> postition and the <code>stop</code> position like this: <code>list[start:stop:step]</code>
-So, let&rsquo;s say you want the first 5 elements of a list:</p>
+<p>You can specify the <code>start</code> postition and the <code>stop</code> position like this:
+<code>list[start:stop:step]</code> So, let&rsquo;s say you want the first 5 elements of a list:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>bag <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">9</span>]
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> elem <span style="color:#f92672">in</span> bag[:<span style="color:#ae81ff">5</span>]:
 </span></span><span style="display:flex;"><span>    print(elem)
-</span></span></code></pre></div><p>This is known as <em>slicing</em>. Since we specified the <code>stop</code> position of 5, we will take 5 elements from the list before stopping.</p>
+</span></span></code></pre></div><p>This is known as <em>slicing</em>. Since we specified the <code>stop</code> position of 5, we will
+take 5 elements from the list before stopping.</p>
 <p>How about last 5 elements in the list?</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>bag <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">9</span>]
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> elem <span style="color:#f92672">in</span> bag[<span style="color:#f92672">-</span><span style="color:#ae81ff">5</span>:]:
 </span></span><span style="display:flex;"><span>    print(elem)
-</span></span></code></pre></div><p>Didn&rsquo;t see that one coming huh? The <code>-5</code> means start from the end of the list and take 5 elements.</p>
-<p>Suppose you wanted to do something to <em>every other</em> element in a list
-Here&rsquo;s what you <strong>might</strong> do:</p>
+</span></span></code></pre></div><p>Didn&rsquo;t see that one coming huh? The <code>-5</code> means start from the end of the list
+and take 5 elements.</p>
+<p>Suppose you wanted to do something to <em>every other</em> element in a list Here&rsquo;s
+what you <strong>might</strong> do:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>bag <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">9</span>]
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> index, elem <span style="color:#f92672">in</span> enumerate(bag):
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> index <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
@@ -392,15 +406,23 @@ Here&rsquo;s what you <strong>might</strong> do:</p>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># or equivalently for ranges</span>
 </span></span><span style="display:flex;"><span>bag <span style="color:#f92672">=</span> list(range(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">10</span>,<span style="color:#ae81ff">2</span>))
 </span></span><span style="display:flex;"><span>print(bag)
-</span></span></code></pre></div><p>This is known as <em>stepping</em> through a list. <code>list[::2]</code> means that you are going through this list and taking one element for every two steps.
-Some other cool things you can do with steps are <code>list[::-1]</code> which will reverse a list.</p>
+</span></span></code></pre></div><p>This is known as <em>stepping</em> through a list. <code>list[::2]</code> means that you are going
+through this list and taking one element for every two steps. Some other cool
+things you can do with steps are <code>list[::-1]</code> which will reverse a list.</p>
 <h5 id="10-tabs-vs-spaces">10. Tabs vs Spaces</h5>
-<p>Long version: Mixing spaces and tabs in Python will lead to a disaster. You will see a <code>IndentationError: unexpected indent</code>. Regardless of your choice of tabs or space, you should be consistent with it throughout your files and projects.</p>
-<p>One more reason to use spaces rather than tabs is that not all editors treat tabs the same. Depending on the editor you use, tabs may be treated as 2 to 8 spaces.</p>
-<p>One thing you can do when writing code is to specify to treat tabs as spaces. This way, you can automatically specify how many spaces a tab is worth. 4 spaces is the norm for most Python users.</p>
+<p>Long version: Mixing spaces and tabs in Python will lead to a disaster. You will
+see a <code>IndentationError: unexpected indent</code>. Regardless of your choice of tabs
+or space, you should be consistent with it throughout your files and projects.</p>
+<p>One more reason to use spaces rather than tabs is that not all editors treat
+tabs the same. Depending on the editor you use, tabs may be treated as 2 to 8
+spaces.</p>
+<p>One thing you can do when writing code is to specify to treat tabs as spaces.
+This way, you can automatically specify how many spaces a tab is worth. 4 spaces
+is the norm for most Python users.</p>
 <p>TLDR: Use spaces, or treat tabs as spaces for the best of both worlds.</p>
 <hr>
-<p>I&rsquo;d like to thank Reddit users from <a href="https://www.reddit.com/r/learnpython/">/r/learnpython</a>:</p>
+<p>I&rsquo;d like to thank Reddit users from
+<a href="https://www.reddit.com/r/learnpython/">/r/learnpython</a>:</p>
 <ol>
 <li>/u/treyhunner</li>
 <li>/u/bbatwork</li>
@@ -408,9 +430,12 @@ Some other cool things you can do with steps are <code>list[::-1]</code> which w
 <li>/u/dunkler_wanderer</li>
 </ol>
 <p>For helping me make some of these tips ever better!</p>
-<p>Thanks for reading! If this was helpful for you, please share it with someone. Best of luck learning Python!</p>
-<p>Edit: For <em>more</em> tips, click <a href="http://raymondtaught.me/the-python-way-part-two-10-more-tips/">here</a>!</p>
-<p>I&rsquo;ll also recommend this book: <a href="http://www.amazon.com/gp/product/0134034287/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0134034287&amp;linkCode=as2&amp;tag=raymondtaught-20&amp;linkId=OW7R33IRZCF7MFQS">Effective Python</a></p>
+<p>Thanks for reading! If this was helpful for you, please share it with someone.
+Best of luck learning Python!</p>
+<p>Edit: For <em>more</em> tips, click
+<a href="http://raymondtaught.me/the-python-way-part-two-10-more-tips/">here</a>!</p>
+<p>I&rsquo;ll also recommend this book:
+<a href="http://www.amazon.com/gp/product/0134034287/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0134034287&amp;linkCode=as2&amp;tag=raymondtaught-20&amp;linkId=OW7R33IRZCF7MFQS">Effective Python</a></p>
 
   </div>
 

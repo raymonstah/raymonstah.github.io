@@ -226,28 +226,31 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> hex(<span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">5</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">7</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">37</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">149</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">5417</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">148781</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">51939996061871</span>)
 </span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;0x68656c6c6f2c20776f726c64&#39;</span>
 </span></span></code></pre></div><p>We can store this hex string into a variable, <code>h</code>.</p>
-<p>Notice that these two are the same expressions below are the same, and the second is easier to understand. We start at 2, and take every other element.</p>
+<p>Notice that these two are the same expressions below are the same, and the
+second is easier to understand. We start at 2, and take every other element.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> range(<span style="color:#ae81ff">25</span>)[<span style="color:#ae81ff">2</span>::<span style="color:#ae81ff">2</span>]
 </span></span><span style="display:flex;"><span>range(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">25</span>, <span style="color:#ae81ff">2</span>)
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 2, 4, 6, 8, 10, .. 24</span>
-</span></span></code></pre></div><p>Okay cool, now we&rsquo;re creating a list of chunks of <code>h</code>, with each chunk being a 2 character substring.</p>
+</span></span></code></pre></div><p>Okay cool, now we&rsquo;re creating a list of chunks of <code>h</code>, with each chunk being a 2
+character substring.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> [h[i:(i<span style="color:#f92672">+</span><span style="color:#ae81ff">2</span>)] <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">25</span>)[<span style="color:#ae81ff">2</span>::<span style="color:#ae81ff">2</span>]]
 </span></span><span style="display:flex;"><span>[<span style="color:#e6db74">&#39;68&#39;</span>, <span style="color:#e6db74">&#39;65&#39;</span>, <span style="color:#e6db74">&#39;6c&#39;</span>, <span style="color:#e6db74">&#39;6c&#39;</span>, <span style="color:#e6db74">&#39;6f&#39;</span>, <span style="color:#e6db74">&#39;2c&#39;</span>, <span style="color:#e6db74">&#39;20&#39;</span>, <span style="color:#e6db74">&#39;77&#39;</span>, <span style="color:#e6db74">&#39;6f&#39;</span>, <span style="color:#e6db74">&#39;72&#39;</span>, <span style="color:#e6db74">&#39;6c&#39;</span>, <span style="color:#e6db74">&#39;64&#39;</span>]
 </span></span></code></pre></div><p>Let&rsquo;s store this <code>list</code> into a variable <code>str_lst</code>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> [int(x,<span style="color:#ae81ff">16</span>) <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> str_lst]
 </span></span><span style="display:flex;"><span>[<span style="color:#ae81ff">104</span>, <span style="color:#ae81ff">101</span>, <span style="color:#ae81ff">108</span>, <span style="color:#ae81ff">108</span>, <span style="color:#ae81ff">111</span>, <span style="color:#ae81ff">44</span>, <span style="color:#ae81ff">32</span>, <span style="color:#ae81ff">119</span>, <span style="color:#ae81ff">111</span>, <span style="color:#ae81ff">114</span>, <span style="color:#ae81ff">108</span>, <span style="color:#ae81ff">100</span>]
-</span></span></code></pre></div><p>We converted our hex strings into integers using the <code>int()</code> function passing the second parameter <code>16</code> to let it know that we&rsquo;re working with <code>base16 (hex)</code>.</p>
+</span></span></code></pre></div><p>We converted our hex strings into integers using the <code>int()</code> function passing
+the second parameter <code>16</code> to let it know that we&rsquo;re working with <code>base16 (hex)</code>.</p>
 <p>Let&rsquo;s store this list of numbers into a variable <code>num_list</code>.</p>
-<p>Great, a bunch of numbers!
-Now, simply convert each number to it&rsquo;s <a href="http://www.asciitable.com/">ASCII</a> representation, resulting in the new list:</p>
+<p>Great, a bunch of numbers! Now, simply convert each number to it&rsquo;s
+<a href="http://www.asciitable.com/">ASCII</a> representation, resulting in the new list:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> [chr(x) <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> num_list]
 </span></span><span style="display:flex;"><span>[<span style="color:#e6db74">&#39;h&#39;</span>, <span style="color:#e6db74">&#39;e&#39;</span>, <span style="color:#e6db74">&#39;l&#39;</span>, <span style="color:#e6db74">&#39;l&#39;</span>, <span style="color:#e6db74">&#39;o&#39;</span>, <span style="color:#e6db74">&#39;,&#39;</span>, <span style="color:#e6db74">&#39; &#39;</span>, <span style="color:#e6db74">&#39;w&#39;</span>, <span style="color:#e6db74">&#39;o&#39;</span>, <span style="color:#e6db74">&#39;r&#39;</span>, <span style="color:#e6db74">&#39;l&#39;</span>, <span style="color:#e6db74">&#39;d&#39;</span>]
-</span></span></code></pre></div><p>Just about done!
-Simply join the list into a string.</p>
+</span></span></code></pre></div><p>Just about done! Simply join the list into a string.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#e6db74">&#39;&#39;</span><span style="color:#f92672">.</span>join([chr(x) <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> num_list])
 </span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;hello, world&#39;</span>
 </span></span></code></pre></div><hr>
-<p>Thanks for following along. If you found this article helpful, be sure to check out my other tutorials on Python.</p>
+<p>Thanks for following along. If you found this article helpful, be sure to check
+out my other tutorials on Python.</p>
 
   </div>
 

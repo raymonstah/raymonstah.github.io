@@ -227,41 +227,60 @@
 <p>Some real world examples of recursion:</p>
 <ol>
 <li>An onion. Peel one layer of an onion, what do you have? An onion.</li>
-<li><a href="https://en.wikipedia.org/wiki/Mandelbrot_set">Fractals</a>, and those found in nature.</li>
+<li><a href="https://en.wikipedia.org/wiki/Mandelbrot_set">Fractals</a>, and those found in
+nature.</li>
 </ol>
-<p>Recursive programming involves a function calling itself. Note that Python has a maximum recursion stack of <code>1,000</code>, but if you ever need to increase it for learning purposes, you can do so like this:</p>
+<p>Recursive programming involves a function calling itself. Note that Python has a
+maximum recursion stack of <code>1,000</code>, but if you ever need to increase it for
+learning purposes, you can do so like this:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> sys
 </span></span><span style="display:flex;"><span>sys<span style="color:#f92672">.</span>setrecursionlimit(<span style="color:#ae81ff">10000</span>)
-</span></span></code></pre></div><p>Also, note that anything that can be done recursively can also be done iteratively, and vice versa. Some algorithms should naturally be solved using recursion, like <a href="https://en.wikipedia.org/wiki/Tower_of_Hanoi">Towers of Hanoi</a>, while others are better suited for iteration.</p>
-<p>You should always try to write your code iteratively in Python since recursion isn&rsquo;t optimized and is often slower than iteration. The examples that I&rsquo;m going to show you are strictly for educational purposes.</p>
+</span></span></code></pre></div><p>Also, note that anything that can be done recursively can also be done
+iteratively, and vice versa. Some algorithms should naturally be solved using
+recursion, like <a href="https://en.wikipedia.org/wiki/Tower_of_Hanoi">Towers of Hanoi</a>,
+while others are better suited for iteration.</p>
+<p>You should always try to write your code iteratively in Python since recursion
+isn&rsquo;t optimized and is often slower than iteration. The examples that I&rsquo;m going
+to show you are strictly for educational purposes.</p>
 <h3 id="fibonacci">Fibonacci</h3>
-<p>A lot of times, the fibonacci sequence is shown to beginners as an example to recursion.</p>
+<p>A lot of times, the fibonacci sequence is shown to beginners as an example to
+recursion.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fibonacci</span>(n):
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> n <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">or</span> n <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>:
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> n
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> fibonacci(n<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span> fibonacci(n<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>)
-</span></span></code></pre></div><p>In mathematics, recursion is the natural way to solve the fibonacci problem. The fibonacci mapping of an index, <code>n</code> is always the sum of the two previous fibonacci numbers.</p>
+</span></span></code></pre></div><p>In mathematics, recursion is the natural way to solve the fibonacci problem. The
+fibonacci mapping of an index, <code>n</code> is always the sum of the two previous
+fibonacci numbers.</p>
 <p>I believe this is a bad example for a couple of reasons:</p>
 <ol>
-<li>It&rsquo;s not practical. Try <code>fibonacci(20)</code>. It&rsquo;ll blow up because it has to recompute the same sequences multiple times, coming out to a slow <code>O(2^n)</code> exponential runtime.</li>
-<li>There&rsquo;s already a constant time formula to solve the fibonacci problem. Why would we use recursion or even an iterative approach?</li>
+<li>It&rsquo;s not practical. Try <code>fibonacci(20)</code>. It&rsquo;ll blow up because it has to
+recompute the same sequences multiple times, coming out to a slow <code>O(2^n)</code>
+exponential runtime.</li>
+<li>There&rsquo;s already a constant time formula to solve the fibonacci problem. Why
+would we use recursion or even an iterative approach?</li>
 </ol>
 <p>Here are some better examples used to demonstrate recursion.</p>
 <h3 id="length-of-a-list">Length of a List</h3>
-<p>Let&rsquo;s say you want to find the length of a list, <code>some_list</code>. In recursion, there is often a base case, and a recursive case.</p>
+<p>Let&rsquo;s say you want to find the length of a list, <code>some_list</code>. In recursion,
+there is often a base case, and a recursive case.</p>
 <ul>
-<li>Our base case here is that if <code>some_list</code> is empty, then the count of that list is <code>0</code>.</li>
-<li>Otherwise, we add <code>1</code> and make a <em>recursive</em> call to the function, passing the parameter as all but the first element of <code>some_list</code>.</li>
+<li>Our base case here is that if <code>some_list</code> is empty, then the count of that
+list is <code>0</code>.</li>
+<li>Otherwise, we add <code>1</code> and make a <em>recursive</em> call to the function, passing the
+parameter as all but the first element of <code>some_list</code>.</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">findLengthOfList</span>(some_list):
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">if</span> some_list <span style="color:#f92672">==</span> [] <span style="color:#66d9ef">else</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> findLengthOfList(some_list[<span style="color:#ae81ff">1</span>:])
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>print(findLengthOfList([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>])) <span style="color:#75715e"># 5</span>
-</span></span></code></pre></div><p>I mean obviously, in a real program you should use <code>len(some_list)</code>, but remember, this is for educational purposes!</p>
+</span></span></code></pre></div><p>I mean obviously, in a real program you should use <code>len(some_list)</code>, but
+remember, this is for educational purposes!</p>
 <h3 id="max-of-a-list">Max of a List</h3>
 <ul>
 <li>Our base case here is to return <code>max_given</code> if the list is empty.</li>
-<li>The recursive step is to pass the <em>body</em> (all but the first) of the list to our function again, along with the <code>max_so_far</code> which we computed.</li>
+<li>The recursive step is to pass the <em>body</em> (all but the first) of the list to
+our function again, along with the <code>max_so_far</code> which we computed.</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">findMaxOfList</span>(some_list, max_given):
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> some_list <span style="color:#f92672">==</span> []:
@@ -270,12 +289,16 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> findMaxOfList(some_list[<span style="color:#ae81ff">1</span>:], max_so_far)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>print(findMaxOfList([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">10</span>], <span style="color:#f92672">-</span>float(<span style="color:#e6db74">&#34;Inf&#34;</span>))) <span style="color:#75715e"># 6</span>
-</span></span></code></pre></div><p>Likewise, you can always use <code>max(some_list)</code> instead of rolling your own function.</p>
+</span></span></code></pre></div><p>Likewise, you can always use <code>max(some_list)</code> instead of rolling your own
+function.</p>
 <h3 id="reversing-a-list">Reversing a List</h3>
 <p>Once again, we can break the algorithm into a base case and a recursive case.</p>
 <ul>
-<li>If we receive an empty list, or a list of a single element, then it is already &ldquo;reversed&rdquo;. Simply return that list.</li>
-<li>If we receive a list of 2 or more elements, we can return a new list, consisting of the last element of <code>some_list</code> followed by a recursive call with the parameter as all but the last element of <code>some_list</code>.</li>
+<li>If we receive an empty list, or a list of a single element, then it is already
+&ldquo;reversed&rdquo;. Simply return that list.</li>
+<li>If we receive a list of 2 or more elements, we can return a new list,
+consisting of the last element of <code>some_list</code> followed by a recursive call
+with the parameter as all but the last element of <code>some_list</code>.</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">reverse</span>(some_list):
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> len(some_list) <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">2</span>:
@@ -283,15 +306,19 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> [some_list[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]] <span style="color:#f92672">+</span> reverse(some_list[:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>])
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>print(reverse(list(range(<span style="color:#ae81ff">10</span>)))) <span style="color:#75715e"># [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]</span>
-</span></span></code></pre></div><p>Don&rsquo;t roll your own <code>reverse</code> function in production! Use the built in <code>reversed()</code> function instead.</p>
+</span></span></code></pre></div><p>Don&rsquo;t roll your own <code>reverse</code> function in production! Use the built in
+<code>reversed()</code> function instead.</p>
 <h3 id="sorting-a-list-using-quick-sort">Sorting a List using Quick sort</h3>
-<p>This algorithm is super elegant when solved by recursion, even though it is slower than the iterative version of quick sort.</p>
+<p>This algorithm is super elegant when solved by recursion, even though it is
+slower than the iterative version of quick sort.</p>
 <p>It works like this:</p>
 <ul>
 <li>Base case: if we receive an empty list, then it is already sorted.</li>
 <li>Take the first element of a list, <code>first</code>.</li>
-<li>Partition the rest of the list by those that are greater than <code>first</code>, and those that are less than <code>first</code>, which are computed recursively.</li>
-<li>Finally, we return a newly created list which <code>less_than_first</code> comes first, followed by <code>first</code>, and lastly, we append <code>greater_than_first</code>.</li>
+<li>Partition the rest of the list by those that are greater than <code>first</code>, and
+those that are less than <code>first</code>, which are computed recursively.</li>
+<li>Finally, we return a newly created list which <code>less_than_first</code> comes first,
+followed by <code>first</code>, and lastly, we append <code>greater_than_first</code>.</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">quicksort</span>(some_list):
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> some_list <span style="color:#f92672">==</span> []:
@@ -302,11 +329,14 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> less_than_first <span style="color:#f92672">+</span> [first] <span style="color:#f92672">+</span> greater_than_first
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>print(quicksort([<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">5</span>])) <span style="color:#75715e"># [1, 2, 3, 4, 5]</span>
-</span></span></code></pre></div><p>Don&rsquo;t forget about <code>sorted()</code> or <code>.sort()</code> if you want to apply this to real code!</p>
+</span></span></code></pre></div><p>Don&rsquo;t forget about <code>sorted()</code> or <code>.sort()</code> if you want to apply this to real
+code!</p>
 <hr>
 <p>Thanks for reading! Please ask questions or share your thoughts!</p>
-<p>For programming languages that optimize recursion, check out Functional Programming languages like Haskell, or a Lisp.</p>
-<p>If you&rsquo;d like to learn more about recursion and functional programming, check out this book:
+<p>For programming languages that optimize recursion, check out Functional
+Programming languages like Haskell, or a Lisp.</p>
+<p>If you&rsquo;d like to learn more about recursion and functional programming, check
+out this book:
 <a href="http://www.amazon.com/gp/product/0262560992/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0262560992&amp;linkCode=as2&amp;tag=raymondtaught-20&amp;linkId=AZJB4SGTR4DHRK57">The Little Schemer - 4th Edition</a></p>
 
   </div>

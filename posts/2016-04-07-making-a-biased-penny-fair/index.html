@@ -218,15 +218,18 @@
 
   <div>
   <h4 id="definitions">Definitions</h4>
-<p>Fair penny: This type of penny has a 50/50 chance of landing on heads or tails. It&rsquo;s <em>fair</em>.</p>
+<p>Fair penny: This type of penny has a 50/50 chance of landing on heads or tails.
+It&rsquo;s <em>fair</em>.</p>
 <p>Biased penny: A penny that&rsquo;s not fair.</p>
 <p>Assumptions:</p>
 <ol>
 <li>Each flip is independent of each other.</li>
-<li>The bias level of getting heads cannot be 1 or 0. (i.e. Always getting heads or never getting heads)</li>
+<li>The bias level of getting heads cannot be 1 or 0. (i.e. Always getting heads
+or never getting heads)</li>
 </ol>
 <hr>
-<p>Now how can we make a biased penny fair? The solution is actually very elegant and simple:</p>
+<p>Now how can we make a biased penny fair? The solution is actually very elegant
+and simple:</p>
 <h4 id="flip-it-twice">Flip it twice</h4>
 <p>If you flip a penny twice, here are your outcomes:</p>
 <ol>
@@ -235,7 +238,8 @@
 <li>Tails, Heads</li>
 <li>Tails, Tails</li>
 </ol>
-<p>Suppose your coin was biased, say it had a 60% chance of landing on Heads, and 40% of landing on Tails. (We&rsquo;ll assume it&rsquo;s impossible to land on its side)</p>
+<p>Suppose your coin was biased, say it had a 60% chance of landing on Heads, and
+40% of landing on Tails. (We&rsquo;ll assume it&rsquo;s impossible to land on its side)</p>
 <p>Then the probability of each event:</p>
 <ol>
 <li><code>Pr[HH] = 0.6 * 0.6 = 0.36</code></li>
@@ -243,9 +247,12 @@
 <li><code>Pr[TH] = 0.4 * 0.6 = 0.24</code></li>
 <li><code>Pr[TT] = 0.4 * 0.4 = 0.16</code></li>
 </ol>
-<p>Notice that <code>Pr[HT] == Pr[TH]</code>, in other words the probability of a double coin flip landing on Heads followed by Tails is the <strong>same</strong> as the probability of a flip landing on Tails followed by a flip landing on Heads.</p>
+<p>Notice that <code>Pr[HT] == Pr[TH]</code>, in other words the probability of a double coin
+flip landing on Heads followed by Tails is the <strong>same</strong> as the probability of a
+flip landing on Tails followed by a flip landing on Heads.</p>
 <p>We&rsquo;ll use this fact to make the penny fair.</p>
-<p>Now we can make this penny fair by flipping it <em>twice</em>, then viewing its outcome.</p>
+<p>Now we can make this penny fair by flipping it <em>twice</em>, then viewing its
+outcome.</p>
 <ul>
 <li>If the outcome was <code>HH</code> or <code>TT</code>, then we&rsquo;ll discard these results.</li>
 <li>If the outcome was <code>HT</code> or <code>TH</code>, then we&rsquo;ll take the result of our first flip.</li>

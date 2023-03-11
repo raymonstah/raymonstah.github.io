@@ -216,18 +216,26 @@
   <div>
   <h5 id="the-substitution-cipher">The Substitution Cipher</h5>
 <blockquote>
-<p>&ldquo;Your cryptosystem should remain secure even if everything is known about it except the key&rdquo; -<a href="https://en.wikipedia.org/wiki/Kerckhoffs's_principle">Kerckhoffs</a></p>
+<p>&ldquo;Your cryptosystem should remain secure even if everything is known about it
+except the
+key&rdquo; -<a href="https://en.wikipedia.org/wiki/Kerckhoffs's_principle">Kerckhoffs</a></p>
 </blockquote>
-<p>Please note that this cipher should not be used in real applications as it can easily be hacked, as you&rsquo;ll see shortly.</p>
+<p>Please note that this cipher should not be used in real applications as it can
+easily be hacked, as you&rsquo;ll see shortly.</p>
 <p>Assume we&rsquo;re working with the lowercase English alphabet, and using <code>Python 3</code>.</p>
 <h6 id="the-algorithm">The algorithm</h6>
-<p>This version of the substitution cipher is simple. It&rsquo;s even called the [<em>simple substitution cipher</em>](<a href="https://en.wikipedia.org/wiki/Substitution_cipher">https://en.wikipedia.org/wiki/Substitution_cipher</a># Simple_substitution).</p>
+<p>This version of the substitution cipher is simple. It&rsquo;s even called the [<em>simple
+substitution cipher</em>](<a href="https://en.wikipedia.org/wiki/Substitution_cipher">https://en.wikipedia.org/wiki/Substitution_cipher</a>#
+Simple_substitution).</p>
 <ol>
-<li>Choose a <code>key</code> to be a random ordering of the alphabet. Note that there would be <code>26!</code> keys! That&rsquo;s a lot of keys if you&rsquo;re trying to brute force the cipher.</li>
+<li>Choose a <code>key</code> to be a random ordering of the alphabet. Note that there would
+be <code>26!</code> keys! That&rsquo;s a lot of keys if you&rsquo;re trying to brute force the
+cipher.</li>
 <li>Now map the alphabet to the key using a <code>dict</code>.</li>
 <li>Apply the mapping to each character of the <code>message</code>.</li>
 <li>Return the <code>ciphertext</code>.</li>
-<li>To decrypt: apply the reverse mapping to each character of the <code>ciphertext</code> to receive the original <code>message</code>.</li>
+<li>To decrypt: apply the reverse mapping to each character of the <code>ciphertext</code>
+to receive the original <code>message</code>.</li>
 </ol>
 <h6 id="to-encrypt">To encrypt</h6>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> string
@@ -237,7 +245,9 @@
 </span></span><span style="display:flex;"><span> key_mapping <span style="color:#f92672">=</span> dict(zip(alphabet, key))
 </span></span><span style="display:flex;"><span> <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;&#39;</span><span style="color:#f92672">.</span>join([key_mapping<span style="color:#f92672">.</span>get(letter<span style="color:#f92672">.</span>lower(), letter) <span style="color:#66d9ef">for</span> letter <span style="color:#f92672">in</span> message])
 </span></span></code></pre></div><h6 id="to-decrypt">To decrypt</h6>
-<p>The decryption method is literally the same as the encrypt method, but the <code>key_mapping</code> is reversed. So we map the key to the alphabet rather than the alphabet to the keys.</p>
+<p>The decryption method is literally the same as the encrypt method, but the
+<code>key_mapping</code> is reversed. So we map the key to the alphabet rather than the
+alphabet to the keys.</p>
 <p>Putting it all together, we get this:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> string
 </span></span><span style="display:flex;"><span>
@@ -258,19 +268,34 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>original <span style="color:#f92672">=</span> decrypt(key, ciphertext)
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># Original: hello this is a sample message.</span>
-</span></span></code></pre></div><p>You should acknowledge the fact that the decryption of the encryption should always give you back the original message.</p>
+</span></span></code></pre></div><p>You should acknowledge the fact that the decryption of the encryption should
+always give you back the original message.</p>
 <h6 id="hacking-the-substitution-cipher">Hacking the Substitution Cipher</h6>
-<p>Now this is where it gets interesting. We&rsquo;ll be using an algorithm described by a Stanford professor, <a href="http://statweb.stanford.edu/~cgates/PERSI/papers/MCMCRev.pdf">Persi Diaconis</a>, to break the cipher.</p>
+<p>Now this is where it gets interesting. We&rsquo;ll be using an algorithm described by
+a Stanford professor,
+<a href="http://statweb.stanford.edu/~cgates/PERSI/papers/MCMCRev.pdf">Persi Diaconis</a>,
+to break the cipher.</p>
 <p>The algorithm works like this:</p>
 <ol>
 <li>Read a book.</li>
-<li>Count the two-letter frequencies and make a table out of it. For example, how many words have an <code>'a'</code> followed by an <code>'a'</code>.</li>
-<li>In the end, we will have a table of each bigram along with its occurrence in the book, which we&rsquo;ll assume is a good representation of the type of words our message will use.</li>
-<li>This will give us a scoring function that we can pass messages to, to see how well they do. The higher the score, the more likely that it&rsquo;s the message that we&rsquo;re trying to decrypt.</li>
-<li>Start with a random key, and get the score for that key. Swap two elements of that key, and get the score for the new key. If it results in a higher score, then that new key will be kept. If it&rsquo;s a lower score, we still might keep the new key on a biased probability. This is to make sure we don&rsquo;t get stuck in a local maximum. This is also known as the <a href="https://en.wikipedia.org/wiki/Hill_climbing">hill-climbing technique</a>.</li>
+<li>Count the two-letter frequencies and make a table out of it. For example, how
+many words have an <code>'a'</code> followed by an <code>'a'</code>.</li>
+<li>In the end, we will have a table of each bigram along with its occurrence in
+the book, which we&rsquo;ll assume is a good representation of the type of words
+our message will use.</li>
+<li>This will give us a scoring function that we can pass messages to, to see how
+well they do. The higher the score, the more likely that it&rsquo;s the message
+that we&rsquo;re trying to decrypt.</li>
+<li>Start with a random key, and get the score for that key. Swap two elements of
+that key, and get the score for the new key. If it results in a higher score,
+then that new key will be kept. If it&rsquo;s a lower score, we still might keep
+the new key on a biased probability. This is to make sure we don&rsquo;t get stuck
+in a local maximum. This is also known as the
+<a href="https://en.wikipedia.org/wiki/Hill_climbing">hill-climbing technique</a>.</li>
 <li>Repeat step 5 until we are happy with our results.</li>
 </ol>
-<p>For the book that we&rsquo;ll be &ldquo;reading&rdquo;, we&rsquo;ll use <em>War and Peace</em>, which you can find available online for free.</p>
+<p>For the book that we&rsquo;ll be &ldquo;reading&rdquo;, we&rsquo;ll use <em>War and Peace</em>, which you can
+find available online for free.</p>
 <p>Let&rsquo;s decipher this Chance verse:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>qkne tknz crjn arx zrb, l qloo yklnow zrbx eijn
 </span></span><span style="display:flex;"><span>l qloo alnow tknlx pbnytlrey, l qloo anno zrbx uile
@@ -417,7 +442,8 @@
 <li>Our cipher only encrypts alphabet characters. Everything else is left alone.</li>
 </ul>
 <hr>
-<p>If you&rsquo;re interested in learning more about ciphers and how to break them, check out this book:
+<p>If you&rsquo;re interested in learning more about ciphers and how to break them, check
+out this book:
 <a href="http://www.amazon.com/gp/product/1482614375/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=1482614375&amp;linkCode=as2&amp;tag=raymondtaught-20&amp;linkId=E5OAOVGJGVFGKTP4">Hacking Secret Ciphers With Python</a></p>
 
   </div>

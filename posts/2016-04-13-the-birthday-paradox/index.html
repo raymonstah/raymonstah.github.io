@@ -217,12 +217,17 @@
   </div>
 
   <div>
-  <p>Suppose there&rsquo;s a party of N people. How many people do you think it takes to find a pair of people who have the same birthdays?</p>
-<p>Well, the answer isn&rsquo;t what you expect, hence the title of this post: The Birthday Paradox.</p>
-<p>You might guess that it would take quite a lot of people since there are so many different birthdays, 366 to be exact.</p>
+  <p>Suppose there&rsquo;s a party of N people. How many people do you think it takes to
+find a pair of people who have the same birthdays?</p>
+<p>Well, the answer isn&rsquo;t what you expect, hence the title of this post: The
+Birthday Paradox.</p>
+<p>You might guess that it would take quite a lot of people since there are so many
+different birthdays, 366 to be exact.</p>
 <p>However, this isn&rsquo;t true!</p>
-<p>In fact, it only takes <em>23</em> people in a room for a 50% chance of two people having the same birthday!</p>
-<p>Not good enough? Well if you have just <strong>70</strong> people, there&rsquo;s a 99.9% chance of a matching birthday!</p>
+<p>In fact, it only takes <em>23</em> people in a room for a 50% chance of two people
+having the same birthday!</p>
+<p>Not good enough? Well if you have just <strong>70</strong> people, there&rsquo;s a 99.9% chance of
+a matching birthday!</p>
 <p>Not convinced? Let&rsquo;s run some simulations with Python.</p>
 <h4 id="prove-it-with-python">Prove it with Python</h4>
 <p>Assume we&rsquo;re using Python 3:</p>
@@ -249,7 +254,9 @@
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> birthday(n_people):
 </span></span><span style="display:flex;"><span>            successes <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> successes<span style="color:#f92672">/</span>trials
-</span></span></code></pre></div><p>Pretty straightforward, one function, <code>birthday()</code> that determines if there&rsquo;s a match given <code>n_people</code>. Another function <code>simulations()</code> that returns the probability of a match given <code>n_people</code> and the number of trials to run.</p>
+</span></span></code></pre></div><p>Pretty straightforward, one function, <code>birthday()</code> that determines if there&rsquo;s a
+match given <code>n_people</code>. Another function <code>simulations()</code> that returns the
+probability of a match given <code>n_people</code> and the number of trials to run.</p>
 <p>Let&rsquo;s test it out!</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> simulations(<span style="color:#ae81ff">23</span>, <span style="color:#ae81ff">10000</span>)
 </span></span><span style="display:flex;"><span><span style="color:#ae81ff">0.5048</span>
@@ -258,11 +265,15 @@
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> simulations(<span style="color:#ae81ff">366</span>, <span style="color:#ae81ff">10000</span>)
 </span></span><span style="display:flex;"><span><span style="color:#ae81ff">1.0</span>
 </span></span></code></pre></div><p>Our simulations seems to give us the result we expected!</p>
-<p>Notice that if we run the simulation with over 365 birthdays, we will always get a probability of 1. That&rsquo;s because well, two people must have the same birthday if we take all possible birthdays + 1 random birthday.</p>
-<p>This is known as the <a href="https://en.wikipedia.org/wiki/Pigeonhole_principle"><strong>pigeonhole principle</strong></a>.</p>
+<p>Notice that if we run the simulation with over 365 birthdays, we will always get
+a probability of 1. That&rsquo;s because well, two people must have the same birthday
+if we take all possible birthdays + 1 random birthday.</p>
+<p>This is known as the
+<a href="https://en.wikipedia.org/wiki/Pigeonhole_principle"><strong>pigeonhole principle</strong></a>.</p>
 <hr>
 <p>For more on probability, cool puzzles, and discrete math, check out this book:</p>
-<p>It&rsquo;s written by the famous Computer Scientist, <a href="https://en.wikipedia.org/wiki/Donald_Knuth">Donald Knuth</a> !</p>
+<p>It&rsquo;s written by the famous Computer Scientist,
+<a href="https://en.wikipedia.org/wiki/Donald_Knuth">Donald Knuth</a> !</p>
 
   </div>
 

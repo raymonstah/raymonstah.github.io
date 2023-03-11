@@ -218,27 +218,59 @@ As a daily Go developer, there are certain things about Go that makes it such an
 enjoyable language, despite all of the things it&rsquo;s missing.</p>
 <h2 id="simple">Simple</h2>
 <blockquote>
-<p>“It is not daily increase but daily decrease, hack away the unessential.
-The closer to the source, the less wastage there is.”</p>
+<p>“It is not daily increase but daily decrease, hack away the unessential. The
+closer to the source, the less wastage there is.”</p>
 <p>Bruce Lee</p>
 </blockquote>
-<p>Go is a simple language. One of the benefits of a simple language is that it&rsquo;s easy to learn, and it&rsquo;s easy to teach. I&rsquo;ve found that experienced developers can pick it up in and start using it in a day.
-Go doesn&rsquo;t have a lot of features that your favorite language
-may have. It took away the nice-to-have features and stripped the language to the absolute necessary
-requirements for a modern day language.</p>
-<p>Go code is meant to be read. A lot of other languages may have a ton of syntantic sugar or one-liners that make complex problems seem easy. But in Go, I&rsquo;ve found that the number of lines of code in often correlated with the complexity of the problem.</p>
-<p>There are no fancy macros and magic annotations. It&rsquo;s just code, which makes it easy to follow and comprehend.
-Errors are just values, and are always returned as the last value of a function. Go is so opinionated; they&rsquo;ve taken away all choices from the programmer and you&rsquo;re left with a simple language.</p>
-<p>Another example of a choiceless decision in Go is the tooling around it. <code>GoFmt</code> formats your code. The <code>go</code> cli is the tool of choice to run and build your progarms. <code>go test</code> is the idiomatic way to test your Go code. Go modules are how you handle dependencies. <code>pprof</code> is the tool of choice if you want to analyze your code&rsquo;s performance. All of the decisions are made for the developers already and makes writing idiomatic go trivial.</p>
+<p>Go is a simple language. One of the benefits of a simple language is that it&rsquo;s
+easy to learn, and it&rsquo;s easy to teach. I&rsquo;ve found that experienced developers
+can pick it up in and start using it in a day. Go doesn&rsquo;t have a lot of features
+that your favorite language may have. It took away the nice-to-have features and
+stripped the language to the absolute necessary requirements for a modern day
+language.</p>
+<p>Go code is meant to be read. A lot of other languages may have a ton of
+syntantic sugar or one-liners that make complex problems seem easy. But in Go,
+I&rsquo;ve found that the number of lines of code in often correlated with the
+complexity of the problem.</p>
+<p>There are no fancy macros and magic annotations. It&rsquo;s just code, which makes it
+easy to follow and comprehend. Errors are just values, and are always returned
+as the last value of a function. Go is so opinionated; they&rsquo;ve taken away all
+choices from the programmer and you&rsquo;re left with a simple language.</p>
+<p>Another example of a choiceless decision in Go is the tooling around it. <code>GoFmt</code>
+formats your code. The <code>go</code> cli is the tool of choice to run and build your
+progarms. <code>go test</code> is the idiomatic way to test your Go code. Go modules are
+how you handle dependencies. <code>pprof</code> is the tool of choice if you want to
+analyze your code&rsquo;s performance. All of the decisions are made for the
+developers already and makes writing idiomatic go trivial.</p>
 <h2 id="fast">Fast</h2>
-<p>Building Go programs are quick. Quick feedback cycles are important to me when I&rsquo;m trying to validate an idea.
-You hear more and more companies switching their backend language of choice from Ruby and Python to Go. It&rsquo;s a good balance between slow dynamic languages and fast lower level system languages. There&rsquo;s not a lot of bloat around the Go ecosystem. You can create super small Docker images, which makes it faster to transport to and from the cloud.</p>
-<p>With Goroutines and channels built into the language, writing concurrent code is easier, coming from Java. And it&rsquo;s not just about writing concurrent code, it&rsquo;s about writing safe concurrent code. Go has a built in race detector, which can help find and mitigate race conditions in your programs.</p>
+<p>Building Go programs are quick. Quick feedback cycles are important to me when
+I&rsquo;m trying to validate an idea. You hear more and more companies switching their
+backend language of choice from Ruby and Python to Go. It&rsquo;s a good balance
+between slow dynamic languages and fast lower level system languages. There&rsquo;s
+not a lot of bloat around the Go ecosystem. You can create super small Docker
+images, which makes it faster to transport to and from the cloud.</p>
+<p>With Goroutines and channels built into the language, writing concurrent code is
+easier, coming from Java. And it&rsquo;s not just about writing concurrent code, it&rsquo;s
+about writing safe concurrent code. Go has a built in race detector, which can
+help find and mitigate race conditions in your programs.</p>
 <h2 id="cloud-friendly">Cloud friendly</h2>
-<p>Go is everywhere these days. It&rsquo;s supported as a first class language for many cloud providers. You can build executables for different platforms with <code>GOOS</code> and <code>GOARCH</code>, which makes it easy distribute your code to any cloud platform out there.</p>
+<p>Go is everywhere these days. It&rsquo;s supported as a first class language for many
+cloud providers. You can build executables for different platforms with <code>GOOS</code>
+and <code>GOARCH</code>, which makes it easy distribute your code to any cloud platform out
+there.</p>
 <h2 id="summary">Summary</h2>
-<p>My favorite part of Go isn&rsquo;t its syntax or language features, but the entire ecosystem around the language. The tooling and lack of decisions a developer has to make around it is refreshing. There&rsquo;s usually an idiomatic way of doing things in the Go world. I don&rsquo;t have to pick a testing framework, or a build tool. These trivial problems can cause hours of discussion and decision fatigue in other languages, but not in Go. Its simplicity, quickness, and availability makes it a strong contender in a cloud native environment.</p>
-<p>Remember, all programming languages including Go are just tools to help you solve problems. Go faces this by focusing on its simplicity and removing choices so that you can focus on your problem. It&rsquo;s my language of choice to get stuff done. With that said, there are a few other languages that I plan on adding to my toolbelt this year, namely Rust and Haskell.</p>
+<p>My favorite part of Go isn&rsquo;t its syntax or language features, but the entire
+ecosystem around the language. The tooling and lack of decisions a developer has
+to make around it is refreshing. There&rsquo;s usually an idiomatic way of doing
+things in the Go world. I don&rsquo;t have to pick a testing framework, or a build
+tool. These trivial problems can cause hours of discussion and decision fatigue
+in other languages, but not in Go. Its simplicity, quickness, and availability
+makes it a strong contender in a cloud native environment.</p>
+<p>Remember, all programming languages including Go are just tools to help you
+solve problems. Go faces this by focusing on its simplicity and removing choices
+so that you can focus on your problem. It&rsquo;s my language of choice to get stuff
+done. With that said, there are a few other languages that I plan on adding to
+my toolbelt this year, namely Rust and Haskell.</p>
 
   </div>
 

@@ -216,78 +216,76 @@
   <div>
   <h2 id="intro">Intro</h2>
 <p>In the last couple of months, I&rsquo;ve been trying out
-<a href="https://aws.amazon.com/serverless/sam/">AWS SAM</a>.
-It&rsquo;s pretty much a thin wrapper around AWS CloudFormation, with an included CLI tool.
-For those of you who don&rsquo;t know, AWS Cloudformation is a way to programmatically
-control your infrastruture. Infrastructure as Code (IaC) is considered an
-industry best practice today, because it lets you declaratively state the
-underlying resources you want your applications to run on. This is
-useful because you can write these infrastructure templates once and
-generate the same immutable stack in different environments.</p>
-<p>Back to AWS SAM. I had an idea of building an app that does the player to character
-assignment for the board game Avalon. Basically, players connect to a gameroom,
-and the host starts the game. Once the game is started, all of the players get
-assigned to a random character. If you&rsquo;re familar with real-time online system,
-you probably guessed that we&rsquo;d need to use the WebSocket protocol to enable this
-two-way communication between players and the server.</p>
+<a href="https://aws.amazon.com/serverless/sam/">AWS SAM</a>. It&rsquo;s pretty much a thin
+wrapper around AWS CloudFormation, with an included CLI tool. For those of you
+who don&rsquo;t know, AWS Cloudformation is a way to programmatically control your
+infrastruture. Infrastructure as Code (IaC) is considered an industry best
+practice today, because it lets you declaratively state the underlying resources
+you want your applications to run on. This is useful because you can write these
+infrastructure templates once and generate the same immutable stack in different
+environments.</p>
+<p>Back to AWS SAM. I had an idea of building an app that does the player to
+character assignment for the board game Avalon. Basically, players connect to a
+gameroom, and the host starts the game. Once the game is started, all of the
+players get assigned to a random character. If you&rsquo;re familar with real-time
+online system, you probably guessed that we&rsquo;d need to use the WebSocket protocol
+to enable this two-way communication between players and the server.</p>
 <p>Using AWS SAM, I was able to quickly spin up a few lambdas and a DynamoDB table
 to get up and running in a matter of hours. However, I will note that the
 experience was not buttery smooth. There were definitely some hiccups along the
 way. Below I&rsquo;ll discuss various topics and my experience with them.</p>
 <h2 id="documentation">Documentation</h2>
-<p>Cloudformation and AWS SAM templating can be difficult to work with.
-Here&rsquo;s an <a href="https://github.com/aws/serverless-application-model/issues/1464">issue</a>
-I submitted to the aws/sam repo. Basically, I was running into issues saying that
-I couldn&rsquo;t specify the <code>ProvionedThroughput</code> of my DynamoDB table.
-But the error message I was getting was <code>ProvisionedThroughput cannot be empty</code>.
-See how that could be confusing? Well it turns out that when you specify a GSI,
-you also need to specify the <code>ProvisionedThroughput</code> property there as well.
-I think I would&rsquo;ve saved a solid 3 hours of Googling if AWS simply
-returned an error message saying that my Global Secondary Index
-needs to have the <code>ProvisionedThroughput</code> property set.</p>
+<p>Cloudformation and AWS SAM templating can be difficult to work with. Here&rsquo;s an
+<a href="https://github.com/aws/serverless-application-model/issues/1464">issue</a> I
+submitted to the aws/sam repo. Basically, I was running into issues saying that
+I couldn&rsquo;t specify the <code>ProvionedThroughput</code> of my DynamoDB table. But the error
+message I was getting was <code>ProvisionedThroughput cannot be empty</code>. See how that
+could be confusing? Well it turns out that when you specify a GSI, you also need
+to specify the <code>ProvisionedThroughput</code> property there as well. I think I
+would&rsquo;ve saved a solid 3 hours of Googling if AWS simply returned an error
+message saying that my Global Secondary Index needs to have the
+<code>ProvisionedThroughput</code> property set.</p>
 <h2 id="testing-locally">Testing Locally</h2>
 <p>I would try not to test SAM locally, if you can avoid it. Take advantage of unit
 testing and test all of your domain logic first, and treat lambda and SAM as a
-wrapper around your code.
-When it comes to testing everything end-to-end, it&rsquo;s a different story with AWS SAM.
-For normal request/response type of testing, SAM has a build in tool.
-Unfortunately, it does not have a way to locally test API Gateway websocket.
-See this <a href="https://github.com/aws/aws-sam-cli/issues/896">issue</a> for more details.
-This creates an extremely tedious process of pushing code to AWS to test it for real.
+wrapper around your code. When it comes to testing everything end-to-end, it&rsquo;s a
+different story with AWS SAM. For normal request/response type of testing, SAM
+has a build in tool. Unfortunately, it does not have a way to locally test API
+Gateway websocket. See this
+<a href="https://github.com/aws/aws-sam-cli/issues/896">issue</a> for more details. This
+creates an extremely tedious process of pushing code to AWS to test it for real.
 Websockets alone can already be difficult to test since it usually involves
-multiple clients, so I wrote a Go program that performs the WS connections
-so that I can test my app functionality.</p>
+multiple clients, so I wrote a Go program that performs the WS connections so
+that I can test my app functionality.</p>
 <h2 id="performance">Performance</h2>
 <p><img src="xray.png" alt="X-Ray Screenshot"></p>
 <p>Lambda cold starts. It&rsquo;s probably been discussed thousands of times. I think it
-really boils down to what you&rsquo;re building.
-According to the <a href="https://lawsofux.com/doherty-threshold.html">Doherty Threshold</a>,
-400 milliseconds is maxmium time you want your users to wait before they start
-to lose attention. I measured my cold starts using
-<a href="https://aws.amazon.com/xray/">AWS X-Ray</a>, and they were around 150ms.
-It&rsquo;s not great but it&rsquo;s perfectly acceptable for a game room application.
-If I really wanted to squeeze every drop of performance that I could get out of lambda,
-I could bump up the memory resources and push responses to the clients
-connected to the websocket in parallel.
-Lambda&rsquo;s performance with the cold starts are good enough for me here.</p>
+really boils down to what you&rsquo;re building. According to the
+<a href="https://lawsofux.com/doherty-threshold.html">Doherty Threshold</a>, 400
+milliseconds is maxmium time you want your users to wait before they start to
+lose attention. I measured my cold starts using
+<a href="https://aws.amazon.com/xray/">AWS X-Ray</a>, and they were around 150ms. It&rsquo;s not
+great but it&rsquo;s perfectly acceptable for a game room application. If I really
+wanted to squeeze every drop of performance that I could get out of lambda, I
+could bump up the memory resources and push responses to the clients connected
+to the websocket in parallel. Lambda&rsquo;s performance with the cold starts are good
+enough for me here.</p>
 <p>If I were to start this project over, I might consider using Fargate instead.
-Just a single app server without any connections to any database and storing
-the connections in memory would be sufficient for my use case.</p>
+Just a single app server without any connections to any database and storing the
+connections in memory would be sufficient for my use case.</p>
 <h2 id="costs">Costs</h2>
 <p>I don&rsquo;t have a lot of scale, so I&rsquo;d prefer to only get charged for the compute
-time that I actually use. I&rsquo;d hate to get charged for running a server 24/7
-when I&rsquo;m not using it. My total costs for running this application in the past
-couple months have been.. $0.03. Yup, 3 total cents. And those 3 cents aren&rsquo;t
-even from running the application; it&rsquo;s from storing the compiled
-Go binaries in S3.</p>
+time that I actually use. I&rsquo;d hate to get charged for running a server 24/7 when
+I&rsquo;m not using it. My total costs for running this application in the past couple
+months have been.. $0.03. Yup, 3 total cents. And those 3 cents aren&rsquo;t even from
+running the application; it&rsquo;s from storing the compiled Go binaries in S3.</p>
 <h2 id="not-managing-infrastructure">Not managing infrastructure</h2>
 <p>The great thing about using serverless technology is that I&rsquo;m not the one
-responsible for managing my infrastructure. If a node goes down, I can point
-the finger at AWS. I don&rsquo;t need to be an Ops expert or a Database admin.
-I can just focus on my building my product without worrying about database
-provisioning or load balancers and server redundancy.
-All of the traditional infrastracture management is just abstracted away
-from me, which is great.</p>
+responsible for managing my infrastructure. If a node goes down, I can point the
+finger at AWS. I don&rsquo;t need to be an Ops expert or a Database admin. I can just
+focus on my building my product without worrying about database provisioning or
+load balancers and server redundancy. All of the traditional infrastracture
+management is just abstracted away from me, which is great.</p>
 <h2 id="ci">CI</h2>
 <p>There&rsquo;s a Github Action available for AWS SAM, which made it pretty simple to
 set up SAM in the cloud and have it automatically build and deploy my lambdas
@@ -303,22 +301,22 @@ have to manage infrastructure for it in production.</p>
 </li>
 <li>
 <p>Lambda: 9/10. Minus the cold starts, the lambdas have been reliable and
-pleasant to work with. It&rsquo;s easy to test these locally since you can just feed
-it an event json file.</p>
+pleasant to work with. It&rsquo;s easy to test these locally since you can just
+feed it an event json file.</p>
 </li>
 <li>
-<p>API Gateway Websockets: 3/10. Testing locally is near impossible.
-Out of the box, you can a secure websocket that you can use immediately.
-It seems pretty configurable if you wanted to set appropriate rate limiting
-to prevent abuse. The main advantage here is the ability to scale easily.
-Overall, this technology was definitely the weakest link and
-I wouldn&rsquo;t use it for a <em>real</em> application.</p>
+<p>API Gateway Websockets: 3/10. Testing locally is near impossible. Out of the
+box, you can a secure websocket that you can use immediately. It seems pretty
+configurable if you wanted to set appropriate rate limiting to prevent abuse.
+The main advantage here is the ability to scale easily. Overall, this
+technology was definitely the weakest link and I wouldn&rsquo;t use it for a <em>real</em>
+application.</p>
 </li>
 <li>
 <p>SAM CLI: 8/10. Getting this to the point where I could do builds and deploys
-in CI was really convenient and made testing the API Gateway Websockets much faster.
-Overall, I felt like the CLI tool was straightforward to use and the documentation
-for it was sufficient.</p>
+in CI was really convenient and made testing the API Gateway Websockets much
+faster. Overall, I felt like the CLI tool was straightforward to use and the
+documentation for it was sufficient.</p>
 </li>
 </ol>
 

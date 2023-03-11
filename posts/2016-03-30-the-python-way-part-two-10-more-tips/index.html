@@ -215,31 +215,34 @@
   </div>
 
   <div>
-  <p>Below are 10 more useful tips and tricks in Python.
-If you haven&rsquo;t checked out the first 10 tips, be sure to do so <a href="http://raymondtaught.me/the-python-way-10-tips/">here</a>.</p>
+  <p>Below are 10 more useful tips and tricks in Python. If you haven&rsquo;t checked out
+the first 10 tips, be sure to do so
+<a href="http://raymondtaught.me/the-python-way-10-tips/">here</a>.</p>
 <p>Note: Let&rsquo;s assume we&rsquo;re all using Python 3.</p>
 <h5 id="1-ranges">1. Ranges</h5>
-<p>Sometimes, it&rsquo;s easier to list out all of the elements you want in a list. Sometimes it&rsquo;s not. Let&rsquo;s say I want a list of the first 100 integers.</p>
+<p>Sometimes, it&rsquo;s easier to list out all of the elements you want in a list.
+Sometimes it&rsquo;s not. Let&rsquo;s say I want a list of the first 100 integers.</p>
 <p>Instead of doing this:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Note: This doesn&#39;t compile</span>
 </span></span><span style="display:flex;"><span>first_hundred <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>,<span style="color:#f92672">...</span>,<span style="color:#ae81ff">99</span>]
 </span></span></code></pre></div><p>This is easily solved with <code>range()</code>:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>first_hundred <span style="color:#f92672">=</span> range(<span style="color:#ae81ff">100</span>)
-</span></span></code></pre></div><p>Let&rsquo;s say you want a list of the alphabets. Without libraries, you can use the built in functions <code>ord()</code>, <code>chr()</code>, and of course, <code>range()</code>.</p>
+</span></span></code></pre></div><p>Let&rsquo;s say you want a list of the alphabets. Without libraries, you can use the
+built in functions <code>ord()</code>, <code>chr()</code>, and of course, <code>range()</code>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>alpha_index <span style="color:#f92672">=</span> range(ord(<span style="color:#e6db74">&#39;a&#39;</span>), ord(<span style="color:#e6db74">&#39;z&#39;</span>) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
 </span></span><span style="display:flex;"><span>alphabet <span style="color:#f92672">=</span> [chr(index) <span style="color:#66d9ef">for</span> index <span style="color:#f92672">in</span> alpha_index]
 </span></span></code></pre></div><p>More examples with the alphabet soon.</p>
 <h5 id="2-zip">2. Zip</h5>
-<p>Suppose you had two lists, <code>names</code> and <code>ages</code>:
-A person&rsquo;s age can be found with the corresponding index in <code>ages</code>.
-So <code>names[0]</code> corresponds with <code>ages[0]</code>.</p>
+<p>Suppose you had two lists, <code>names</code> and <code>ages</code>: A person&rsquo;s age can be found with
+the corresponding index in <code>ages</code>. So <code>names[0]</code> corresponds with <code>ages[0]</code>.</p>
 <p>We may be tempted to do something like this:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>names <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;Alice&#34;</span>, <span style="color:#e6db74">&#34;Bob&#34;</span>, <span style="color:#e6db74">&#34;Chris&#34;</span>, <span style="color:#e6db74">&#34;Dan&#34;</span>]
 </span></span><span style="display:flex;"><span>ages <span style="color:#f92672">=</span> [<span style="color:#ae81ff">21</span>, <span style="color:#ae81ff">23</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">34</span>]
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> index, name <span style="color:#f92672">in</span> enumerate(names):
 </span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{}</span><span style="color:#e6db74"> is </span><span style="color:#e6db74">{}</span><span style="color:#e6db74"> years old&#34;</span><span style="color:#f92672">.</span>format(name, ages[index]))
-</span></span></code></pre></div><p>Introduce <code>zip()</code>. It allows us to iterate over multiple iterables simultaneously.</p>
+</span></span></code></pre></div><p>Introduce <code>zip()</code>. It allows us to iterate over multiple iterables
+simultaneously.</p>
 <p>Here&rsquo;s the same example using <code>zip()</code>:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>names <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;Alice&#34;</span>, <span style="color:#e6db74">&#34;Bob&#34;</span>, <span style="color:#e6db74">&#34;Chris&#34;</span>, <span style="color:#e6db74">&#34;Dan&#34;</span>]
 </span></span><span style="display:flex;"><span>ages <span style="color:#f92672">=</span> [<span style="color:#ae81ff">21</span>, <span style="color:#ae81ff">23</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">34</span>]
@@ -247,11 +250,16 @@ So <code>names[0]</code> corresponds with <code>ages[0]</code>.</p>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> name, age <span style="color:#f92672">in</span> zip(names, ages):
 </span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{}</span><span style="color:#e6db74"> is </span><span style="color:#e6db74">{}</span><span style="color:#e6db74"> years old&#34;</span><span style="color:#f92672">.</span>format(name, age))
 </span></span></code></pre></div><p>A bit cleaner, wouldn&rsquo;t you agree?</p>
-<p>With <code>zip()</code>, we can also transpose/rotate a matrix, or group elements in a list.</p>
+<p>With <code>zip()</code>, we can also transpose/rotate a matrix, or group elements in a
+list.</p>
 <h5 id="3-lambda">3. Lambda</h5>
-<p>Ah, lambdas..
-In my opinion, these should <strong>only</strong> be used when combined with Python&rsquo;s functional programming functions (<code>map</code>, <code>filter</code>, or <code>reduce</code>) or when used as a parameter to another function. (More on this in a bit)</p>
-<p>Formally, lambdas are known as anonymous functions. Informally, I think they&rsquo;re just another way of creating <strong>short</strong> functions. If you&rsquo;re creating a function that&rsquo;s more than a couple of lines long, or has complex logic, stick with creating functions with <code>def</code>.</p>
+<p>Ah, lambdas.. In my opinion, these should <strong>only</strong> be used when combined with
+Python&rsquo;s functional programming functions (<code>map</code>, <code>filter</code>, or <code>reduce</code>) or when
+used as a parameter to another function. (More on this in a bit)</p>
+<p>Formally, lambdas are known as anonymous functions. Informally, I think they&rsquo;re
+just another way of creating <strong>short</strong> functions. If you&rsquo;re creating a function
+that&rsquo;s more than a couple of lines long, or has complex logic, stick with
+creating functions with <code>def</code>.</p>
 <p>Lambdas are for quick, short, and simple functions!</p>
 <p>You can use the <code>lambda</code> keyword like so:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>addOne <span style="color:#f92672">=</span> <span style="color:#66d9ef">lambda</span> num: num <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
@@ -259,9 +267,12 @@ In my opinion, these should <strong>only</strong> be used when combined with Pyt
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>lessThanFive <span style="color:#f92672">=</span> <span style="color:#66d9ef">lambda</span> num: <span style="color:#e6db74">&#34;Yes&#34;</span> <span style="color:#66d9ef">if</span> num <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">5</span> <span style="color:#66d9ef">else</span> <span style="color:#e6db74">&#34;No&#34;</span>
 </span></span><span style="display:flex;"><span>print(lessThanFive(<span style="color:#ae81ff">10</span>)) <span style="color:#75715e"># No</span>
-</span></span></code></pre></div><p>Lambda functions can be more helpful when using inline functions, as we&rsquo;ll demonstrate in the examples below.</p>
+</span></span></code></pre></div><p>Lambda functions can be more helpful when using inline functions, as we&rsquo;ll
+demonstrate in the examples below.</p>
 <h5 id="4-sorting">4. Sorting</h5>
-<p>In Python, there are two built in sorting functions, <code>list.sort()</code> and <code>sorted()</code>. The main difference is that <code>sort()</code> sorts in place and only works on list, while <code>sorted()</code> returns a new iterable.</p>
+<p>In Python, there are two built in sorting functions, <code>list.sort()</code> and
+<code>sorted()</code>. The main difference is that <code>sort()</code> sorts in place and only works
+on list, while <code>sorted()</code> returns a new iterable.</p>
 <p>You can use them like this:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>numbers <span style="color:#f92672">=</span> [<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">6</span>]
 </span></span><span style="display:flex;"><span>sorted_nums <span style="color:#f92672">=</span> sorted(numbers) <span style="color:#75715e"># [1, 2, 2, 4, 5, 6]</span>
@@ -269,17 +280,21 @@ In my opinion, these should <strong>only</strong> be used when combined with Pyt
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># In place sort.</span>
 </span></span><span style="display:flex;"><span>numbers<span style="color:#f92672">.</span>sort()
 </span></span><span style="display:flex;"><span>print(numbers) <span style="color:#75715e"># [1, 2, 2, 4, 5, 6]</span>
-</span></span></code></pre></div><p>You can also pass in parameters to either of these sorting functions, such as a <code>key</code> and whether you want a <code>reversed</code> sort.</p>
+</span></span></code></pre></div><p>You can also pass in parameters to either of these sorting functions, such as a
+<code>key</code> and whether you want a <code>reversed</code> sort.</p>
 <p>Example:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>people <span style="color:#f92672">=</span> [(<span style="color:#e6db74">&#34;Alice&#34;</span>, <span style="color:#ae81ff">21</span>), (<span style="color:#e6db74">&#34;Bob&#34;</span>, <span style="color:#ae81ff">23</span>), (<span style="color:#e6db74">&#34;Chris&#34;</span>, <span style="color:#ae81ff">10</span>), (<span style="color:#e6db74">&#34;Dan&#34;</span>, <span style="color:#ae81ff">34</span>)]
 </span></span><span style="display:flex;"><span>people<span style="color:#f92672">.</span>sort(key<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> person: person[<span style="color:#ae81ff">1</span>], reversed<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
 </span></span><span style="display:flex;"><span>print(people) <span style="color:#75715e"># [(&#39;Dan&#39;, 34), (&#39;Bob&#39;, 23), (&#39;Alice&#39;, 21), (&#39;Chris&#39;, 10)]</span>
-</span></span></code></pre></div><p>Pretty cool huh? We specified the argument <code>reverse=True</code>, so it will sort the list of tuples by oldest first.
-We specify the <code>key</code> to be in position <code>1</code> of the incoming argument, which we <em>named</em> <code>person</code>, a member of the iterable, <code>people</code>.
-Note the use of <code>lambda</code> here!</p>
+</span></span></code></pre></div><p>Pretty cool huh? We specified the argument <code>reverse=True</code>, so it will sort the
+list of tuples by oldest first. We specify the <code>key</code> to be in position <code>1</code> of
+the incoming argument, which we <em>named</em> <code>person</code>, a member of the iterable,
+<code>people</code>. Note the use of <code>lambda</code> here!</p>
 <h5 id="5-map">5. Map</h5>
-<p>In the last tutorial, we went over list comprehensions and why they&rsquo;re so useful.</p>
-<p>Here&rsquo;s an example of converting a list of strings into a list of integers using list comprehension:</p>
+<p>In the last tutorial, we went over list comprehensions and why they&rsquo;re so
+useful.</p>
+<p>Here&rsquo;s an example of converting a list of strings into a list of integers using
+list comprehension:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>str_nums <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;1&#34;</span>, <span style="color:#e6db74">&#34;2&#34;</span>, <span style="color:#e6db74">&#34;3&#34;</span>, <span style="color:#e6db74">&#34;4&#34;</span>, <span style="color:#e6db74">&#34;5&#34;</span>]
 </span></span><span style="display:flex;"><span>numbers <span style="color:#f92672">=</span> [int(num) <span style="color:#66d9ef">for</span> num <span style="color:#f92672">in</span> str_nums]
 </span></span><span style="display:flex;"><span>print(numbers) <span style="color:#75715e"># [1, 2, 3, 4, 5]</span>
@@ -288,7 +303,9 @@ Note the use of <code>lambda</code> here!</p>
 </span></span><span style="display:flex;"><span>numbers <span style="color:#f92672">=</span> list(map(int, str_nums))
 </span></span><span style="display:flex;"><span>print(numbers) <span style="color:#75715e"># [1, 2, 3, 4, 5]</span>
 </span></span></code></pre></div><p>Now why would we ever want to use map?</p>
-<p>When whatever you&rsquo;re applying to a list is too complex for list comprehensions. You can either create a function separately to apply, or apply it using <code>lambda</code>.</p>
+<p>When whatever you&rsquo;re applying to a list is too complex for list comprehensions.
+You can either create a function separately to apply, or apply it using
+<code>lambda</code>.</p>
 <p>Here&rsquo;s where you would combine the use of <code>lambda</code> and <code>map()</code>:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>numbers <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>]
 </span></span><span style="display:flex;"><span>results <span style="color:#f92672">=</span> list(map(<span style="color:#66d9ef">lambda</span> number: number<span style="color:#f92672">*</span> <span style="color:#ae81ff">5</span>, numbers))
@@ -302,72 +319,100 @@ Note the use of <code>lambda</code> here!</p>
 </span></span><span style="display:flex;"><span>numbers <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>]
 </span></span><span style="display:flex;"><span>results <span style="color:#f92672">=</span> list(map(crazyComplexFunction, numbers))
 </span></span><span style="display:flex;"><span>print(results) <span style="color:#75715e"># [5, 11, 21, 35, 53]</span>
-</span></span></code></pre></div><p>Also, sometimes users will experience scoping issues since they will be creating an extra variable when using list comprehensions. This can cause one to overwrite the contents of a previous variable when the variable names are the same. Notice that we didn&rsquo;t have to create a temporary variable when using <code>map()</code>.</p>
+</span></span></code></pre></div><p>Also, sometimes users will experience scoping issues since they will be creating
+an extra variable when using list comprehensions. This can cause one to
+overwrite the contents of a previous variable when the variable names are the
+same. Notice that we didn&rsquo;t have to create a temporary variable when using
+<code>map()</code>.</p>
 <h5 id="6-filter">6. Filter</h5>
-<p>Again, <code>filter</code> can be solved by doing list comprehensions. But for people coming from a functional programming background, keywords like <code>map</code> and <code>filter</code> are intuitive for them.</p>
+<p>Again, <code>filter</code> can be solved by doing list comprehensions. But for people
+coming from a functional programming background, keywords like <code>map</code> and
+<code>filter</code> are intuitive for them.</p>
 <p>Here&rsquo;s an example using <code>filter</code> to take all multiples of 3 up to 100:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> list(filter(<span style="color:#66d9ef">lambda</span> num: num <span style="color:#f92672">%</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>, range(<span style="color:#ae81ff">100</span>)))
 </span></span><span style="display:flex;"><span>[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">15</span>, <span style="color:#ae81ff">18</span>, <span style="color:#ae81ff">21</span>, <span style="color:#ae81ff">24</span>, <span style="color:#ae81ff">27</span>, <span style="color:#ae81ff">30</span>, <span style="color:#ae81ff">33</span>, <span style="color:#ae81ff">36</span>, <span style="color:#ae81ff">39</span>, <span style="color:#ae81ff">42</span>, <span style="color:#ae81ff">45</span>, <span style="color:#ae81ff">48</span>, <span style="color:#ae81ff">51</span>, <span style="color:#ae81ff">54</span>, <span style="color:#ae81ff">57</span>, <span style="color:#ae81ff">60</span>, <span style="color:#ae81ff">63</span>, <span style="color:#ae81ff">66</span>, <span style="color:#ae81ff">69</span>, <span style="color:#ae81ff">72</span>, <span style="color:#ae81ff">75</span>, <span style="color:#ae81ff">78</span>, <span style="color:#ae81ff">81</span>, <span style="color:#ae81ff">84</span>, <span style="color:#ae81ff">87</span>, <span style="color:#ae81ff">90</span>, <span style="color:#ae81ff">93</span>, <span style="color:#ae81ff">96</span>, <span style="color:#ae81ff">99</span>]
 </span></span></code></pre></div><p>Here&rsquo;s the same example using list comprehensions:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> [num <span style="color:#66d9ef">for</span> num <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">100</span>) <span style="color:#66d9ef">if</span> num <span style="color:#f92672">%</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>]
 </span></span><span style="display:flex;"><span>[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">15</span>, <span style="color:#ae81ff">18</span>, <span style="color:#ae81ff">21</span>, <span style="color:#ae81ff">24</span>, <span style="color:#ae81ff">27</span>, <span style="color:#ae81ff">30</span>, <span style="color:#ae81ff">33</span>, <span style="color:#ae81ff">36</span>, <span style="color:#ae81ff">39</span>, <span style="color:#ae81ff">42</span>, <span style="color:#ae81ff">45</span>, <span style="color:#ae81ff">48</span>, <span style="color:#ae81ff">51</span>, <span style="color:#ae81ff">54</span>, <span style="color:#ae81ff">57</span>, <span style="color:#ae81ff">60</span>, <span style="color:#ae81ff">63</span>, <span style="color:#ae81ff">66</span>, <span style="color:#ae81ff">69</span>, <span style="color:#ae81ff">72</span>, <span style="color:#ae81ff">75</span>, <span style="color:#ae81ff">78</span>, <span style="color:#ae81ff">81</span>, <span style="color:#ae81ff">84</span>, <span style="color:#ae81ff">87</span>, <span style="color:#ae81ff">90</span>, <span style="color:#ae81ff">93</span>, <span style="color:#ae81ff">96</span>, <span style="color:#ae81ff">99</span>]
-</span></span></code></pre></div><p>I believe Python programmers have been debating on <code>map</code> and <code>filter</code> functions versus list comprehensions for some time now. The one you decide to use is ultimately up to you.</p>
+</span></span></code></pre></div><p>I believe Python programmers have been debating on <code>map</code> and <code>filter</code> functions
+versus list comprehensions for some time now. The one you decide to use is
+ultimately up to you.</p>
 <h5 id="7-with">7. With</h5>
-<p>If you&rsquo;re coming from a Java or C background, you&rsquo;re probably used to opening <strong>and</strong> closing files. Sometimes you open files and forget to close them, and thus left with open file pointers, which can lead to accidental read/writes.</p>
-<p>Introduce <code>with</code>, which allows Python users to safely open and read/write to a file without worrying about closing it later. This <em>also</em> closes the file if any exceptions are thrown.</p>
+<p>If you&rsquo;re coming from a Java or C background, you&rsquo;re probably used to opening
+<strong>and</strong> closing files. Sometimes you open files and forget to close them, and
+thus left with open file pointers, which can lead to accidental read/writes.</p>
+<p>Introduce <code>with</code>, which allows Python users to safely open and read/write to a
+file without worrying about closing it later. This <em>also</em> closes the file if any
+exceptions are thrown.</p>
 <p>Use it like so:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#34;file.txt&#34;</span>) <span style="color:#66d9ef">as</span> f:
 </span></span><span style="display:flex;"><span>    data <span style="color:#f92672">=</span> f<span style="color:#f92672">.</span>read()
 </span></span></code></pre></div><p>Pretty straightforward.</p>
 <h5 id="8-splitjoin">8. Split/Join</h5>
-<p>You can use <code>split()</code> and <code>join()</code> when converting strings to lists or vice versa.</p>
-<p>With <code>split()</code>, you can pass a string to it letting it know what to split the string on. By default, it will split on empty spaces. <code>split()</code> returns a list of the string, separating each part by the delimiter.</p>
+<p>You can use <code>split()</code> and <code>join()</code> when converting strings to lists or vice
+versa.</p>
+<p>With <code>split()</code>, you can pass a string to it letting it know what to split the
+string on. By default, it will split on empty spaces. <code>split()</code> returns a list
+of the string, separating each part by the delimiter.</p>
 <p>Here&rsquo;s some examples:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#e6db74">&#34;Today was a good day&#34;</span><span style="color:#f92672">.</span>split()
 </span></span><span style="display:flex;"><span>[<span style="color:#e6db74">&#39;Today&#39;</span>, <span style="color:#e6db74">&#39;was&#39;</span>, <span style="color:#e6db74">&#39;a&#39;</span>, <span style="color:#e6db74">&#39;good&#39;</span>, <span style="color:#e6db74">&#39;day&#39;</span>]
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#e6db74">&#34;1,2,3,4,5&#34;</span><span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#34;,&#34;</span>)
 </span></span><span style="display:flex;"><span>[<span style="color:#e6db74">&#39;1&#39;</span>, <span style="color:#e6db74">&#39;2&#39;</span>, <span style="color:#e6db74">&#39;3&#39;</span>, <span style="color:#e6db74">&#39;4&#39;</span>, <span style="color:#e6db74">&#39;5&#39;</span>]
-</span></span></code></pre></div><p>Want that list of alphabet again? Instead of using split, you can use the <code>list()</code> function to convert a string into a list of characters.</p>
+</span></span></code></pre></div><p>Want that list of alphabet again? Instead of using split, you can use the
+<code>list()</code> function to convert a string into a list of characters.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> string
 </span></span><span style="display:flex;"><span>alphabet <span style="color:#f92672">=</span> list(string<span style="color:#f92672">.</span>ascii_lowercase)
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;, &#39;f&#39;, &#39;g&#39;, &#39;h&#39;, &#39;i&#39;, &#39;j&#39;, &#39;k&#39;, &#39;l&#39;, &#39;m&#39;, &#39;n&#39;, &#39;o&#39;, &#39;p&#39;, &#39;q&#39;, &#39;r&#39;, &#39;s&#39;, &#39;t&#39;, &#39;u&#39;, &#39;v&#39;, &#39;w&#39;, &#39;x&#39;, &#39;y&#39;, &#39;z&#39;]</span>
-</span></span></code></pre></div><p><code>.join()</code> allows you to combine elements of a list into a string.
-Here we are specifying to join each element of the list with a space.</p>
+</span></span></code></pre></div><p><code>.join()</code> allows you to combine elements of a list into a string. Here we are
+specifying to join each element of the list with a space.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#e6db74">&#39; &#39;</span><span style="color:#f92672">.</span>join([<span style="color:#e6db74">&#39;Today&#39;</span>, <span style="color:#e6db74">&#39;was&#39;</span>, <span style="color:#e6db74">&#39;a&#39;</span>, <span style="color:#e6db74">&#39;good&#39;</span>, <span style="color:#e6db74">&#39;day&#39;</span>])
 </span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;Today was a good day&#39;</span>
 </span></span></code></pre></div><p>You can join lists using any characters, or none at all.</p>
-<p>Note: using <code>.join()</code> may be faster than string concatenations when you have <strong>a lot</strong> of strings to join together. Otherwise, for the sake of readability, stick with string concatenations.</p>
+<p>Note: using <code>.join()</code> may be faster than string concatenations when you have <strong>a
+lot</strong> of strings to join together. Otherwise, for the sake of readability, stick
+with string concatenations.</p>
 <h5 id="9-reserved-keywords">9. Reserved keywords</h5>
-<p>Beginners often make the mistakes of naming their variables after a reserved keyword! This doesn&rsquo;t just apply to Python, and can be a struggle in any programming language when trying to debug a variable that has the same name as a keyword.</p>
+<p>Beginners often make the mistakes of naming their variables after a reserved
+keyword! This doesn&rsquo;t just apply to Python, and can be a struggle in any
+programming language when trying to debug a variable that has the same name as a
+keyword.</p>
 <p>As an example of why we shouldn&rsquo;t use reserved keywords:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> list <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>]
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> another_list <span style="color:#f92672">=</span> list(range(<span style="color:#ae81ff">10</span>))
 </span></span><span style="display:flex;"><span>Traceback (most recent call last):
 </span></span><span style="display:flex;"><span>  File <span style="color:#e6db74">&#34;&lt;stdin&gt;&#34;</span>, line <span style="color:#ae81ff">1</span>, <span style="color:#f92672">in</span> <span style="color:#f92672">&lt;</span>module<span style="color:#f92672">&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">TypeError</span>: <span style="color:#e6db74">&#39;list&#39;</span> object <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> callable
-</span></span></code></pre></div><p>Since we used <code>list</code> as a variable, when we try to convert the range iterable to a <code>list</code>, we get an error!</p>
-<p>Obviously, in a small example like this, it is easy to debug, but in a large application, finding the source of the problem can take time, since it doesn&rsquo;t tell us <em>where</em> to look, especially if we used the reserved word in a different context or module.</p>
+</span></span></code></pre></div><p>Since we used <code>list</code> as a variable, when we try to convert the range iterable to
+a <code>list</code>, we get an error!</p>
+<p>Obviously, in a small example like this, it is easy to debug, but in a large
+application, finding the source of the problem can take time, since it doesn&rsquo;t
+tell us <em>where</em> to look, especially if we used the reserved word in a different
+context or module.</p>
 <p>For a list of words <em>not</em> to use in Python, you can run these commands.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">import</span> builtins
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> dir(builtins)
 </span></span></code></pre></div><p>Avoid them!</p>
 <h5 id="10-binary-in-python">10. Binary in Python</h5>
-<p>If you&rsquo;re a Computer Science student, you&rsquo;ll be using binary a lot.
-Here are two functions <code>bin()</code> and <code>int()</code>
-You can tell Python that a number is binary using the following syntax: <code>0b</code> followed by the binary string.</p>
+<p>If you&rsquo;re a Computer Science student, you&rsquo;ll be using binary a lot. Here are two
+functions <code>bin()</code> and <code>int()</code> You can tell Python that a number is binary using
+the following syntax: <code>0b</code> followed by the binary string.</p>
 <p>Here are some examples:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Convert 256 to binary</span>
 </span></span><span style="display:flex;"><span>print(bin(<span style="color:#ae81ff">256</span>)) <span style="color:#75715e"># &#39;0b100000000&#39;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># Convert 10101010 to an integer</span>
 </span></span><span style="display:flex;"><span>print(int(<span style="color:#ae81ff">0b10101010</span>)) <span style="color:#75715e"># 170</span>
-</span></span></code></pre></div><p>Note: you can pass a parameter to <code>int</code> letting it know the base you&rsquo;re working with.</p>
+</span></span></code></pre></div><p>Note: you can pass a parameter to <code>int</code> letting it know the base you&rsquo;re working
+with.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Convert Hex to integer</span>
 </span></span><span style="display:flex;"><span>print(int(<span style="color:#e6db74">&#34;FFFF&#34;</span>, <span style="color:#ae81ff">16</span>)) <span style="color:#75715e"># 65535</span>
 </span></span></code></pre></div><hr>
-<p>Thanks for reading! If this was helpful for you, please share it with someone. Best of luck learning Python!</p>
-<p>I&rsquo;ll also recommend this book: <a href="http://www.amazon.com/gp/product/0134034287/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0134034287&amp;linkCode=as2&amp;tag=raymondtaught-20&amp;linkId=OW7R33IRZCF7MFQS">Effective Python</a></p>
+<p>Thanks for reading! If this was helpful for you, please share it with someone.
+Best of luck learning Python!</p>
+<p>I&rsquo;ll also recommend this book:
+<a href="http://www.amazon.com/gp/product/0134034287/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0134034287&amp;linkCode=as2&amp;tag=raymondtaught-20&amp;linkId=OW7R33IRZCF7MFQS">Effective Python</a></p>
 
   </div>
 

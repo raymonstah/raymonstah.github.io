@@ -216,8 +216,10 @@
 
   <div>
   <h6 id="given-a-string-return-true-if-it-has-all-unique-characters-return-false-otherwise">Given a string, return True if it has all unique characters. Return False otherwise</h6>
-<p>For example: <code>raymond</code> should return <code>True</code>, but <code>French Fries</code> should return <code>False</code>.</p>
-<p>There are at least three different ways you can do this, but in this tutorial we&rsquo;ll go over two ways.</p>
+<p>For example: <code>raymond</code> should return <code>True</code>, but <code>French Fries</code> should return
+<code>False</code>.</p>
+<p>There are at least three different ways you can do this, but in this tutorial
+we&rsquo;ll go over two ways.</p>
 <ol>
 <li>Using a <code>dict</code> (hash table)</li>
 <li>Sorting the string</li>
@@ -225,9 +227,12 @@
 <h6 id="using-a-dict">Using a <code>dict</code></h6>
 <ol>
 <li>First we want to create a dictionary like this: <code>mappings = {}</code></li>
-<li>Then we want to loop over the string and checking if the character is in <code>mappings</code></li>
-<li>If it is, then we know that this string is NOT unique. We may return <code>False</code>. Otherwise, we can mark it as <code>True</code> and continue.</li>
-<li>When we&rsquo;re done looping through the string and have not found any duplicate characters, simply return <code>True</code>.</li>
+<li>Then we want to loop over the string and checking if the character is in
+<code>mappings</code></li>
+<li>If it is, then we know that this string is NOT unique. We may return <code>False</code>.
+Otherwise, we can mark it as <code>True</code> and continue.</li>
+<li>When we&rsquo;re done looping through the string and have not found any duplicate
+characters, simply return <code>True</code>.</li>
 </ol>
 <p>Here is the code that implements the logic above.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">unique</span>(string):
@@ -238,13 +243,18 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">else</span>:
 </span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">False</span>
 </span></span><span style="display:flex;"><span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">True</span>
-</span></span></code></pre></div><p>This algorithm takes just <code>O(n)</code> time and space, where <code>n</code> is the number of characters in the string. This is because we loop over the string just once.</p>
+</span></span></code></pre></div><p>This algorithm takes just <code>O(n)</code> time and space, where <code>n</code> is the number of
+characters in the string. This is because we loop over the string just once.</p>
 <h6 id="sorting-the-string-first">Sorting the string first</h6>
-<p>Here&rsquo;s a cool way to solve this problem, although not as efficient as our first solution.</p>
+<p>Here&rsquo;s a cool way to solve this problem, although not as efficient as our first
+solution.</p>
 <ol>
-<li>We can sort the string first, calling by calling <code>sorted(string)</code> and storing it in a variable <code>sorted_string</code></li>
-<li>Iterate over <code>sorted_string</code> and compare neighbors. If one character is the same as its neighbor, then we can return <code>False</code> right away.</li>
-<li>When we&rsquo;re done iterating, we know that all characters are unique, so return <code>True</code>.</li>
+<li>We can sort the string first, calling by calling <code>sorted(string)</code> and storing
+it in a variable <code>sorted_string</code></li>
+<li>Iterate over <code>sorted_string</code> and compare neighbors. If one character is the
+same as its neighbor, then we can return <code>False</code> right away.</li>
+<li>When we&rsquo;re done iterating, we know that all characters are unique, so return
+<code>True</code>.</li>
 </ol>
 <p>Here&rsquo;s the code for that:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">unique_sort</span>(string):
@@ -253,11 +263,14 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> sorted_string[i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">==</span> letter:
 </span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">False</span>
 </span></span><span style="display:flex;"><span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">True</span>
-</span></span></code></pre></div><p>We do <code>sorted_string[:-1]</code> because we want to iterate all but the last character. Python&rsquo;s slicing features are very helpful.</p>
-<p>This algorithm however, is bounded by the time it takes to sort the string, which is usually <code>O(n*log(n))</code>.</p>
+</span></span></code></pre></div><p>We do <code>sorted_string[:-1]</code> because we want to iterate all but the last
+character. Python&rsquo;s slicing features are very helpful.</p>
+<p>This algorithm however, is bounded by the time it takes to sort the string,
+which is usually <code>O(n*log(n))</code>.</p>
 <hr>
 <p>If you found this helpful, please share! Thank you very much.</p>
-<p>For similar problems and even more practice, I highly recommend this book: <a href="http://www.amazon.com/gp/product/0984782850/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0984782850&amp;linkCode=as2&amp;tag=raymondtaught-20&amp;linkId=B5YLU3P62LR6PO25">Cracking The Coding Interview</a></p>
+<p>For similar problems and even more practice, I highly recommend this book:
+<a href="http://www.amazon.com/gp/product/0984782850/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0984782850&amp;linkCode=as2&amp;tag=raymondtaught-20&amp;linkId=B5YLU3P62LR6PO25">Cracking The Coding Interview</a></p>
 
   </div>
 

@@ -215,23 +215,53 @@
 
   <div>
   <h2 id="hash-tables">Hash Tables</h2>
-<p>Also known as maps or dicts, depending on the programming language you&rsquo;re working with.</p>
-<p>Hash Tables are a very common data structure used to quickly access data. On average, searching, insertion, and deletion all take <code>O(1)</code> constant time. This is very fast!</p>
+<p>Also known as maps or dicts, depending on the programming language you&rsquo;re
+working with.</p>
+<p>Hash Tables are a very common data structure used to quickly access data. On
+average, searching, insertion, and deletion all take <code>O(1)</code> constant time. This
+is very fast!</p>
 <h2 id="analogies">Analogies</h2>
-<p>A hash table works like a book index. Instead of flipping page by page to find the topic you&rsquo;re looking for, you can instead check the index which tells you the exact page the topic exists on.</p>
-<p>Another analogy to hash tables is when your professor hands back paperwork to the class. A lazy professor would hand them back in a large stack unsorted. A more efficient professor would divide the stacks, and sort them by last names. By doing it this way, students can quickly find their papers by avoiding the stacks whose last name aren&rsquo;t theirs.</p>
+<p>A hash table works like a book index. Instead of flipping page by page to find
+the topic you&rsquo;re looking for, you can instead check the index which tells you
+the exact page the topic exists on.</p>
+<p>Another analogy to hash tables is when your professor hands back paperwork to
+the class. A lazy professor would hand them back in a large stack unsorted. A
+more efficient professor would divide the stacks, and sort them by last names.
+By doing it this way, students can quickly find their papers by avoiding the
+stacks whose last name aren&rsquo;t theirs.</p>
 <h2 id="how-it-actually-works">How it actually works</h2>
-<p>The underlying data structure of a hash table is simply an array. On top of the array is the hash function, which is what makes everything very fast. The hash function will tell you where to <em>place</em> the elements you&rsquo;re storing. Since arrays are a fixed size, we also need a resize function when we decide that our array is getting too full. This will help spread out elements more evenly.</p>
+<p>The underlying data structure of a hash table is simply an array. On top of the
+array is the hash function, which is what makes everything very fast. The hash
+function will tell you where to <em>place</em> the elements you&rsquo;re storing. Since
+arrays are a fixed size, we also need a resize function when we decide that our
+array is getting too full. This will help spread out elements more evenly.</p>
 <h2 id="dealing-with-collisions">Dealing With Collisions</h2>
-<p>A collision is when two elements get hashed into the same spot. There are many different ways to deal with collisions, but the most common way is to chain them, which means that we allow multiple elements into a single slot of the array. We would now just have to search a single slot of an array rather than the whole thing. You can read more about collisions [here](<a href="https://en.wikipedia.org/wiki/Hash_table">https://en.wikipedia.org/wiki/Hash_table</a># Collision_resolution).</p>
+<p>A collision is when two elements get hashed into the same spot. There are many
+different ways to deal with collisions, but the most common way is to chain
+them, which means that we allow multiple elements into a single slot of the
+array. We would now just have to search a single slot of an array rather than
+the whole thing. You can read more about collisions
+[here](<a href="https://en.wikipedia.org/wiki/Hash_table">https://en.wikipedia.org/wiki/Hash_table</a># Collision_resolution).</p>
 <h2 id="bad-hash-functions">Bad Hash Functions</h2>
-<p>A very basic (and useless) hash function will tell you to place every element into the first slot. This will lead to collisions. This hash function is specifically bad because it essentially turns your hash table into a linked list. Every insertion will lead to a collision, and we will also waste the unused space of the array!</p>
-<p>Another useless hash function is random hashing. Yes, it&rsquo;ll spread your elements evenly throughout the array to minimize collisions, but you&rsquo;ll never be able to retrieve the elements again. If you hash the same element twice, you will likely get different results. This is bad.</p>
+<p>A very basic (and useless) hash function will tell you to place every element
+into the first slot. This will lead to collisions. This hash function is
+specifically bad because it essentially turns your hash table into a linked
+list. Every insertion will lead to a collision, and we will also waste the
+unused space of the array!</p>
+<p>Another useless hash function is random hashing. Yes, it&rsquo;ll spread your elements
+evenly throughout the array to minimize collisions, but you&rsquo;ll never be able to
+retrieve the elements again. If you hash the same element twice, you will likely
+get different results. This is bad.</p>
 <h2 id="a-good-hash-function">A Good Hash Function</h2>
-<p>A good hash function will ideally spread the elements out evenly across the array, and avoid collisions while doing so. It will also be deterministic, so if you hash the same item twice, it will end up in the same bucket.</p>
+<p>A good hash function will ideally spread the elements out evenly across the
+array, and avoid collisions while doing so. It will also be deterministic, so if
+you hash the same item twice, it will end up in the same bucket.</p>
 <h2 id="hash-table-applications">Hash Table Applications</h2>
-<p>In Python, hash tables are called <code>dicts</code>, dictionary for short. We can initialize an empty dict with <code>{}</code></p>
-<p>Lots of problems involve hash tables, or can benefit from them. If the problem requires fast lookup, insertions, and deletions, using a hash table will most likely be optimal. Let&rsquo;s solve some problems with them!</p>
+<p>In Python, hash tables are called <code>dicts</code>, dictionary for short. We can
+initialize an empty dict with <code>{}</code></p>
+<p>Lots of problems involve hash tables, or can benefit from them. If the problem
+requires fast lookup, insertions, and deletions, using a hash table will most
+likely be optimal. Let&rsquo;s solve some problems with them!</p>
 <h3 id="1-determine-if-a-string-has-unique-characters-case-sensitive">1. Determine if a string has unique characters. (case sensitive)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">unique</span>(string):
 </span></span><span style="display:flex;"><span>    letter_mapping <span style="color:#f92672">=</span> {}
@@ -268,10 +298,17 @@
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">True</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> permutation(<span style="color:#e6db74">&#34;nujabes&#34;</span>, <span style="color:#e6db74">&#34;Seba Jun&#34;</span>)
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">False</span>
-</span></span></code></pre></div><p>Notice that in some of the cases, like nujabes, our algorithm said that it wasn&rsquo;t a permutation of the late artist&rsquo;s name, Seba Jun. That&rsquo;s because it treats lowercase and uppercase letters differently, and also counted spaces.</p>
-<p><strong>Exercise:</strong> Fix the algorithms so that it ignores spaces and is case-insensitive.</p>
+</span></span></code></pre></div><p>Notice that in some of the cases, like nujabes, our algorithm said that it
+wasn&rsquo;t a permutation of the late artist&rsquo;s name, Seba Jun. That&rsquo;s because it
+treats lowercase and uppercase letters differently, and also counted spaces.</p>
+<p><strong>Exercise:</strong> Fix the algorithms so that it ignores spaces and is
+case-insensitive.</p>
 <hr>
-<p>Thanks y&rsquo;all. If you haven&rsquo;t already, this book, <a href="https://www.amazon.com/gp/product/0262033844/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0262033844&amp;linkCode=as2&amp;tag=raymondtaught-20&amp;linkId=652d94806b687ba3079503b820cbc461">Introduction to Algorithms, 3rd Edition</a> is THE algorithms and data structure book to get. You will most likely use it in your algorithms / data structure class or reference back to it when you forgot what the heck a Fibonacci Heap is.</p>
+<p>Thanks y&rsquo;all. If you haven&rsquo;t already, this book,
+<a href="https://www.amazon.com/gp/product/0262033844/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0262033844&amp;linkCode=as2&amp;tag=raymondtaught-20&amp;linkId=652d94806b687ba3079503b820cbc461">Introduction to Algorithms, 3rd Edition</a>
+is THE algorithms and data structure book to get. You will most likely use it in
+your algorithms / data structure class or reference back to it when you forgot
+what the heck a Fibonacci Heap is.</p>
 
   </div>
 
